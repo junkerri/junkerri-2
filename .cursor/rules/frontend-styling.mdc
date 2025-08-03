@@ -1,0 +1,49 @@
+---
+alwaysApply: true
+description: Frontend styling and component system best practices
+---
+
+# Frontend Styling & Component System
+
+## Tech Stack
+
+- **Astro** + **React** for components
+- **Tailwind CSS v4** (CSS-only config, no JS config file)
+- **shadcn/ui** components with proper theming
+
+## Styling Rules
+
+### Tailwind CSS v4
+
+- Use `@import "tailwindcss"` in [global.css](mdc:src/styles/global.css)
+- Define colors in `:root` and `.dark` within `@layer base`
+- Map variables with `@theme` directive: `--color-primary: hsl(var(--primary))`
+- NO `tailwind.config.js` needed
+
+### shadcn/ui Components
+
+- Use semantic color classes: `bg-primary`, `text-primary-foreground`, `bg-secondary`
+- Always include proper focus states: `focus-visible:ring-2 focus-visible:ring-ring`
+- Follow HSL format: `--primary: 222.2 47.4% 11.2%` (no `hsl()` wrapper)
+- Components in [src/components/ui/](mdc:src/components/ui/)
+
+### Component Guidelines
+
+- Use `client:load` directive for interactive React components in Astro
+- Import shadcn components: `import { Button } from '@/components/ui/button'`
+- Keep utility classes semantic, avoid hardcoded colors
+- Use `cn()` utility for conditional classes
+
+### Color System & Theming
+
+- **Use semantic tokens**: `hsl(var(--background))`, `hsl(var(--foreground))`, `hsl(var(--primary))`
+- **Theme switching**: Add/remove `class="dark"` on `<html>` element
+- **❌ Avoid**: `rgb(var(--gray))`, hardcoded colors, custom gradients
+- **Focus states**: `focus-visible:ring-2 focus-visible:ring-ring`
+
+### Code Quality
+
+- Self-documenting code over comments
+- DRY principles - reuse components
+- Succinct, precise implementations
+- Focus on root cause analysis for issues

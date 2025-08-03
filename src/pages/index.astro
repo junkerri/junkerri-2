@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { Button } from '@/components/ui/button';
 ---
 
 <!doctype html>
@@ -13,7 +14,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
+			<h1>🧑‍🚀 Hello, Aastha!</h1>
+			<div class="flex gap-4 mb-6">
+				<Button client:load>Click me!</Button>
+				<Button variant="outline" client:load>Outline Button</Button>
+				<Button variant="secondary" client:load>Secondary</Button>
+			</div>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
 				template serves as a lightweight, minimally-styled starting point for anyone looking to build

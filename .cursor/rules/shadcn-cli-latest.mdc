@@ -1,0 +1,111 @@
+---
+alwaysApply: true
+description: "Latest shadcn/ui CLI commands and best practices for adding components"
+---
+
+# shadcn/ui CLI - Latest Commands & Best Practices
+
+## ⚠️ Important: Use Latest CLI Package
+
+**ALWAYS use `npx shadcn@latest`** - the old `shadcn-ui` package is deprecated.
+
+## 🚀 Core Commands
+
+### Initialize Project
+
+```bash
+npx shadcn@latest init
+```
+
+**Options:**
+
+- `--defaults` - Use default values (New York style, Zinc color, CSS variables)
+- `--force` - Force overwrite existing [components.json](mdc:components.json)
+- `--yes` - Skip confirmation prompts
+- `--cwd <path>` - Specify working directory
+
+### Add Components
+
+```bash
+npx shadcn@latest add [component-name]
+```
+
+**Options:**
+
+- `--yes` - Skip confirmation prompts
+- `--overwrite` - Overwrite existing files
+- `--cwd <path>` - Specify working directory
+- `--path <path>` - Specify component path
+
+## 📝 Common Usage Examples
+
+```bash
+# Quick setup with defaults
+npx shadcn@latest init --defaults --yes
+
+# Add single component
+npx shadcn@latest add button
+
+# Add multiple components
+npx shadcn@latest add button checkbox dialog sheet
+
+# Add component with overwrite (useful for updates)
+npx shadcn@latest add button --overwrite --yes
+
+# Add all common UI components at once
+npx shadcn@latest add accordion alert alert-dialog avatar badge breadcrumb button calendar card carousel checkbox collapsible command context-menu dialog dropdown-menu hover-card input label menubar navigation-menu popover progress radio-group scroll-area select separator sheet skeleton slider switch table tabs textarea toast toggle tooltip
+```
+
+## 🎯 Project-Specific Notes
+
+### For Astro + React + Tailwind CSS v4
+
+- Components work with `client:load` directive
+- Import path uses `@/components/ui/` (configured in [components.json](mdc:components.json))
+- Tailwind CSS v4 setup in [src/styles/global.css](mdc:src/styles/global.css) is compatible
+- Use semantic color classes: `bg-primary`, `text-primary-foreground`, etc.
+
+### Component Integration Pattern
+
+```tsx
+// In .astro files
+---
+import { Button } from '@/components/ui/button';
+---
+
+<Button client:load variant="outline">Click me</Button>
+```
+
+## 🔧 Troubleshooting
+
+1. **Missing components.json**: Run `npx shadcn@latest init` first
+2. **Import errors**: Check alias configuration in [tsconfig.json](mdc:tsconfig.json)
+3. **Styling issues**: Ensure [src/styles/global.css](mdc:src/styles/global.css) includes Tailwind CSS imports
+4. **React component errors**: Add `client:load` directive in Astro files
+
+## 📚 Available Components
+
+Most popular components to add:
+
+- `button` - Primary UI button component
+- `input` - Form input fields
+- `dialog` - Modal dialogs
+- `sheet` - Slide-out panels
+- `dropdown-menu` - Dropdown menus
+- `navigation-menu` - Navigation components
+- `card` - Content cards
+- `badge` - Status badges
+- `skeleton` - Loading placeholders
+- `toast` - Notification toasts
+
+## 🚫 Avoid These Deprecated Commands
+
+```bash
+# ❌ DON'T USE - Deprecated
+npx shadcn-ui init
+npx shadcn-ui add button
+
+# ✅ USE INSTEAD - Current
+npx shadcn@latest init
+npx shadcn@latest add button
+```

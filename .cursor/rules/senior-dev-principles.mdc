@@ -1,0 +1,41 @@
+---
+alwaysApply: true
+---
+
+# Senior Developer Coding Principles
+
+## DRY & Composition
+
+- Extract reusable logic into utilities/hooks/functions
+- Compose small, focused functions over large monolithic ones
+- Use constants for magic numbers/strings
+- Share types/interfaces across modules
+
+## Code Quality
+
+- One responsibility per function/component
+- Pure functions when possible (no side effects)
+- Explicit error handling - no silent failures
+- Descriptive names over comments
+- Return early to reduce nesting
+
+## Architecture
+
+- Separate concerns: data, logic, presentation
+- Colocate related code
+- Minimize dependencies between modules
+- Use dependency injection over global state
+
+## Performance
+
+- Lazy load when beneficial
+- Memoize expensive computations
+- Avoid premature optimization
+- Profile before optimizing
+
+## Maintenance
+
+- Fail fast with clear error messages
+- Write testable code
+- Prefer composition over inheritance
+- Delete dead code immediately
