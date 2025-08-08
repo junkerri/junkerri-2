@@ -11,22 +11,24 @@ const navItems = [
 ];
 ---
 
-<header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+<header class="sticky top-0 z-50 w-full border-b border-white/20 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-lg">
   <div class="container">
     <div class="flex h-16 items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="flex items-center space-x-2">
-        <span class="text-2xl font-bold tracking-tight">JUNKERRI</span>
+      <a href="/" class="flex items-center space-x-2 group">
+        <span class="text-2xl font-bold tracking-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">JUNKERRI</span>
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-6">
-        {navItems.map((item) => (
+        {navItems.map((item, index) => (
           <a 
             href={item.href}
-            class="text-sm font-medium transition-colors hover:text-primary"
+            class="text-sm font-medium transition-all duration-300 hover:text-primary hover:scale-105 relative group text-foreground"
+            style={`animation-delay: ${index * 0.1}s`}
           >
             {item.text}
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
         ))}
       </nav>
@@ -34,7 +36,7 @@ const navItems = [
       <!-- Mobile Navigation Toggle -->
       <button 
         id="mobile-menu-toggle" 
-        class="md:hidden inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9"
+        class="md:hidden inline-flex items-center justify-center rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9 hover:scale-105"
         aria-label="Toggle menu"
       >
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -44,13 +46,14 @@ const navItems = [
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden border-t">
+    <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 bg-background/95 backdrop-blur">
       <nav class="py-4">
         <div class="flex flex-col space-y-4">
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <a
               href={item.href}
-              class="text-lg font-medium transition-colors hover:text-primary"
+              class="text-lg font-medium transition-all duration-300 hover:text-primary hover:translate-x-2 pl-4 text-foreground"
+              style={`animation-delay: ${index * 0.1}s`}
             >
               {item.text}
             </a>
