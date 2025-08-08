@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import pulseCoop from '../assets/pulse-coop.jpg';
+import beatkerri from '../assets/beatkerri.jpg';
 
 // Web projects data
 const projects = [
@@ -10,7 +13,7 @@ const projects = [
     title: "Pulse COOP",
     description: "A worker-owned tech cooperative website for creatives, musicians, and web technologists based in Austin, TX. Features democratic decision-making, community empowerment, and sustainable practices.",
     tech: ["Astro", "React", "Tailwind CSS", "TypeScript", "Vercel"],
-    image: "/src/assets/pulse-coop.jpg",
+    image: pulseCoop,
     liveUrl: "https://pulse-coop.vercel.app/",
     githubUrl: "https://github.com/junkerri/pulse-coop",
     category: "Web App",
@@ -21,7 +24,7 @@ const projects = [
     title: "Beatkerri",
     description: "A 16-step digital sequencer and beat-making web application with challenge mode, jam mode, and daily beat challenges. Features an intuitive interface for creating and sharing beats.",
     tech: ["TypeScript", "React", "Web Audio API", "Canvas API", "Vercel"],
-    image: "/src/assets/beatkerri.jpg",
+    image: beatkerri,
     liveUrl: "https://www.beatkerri.com/",
     githubUrl: "https://github.com/junkerri/beatkerri",
     category: "Web App"
@@ -73,10 +76,12 @@ const featuredProject = projects.find(p => p.featured) || projects[0];
           {projects.map((project) => (
             <div class="card group" data-category={project.category}>
               <div class="aspect-video overflow-hidden rounded-t-lg">
-                <img 
+                <Image 
                   src={project.image} 
                   alt={project.title}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  width={400}
+                  height={225}
                 />
               </div>
               <div class="card-content">
@@ -169,10 +174,12 @@ const featuredProject = projects.find(p => p.featured) || projects[0];
             </div>
             
             <div class="aspect-video overflow-hidden rounded-2xl bg-muted">
-              <img 
+              <Image 
                 src={featuredProject.image} 
                 alt={featuredProject.title}
                 class="w-full h-full object-cover"
+                width={600}
+                height={338}
               />
             </div>
           </div>
@@ -203,29 +210,39 @@ const featuredProject = projects.find(p => p.featured) || projects[0];
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
+        const category = button.getAttribute('data-category') || '';
         
         // Update active button
         filterButtons.forEach(btn => {
-          btn.classList.remove('bg-primary', 'text-primary-foreground');
-          btn.classList.add('btn-outline');
+          if (btn instanceof HTMLElement) {
+            btn.classList.remove('bg-primary', 'text-primary-foreground');
+            btn.classList.add('btn-outline');
+          }
         });
-        button.classList.remove('btn-outline');
-        button.classList.add('bg-primary', 'text-primary-foreground');
+        if (button instanceof HTMLElement) {
+          button.classList.remove('btn-outline');
+          button.classList.add('bg-primary', 'text-primary-foreground');
+        }
         
         // Filter projects
         projectItems.forEach(item => {
-          if (category === 'All' || item.getAttribute('data-category') === category) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
+          if (item instanceof HTMLElement) {
+            const itemCategory = item.getAttribute('data-category') || '';
+            if (category === 'All' || itemCategory === category) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
           }
         });
       });
     });
 
     // Set initial active state
-    document.querySelector('[data-category="All"]').classList.remove('btn-outline');
-    document.querySelector('[data-category="All"]').classList.add('bg-primary', 'text-primary-foreground');
+    const allButton = document.querySelector('[data-category="All"]');
+    if (allButton instanceof HTMLElement) {
+      allButton.classList.remove('btn-outline');
+      allButton.classList.add('bg-primary', 'text-primary-foreground');
+    }
   </script>
 </BaseLayout>
