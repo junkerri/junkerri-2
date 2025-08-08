@@ -1,55 +1,243 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { Button } from '@/components/ui/button';
+import Footer from '../components/Footer.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Aastha!</h1>
-			<div class="flex gap-4 mb-6">
-				<Button client:load>Click me!</Button>
-				<Button variant="outline" client:load>Outline Button</Button>
-				<Button variant="secondary" client:load>Secondary</Button>
-			</div>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout title="Junkerri - Artist, Musician, Developer">
+  <Header />
+  
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-b from-background to-muted/20">
+      <div class="container">
+        <div class="text-center space-y-6">
+          <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+            JUNKERRI
+          </h1>
+          <p class="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+            Artist, musician, and developer creating bold digital experiences and expressive art.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+              Latest Collaboration
+            </a>
+            <a href="/art" class="btn btn-outline btn-lg">
+              View Art
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Work -->
+    <section class="py-16">
+      <div class="container">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Featured Work</h2>
+          <p class="text-muted-foreground max-w-2xl mx-auto">
+            Explore my latest creations across art, music, and digital experiences.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Music Card -->
+          <div class="card group">
+            <div class="aspect-square bg-muted rounded-t-lg overflow-hidden">
+              <img 
+                src="/src/assets/latest-collab.jpg" 
+                alt="Back Where I Started - Junkerri X Nikki Kane lyrical video" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold mb-2">Back Where I Started</h3>
+              <p class="text-muted-foreground mb-4">
+                New collaboration with Nikki Kane - "Back Where I Started" official lyrical video.
+              </p>
+              <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                Watch Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Art Card -->
+          <div class="card group">
+            <div class="aspect-square bg-muted rounded-t-lg overflow-hidden">
+              <img 
+                src="/src/assets/everything-was-beautiful.jpg" 
+                alt="Digital art collection preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold mb-2">Digital Art Collection</h3>
+              <p class="text-muted-foreground mb-4">
+                Bold, expressive digital artwork exploring themes of identity and technology.
+              </p>
+              <a href="/art" class="btn btn-primary btn-sm">
+                View Gallery
+              </a>
+            </div>
+          </div>
+
+          <!-- Projects Card -->
+          <div class="card group">
+            <div class="aspect-square bg-muted rounded-t-lg overflow-hidden">
+              <img 
+                src="/src/assets/beatkerri-square.jpg" 
+                alt="Beatkerri web app preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold mb-2">Web Projects</h3>
+              <p class="text-muted-foreground mb-4">
+                Innovative digital experiences and interactive web applications.
+              </p>
+              <a href="/web-projects" class="btn btn-primary btn-sm">
+                Explore Projects
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="py-16 bg-muted/30">
+      <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold">About Junkerri</h2>
+            <p class="text-lg text-muted-foreground">
+              I'm a multidisciplinary artist and developer who creates at the intersection of art, music, and technology. 
+              My work explores themes of digital identity, human connection, and the evolving relationship between 
+              creativity and code.
+            </p>
+            <p class="text-muted-foreground">
+              From experimental electronic music to interactive digital art, I push boundaries and challenge 
+              conventional forms of expression. Each project is an exploration of new possibilities and a 
+              reflection of our digital age.
+            </p>
+            <a href="/about" class="btn btn-outline btn-lg">
+              Learn More
+            </a>
+          </div>
+          <div class="aspect-square bg-muted rounded-lg overflow-hidden">
+            <img 
+              src="/src/assets/artist-photo.jpg" 
+              alt="Junkerri portrait" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Blog Posts -->
+    <section class="py-16">
+      <div class="container">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Latest Thoughts</h2>
+          <p class="text-muted-foreground max-w-2xl mx-auto">
+            Insights, process, and reflections on art, music, and digital creation.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <article class="card group">
+            <div class="aspect-video bg-muted rounded-t-lg overflow-hidden">
+              <img 
+                src="/src/assets/blog-placeholder-4.jpg" 
+                alt="Blog post preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="card-content">
+              <div class="flex gap-2 mb-3">
+                <span class="badge badge-outline">Art</span>
+                <span class="badge badge-outline">Process</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">The Digital Canvas</h3>
+              <p class="text-muted-foreground mb-4">
+                Exploring how digital tools are reshaping artistic expression and creative workflows.
+              </p>
+              <a href="/blog" class="text-primary hover:underline font-medium">
+                Read More →
+              </a>
+            </div>
+          </article>
+
+          <article class="card group">
+            <div class="aspect-video bg-muted rounded-t-lg overflow-hidden">
+              <img 
+                src="/src/assets/blog-placeholder-5.jpg" 
+                alt="Blog post preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="card-content">
+              <div class="flex gap-2 mb-3">
+                <span class="badge badge-outline">Music</span>
+                <span class="badge badge-outline">Production</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Sound Design Philosophy</h3>
+              <p class="text-muted-foreground mb-4">
+                My approach to creating unique sonic landscapes and experimental compositions.
+              </p>
+              <a href="/blog" class="text-primary hover:underline font-medium">
+                Read More →
+              </a>
+            </div>
+          </article>
+
+          <article class="card group">
+            <div class="aspect-video bg-muted rounded-t-lg overflow-hidden">
+              <img 
+                src="/src/assets/blog-placeholder-1.jpg" 
+                alt="Blog post preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="card-content">
+              <div class="flex gap-2 mb-3">
+                <span class="badge badge-outline">Tech</span>
+                <span class="badge badge-outline">Development</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Code as Art</h3>
+              <p class="text-muted-foreground mb-4">
+                How programming and creative expression intersect in modern digital art.
+              </p>
+              <a href="/blog" class="text-primary hover:underline font-medium">
+                Read More →
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="/blog" class="btn btn-outline btn-lg">
+            View All Posts
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-16 bg-primary text-primary-foreground">
+      <div class="container text-center">
+        <h2 class="text-3xl font-bold mb-4">Let's Create Together</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+          Interested in collaboration, commissions, or just want to connect? 
+          I'd love to hear from you.
+        </p>
+        <a href="/contact" class="btn btn-secondary btn-lg">
+          Get in Touch
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

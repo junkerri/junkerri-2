@@ -1,92 +1,80 @@
 ---
-import { SITE_TITLE } from '../consts';
-import { Badge } from '@/components/ui/badge';
-import HeaderLink from './HeaderLink.astro';
-import MobileNav from './MobileNav';
+const navItems = [
+  { href: '/', text: 'Home' },
+  { href: '/about', text: 'About' },
+  { href: '/art', text: 'Art' },
+  { href: '/music', text: 'Music' },
+  { href: '/shop', text: 'Shop' },
+  { href: '/blog', text: 'Blog' },
+  { href: '/web-projects', text: 'Projects' },
+  { href: '/contact', text: 'Contact' },
+];
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-	<div class="container flex h-16 items-center justify-between">
-		
-		<!-- Logo/Brand -->
-		<div class="flex items-center space-x-4">
-			<a href="/" class="flex items-center space-x-2 font-bold text-xl text-foreground hover:text-primary transition-colors">
-				<svg class="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					<path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					<path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-				</svg>
-				<span>{SITE_TITLE}</span>
-			</a>
-		</div>
+<header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="container">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2">
+        <span class="text-2xl font-bold tracking-tight">JUNKERRI</span>
+      </a>
 
-		<!-- Desktop Navigation -->
-		<nav class="hidden md:flex items-center space-x-1">
-			<a href="/" class="inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-				Home
-			</a>
-			<a href="/blog" class="inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-				Blog
-				<Badge variant="secondary" className="ml-2 h-5 px-1.5 text-xs">New</Badge>
-			</a>
-			<a href="/about" class="inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-				About
-			</a>
-		</nav>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-6">
+        {navItems.map((item) => (
+          <a 
+            href={item.href}
+            class="text-sm font-medium transition-colors hover:text-primary"
+          >
+            {item.text}
+          </a>
+        ))}
+      </nav>
 
-		<!-- Desktop Actions -->
-		<div class="hidden md:flex items-center space-x-4">
-			<div class="flex items-center space-x-2">
-				<!-- Social Links with Lucide Icons -->
-				<a href="https://github.com/withastro/astro" target="_blank" rel="noopener noreferrer" aria-label="GitHub" 
-				   class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9">
-					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-						<path d="M9 18c-4.51 2-5-2-7-2"/>
-					</svg>
-				</a>
-				<a href="https://twitter.com/astrodotbuild" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-				   class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9">
-					<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-					</svg>
-				</a>
-			</div>
-			<!-- Vertical separator -->
-			<div class="h-6 w-px bg-border"></div>
-			<!-- Avatar - Static component -->
-			<div class="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-medium">
-				AA
-			</div>
-		</div>
+      <!-- Mobile Navigation Toggle -->
+      <button 
+        id="mobile-menu-toggle" 
+        class="md:hidden inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9"
+        aria-label="Toggle menu"
+      >
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
 
-		<!-- Mobile Menu - React component with client:load for interactivity -->
-		<MobileNav client:load />
-	</div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden border-t">
+      <nav class="py-4">
+        <div class="flex flex-col space-y-4">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class="text-lg font-medium transition-colors hover:text-primary"
+            >
+              {item.text}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </div>
+  </div>
 </header>
 
-<style>
-	/* Custom glassmorphism effect for header */
-	header {
-		backdrop-filter: blur(12px);
-		border-bottom: 1px solid hsl(var(--border) / 0.4);
-	}
-	
-	/* Smooth logo animation */
-	header a[href="/"] {
-		transition: all 0.2s ease-in-out;
-	}
-	
-	header a[href="/"]:hover {
-		transform: translateY(-1px);
-	}
-	
-	/* Mobile menu icon animation */
-	.mobile-menu-trigger {
-		transition: transform 0.2s ease-in-out;
-	}
-	
-	.mobile-menu-trigger:hover {
-		transform: scale(1.05);
-	}
-</style>
+<script>
+  // Mobile menu functionality
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when clicking on a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Sample art data (replace with real data)
+const artworks = [
+  {
+    id: 1,
+    title: "Digital Dreams",
+    description: "A bold exploration of digital consciousness",
+    image: "/src/assets/blog-placeholder-1.jpg",
+    category: "Digital Art",
+    year: "2024",
+    dimensions: "1920x1080px"
+  },
+  {
+    id: 2,
+    title: "Neon Cityscape",
+    description: "Cyberpunk-inspired urban landscape",
+    image: "/src/assets/blog-placeholder-2.jpg",
+    category: "Digital Art",
+    year: "2024",
+    dimensions: "2560x1440px"
+  },
+  {
+    id: 3,
+    title: "Abstract Flow",
+    description: "Fluid dynamics in digital form",
+    image: "/src/assets/blog-placeholder-3.jpg",
+    category: "Abstract",
+    year: "2023",
+    dimensions: "1920x1080px"
+  },
+  {
+    id: 4,
+    title: "Glitch Portrait",
+    description: "Digital distortion and human form",
+    image: "/src/assets/blog-placeholder-4.jpg",
+    category: "Portrait",
+    year: "2023",
+    dimensions: "1920x1080px"
+  },
+  {
+    id: 5,
+    title: "Data Visualization",
+    description: "Information as art",
+    image: "/src/assets/blog-placeholder-5.jpg",
+    category: "Digital Art",
+    year: "2024",
+    dimensions: "1920x1080px"
+  },
+  {
+    id: 6,
+    title: "Minimalist Geometry",
+    description: "Clean lines and simple forms",
+    image: "/src/assets/blog-placeholder-1.jpg",
+    category: "Abstract",
+    year: "2023",
+    dimensions: "1920x1080px"
+  }
+];
+
+const categories = ["All", "Digital Art", "Abstract", "Portrait"];
+---
+
+<BaseLayout title="Art Gallery - Junkerri" description="Digital art gallery featuring bold, experimental works">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-background via-background to-muted/20">
+      <div class="container">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+            Art Gallery
+          </h1>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            A collection of digital artworks exploring themes of consciousness, technology, and human experience.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="py-8 border-b">
+      <div class="container">
+        <div class="flex flex-wrap gap-4 justify-center">
+          {categories.map((category) => (
+            <button 
+              class="px-6 py-2 rounded-full border border-input bg-background text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              data-category={category}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-20">
+      <div class="container">
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+          {artworks.map((artwork) => (
+            <div class="group break-inside-avoid overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300" data-category={artwork.category}>
+              <div class="aspect-square overflow-hidden">
+                <img 
+                  src={artwork.image} 
+                  alt={artwork.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  data-artwork={artwork.id}
+                />
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                    {artwork.category}
+                  </span>
+                  <span class="text-sm text-muted-foreground">{artwork.year}</span>
+                </div>
+                <h3 class="text-xl font-semibold leading-none tracking-tight mb-2">{artwork.title}</h3>
+                <p class="text-sm text-muted-foreground mb-4">{artwork.description}</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-muted-foreground">{artwork.dimensions}</span>
+                  <button class="text-sm text-primary hover:underline">View Details</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal (Hidden by default) -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
+      <div class="relative max-w-4xl w-full">
+        <button id="close-lightbox" class="absolute top-4 right-4 text-white hover:text-gray-300 z-10">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <div class="aspect-square overflow-hidden rounded-lg">
+          <img id="lightbox-image" src="" alt="" class="w-full h-full object-contain" />
+        </div>
+        <div id="lightbox-info" class="mt-4 text-white text-center">
+          <h3 id="lightbox-title" class="text-2xl font-bold mb-2"></h3>
+          <p id="lightbox-description" class="text-lg opacity-90"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-muted/30">
+      <div class="container text-center">
+        <h2 class="text-4xl font-bold mb-4">Interested in Commissioning?</h2>
+        <p class="text-xl mb-8 text-muted-foreground">Let's create something unique together</p>
+        <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-8 py-3 text-lg font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+          Get in Touch
+          <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script>
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('[data-category]');
+    const artworkItems = document.querySelectorAll('[data-category]');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('bg-primary', 'text-primary-foreground'));
+        button.classList.add('bg-primary', 'text-primary-foreground');
+        
+        // Filter artworks
+        artworkItems.forEach(item => {
+          if (category === 'All' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDescription = document.getElementById('lightbox-description');
+    const closeLightbox = document.getElementById('close-lightbox');
+
+    // Sample artwork data for lightbox
+    const artworkData = {
+      1: { title: "Digital Dreams", description: "A bold exploration of digital consciousness" },
+      2: { title: "Neon Cityscape", description: "Cyberpunk-inspired urban landscape" },
+      3: { title: "Abstract Flow", description: "Fluid dynamics in digital form" },
+      4: { title: "Glitch Portrait", description: "Digital distortion and human form" },
+      5: { title: "Data Visualization", description: "Information as art" },
+      6: { title: "Minimalist Geometry", description: "Clean lines and simple forms" }
+    };
+
+    // Add click handlers to artwork images
+    document.querySelectorAll('[data-artwork]').forEach(img => {
+      img.addEventListener('click', () => {
+        const artworkId = img.getAttribute('data-artwork');
+        const artwork = artworkData[artworkId];
+        
+        lightboxImage.src = img.src;
+        lightboxImage.alt = artwork.title;
+        lightboxTitle.textContent = artwork.title;
+        lightboxDescription.textContent = artwork.description;
+        
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+
+    // Close lightbox
+    closeLightbox.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+    });
+
+    // Close lightbox on background click
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+      }
+    });
+
+    // Close lightbox on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+      }
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,354 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Sample product data (replace with real Stripe products)
+const products = [
+  {
+    id: 1,
+    name: "Digital Dreams Print",
+    description: "High-quality digital art print, limited edition",
+    price: 45,
+    image: "/src/assets/blog-placeholder-1.jpg",
+    category: "Prints",
+    inStock: true,
+    stripePriceId: "price_example1"
+  },
+  {
+    id: 2,
+    name: "Neon Cityscape Poster",
+    description: "Cyberpunk-inspired poster, 18x24 inches",
+    price: 25,
+    image: "/src/assets/blog-placeholder-2.jpg",
+    category: "Posters",
+    inStock: true,
+    stripePriceId: "price_example2"
+  },
+  {
+    id: 3,
+    name: "Abstract Flow Canvas",
+    description: "Gallery-wrapped canvas print, 24x36 inches",
+    price: 85,
+    image: "/src/assets/blog-placeholder-3.jpg",
+    category: "Canvas",
+    inStock: true,
+    stripePriceId: "price_example3"
+  },
+  {
+    id: 4,
+    name: "Glitch Portrait T-Shirt",
+    description: "Premium cotton t-shirt with original artwork",
+    price: 35,
+    image: "/src/assets/blog-placeholder-4.jpg",
+    category: "Apparel",
+    inStock: true,
+    stripePriceId: "price_example4"
+  },
+  {
+    id: 5,
+    name: "Data Visualization Hoodie",
+    description: "Comfortable hoodie with digital art design",
+    price: 55,
+    image: "/src/assets/blog-placeholder-5.jpg",
+    category: "Apparel",
+    inStock: false,
+    stripePriceId: "price_example5"
+  },
+  {
+    id: 6,
+    name: "Minimalist Geometry Mug",
+    description: "Ceramic mug with geometric design",
+    price: 18,
+    image: "/src/assets/blog-placeholder-1.jpg",
+    category: "Accessories",
+    inStock: true,
+    stripePriceId: "price_example6"
+  }
+];
+
+const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessories"];
+---
+
+<BaseLayout title="Shop - Junkerri" description="Original artwork, prints, and merchandise">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-background via-background to-muted/20">
+      <div class="container">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+            Shop
+          </h1>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Original artwork, limited edition prints, and exclusive merchandise.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="py-8 border-b">
+      <div class="container">
+        <div class="flex flex-wrap gap-4 justify-center">
+          {categories.map((category) => (
+            <button 
+              class="px-6 py-2 rounded-full border border-input bg-background text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              data-category={category}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="py-20">
+      <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map((product) => (
+            <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300" data-category={product.category}>
+              <div class="aspect-square overflow-hidden relative">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                {!product.inStock && (
+                  <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                    <span class="text-white font-semibold">Out of Stock</span>
+                  </div>
+                )}
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="inline-flex items-center rounded-full bg-secondary px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                    {product.category}
+                  </span>
+                  <span class="text-lg font-bold text-primary">${product.price}</span>
+                </div>
+                <h3 class="text-xl font-semibold leading-none tracking-tight mb-2">{product.name}</h3>
+                <p class="text-sm text-muted-foreground mb-4">{product.description}</p>
+                
+                {product.inStock ? (
+                  <button 
+                    class="w-full inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    data-product-id={product.id}
+                    data-stripe-price-id={product.stripePriceId}
+                  >
+                    Add to Cart
+                    <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                  </button>
+                ) : (
+                  <button 
+                    class="w-full inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-muted-foreground cursor-not-allowed"
+                    disabled
+                  >
+                    Out of Stock
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-80 bg-background border-l shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+      <div class="p-6 h-full flex flex-col">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-lg font-semibold">Shopping Cart</h3>
+          <button id="close-cart" class="text-muted-foreground hover:text-foreground">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div id="cart-items" class="flex-1 overflow-y-auto space-y-4">
+          <!-- Cart items will be populated by JavaScript -->
+        </div>
+        
+        <div class="border-t pt-4 space-y-4">
+          <div class="flex justify-between text-lg font-semibold">
+            <span>Total:</span>
+            <span id="cart-total">$0</span>
+          </div>
+          <button 
+            id="checkout-btn"
+            class="w-full inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-4 py-3 text-sm font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            disabled
+          >
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-muted/30">
+      <div class="container text-center">
+        <h2 class="text-4xl font-bold mb-4">Custom Commissions</h2>
+        <p class="text-xl mb-8 text-muted-foreground">Interested in a custom piece or bulk order?</p>
+        <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-8 py-3 text-lg font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+          Get in Touch
+          <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script>
+    // Cart functionality
+    let cart = [];
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const cartOverlay = document.getElementById('cart-overlay');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const closeCart = document.getElementById('close-cart');
+
+    // Product data for cart
+    const productData = {
+      1: { name: "Digital Dreams Print", price: 45, image: "/src/assets/blog-placeholder-1.jpg" },
+      2: { name: "Neon Cityscape Poster", price: 25, image: "/src/assets/blog-placeholder-2.jpg" },
+      3: { name: "Abstract Flow Canvas", price: 85, image: "/src/assets/blog-placeholder-3.jpg" },
+      4: { name: "Glitch Portrait T-Shirt", price: 35, image: "/src/assets/blog-placeholder-4.jpg" },
+      5: { name: "Data Visualization Hoodie", price: 55, image: "/src/assets/blog-placeholder-5.jpg" },
+      6: { name: "Minimalist Geometry Mug", price: 18, image: "/src/assets/blog-placeholder-1.jpg" }
+    };
+
+    // Add to cart functionality
+    document.querySelectorAll('[data-product-id]').forEach(button => {
+      button.addEventListener('click', () => {
+        const productId = parseInt(button.getAttribute('data-product-id'));
+        const product = productData[productId];
+        
+        // Check if product is already in cart
+        const existingItem = cart.find(item => item.id === productId);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            id: productId,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1
+          });
+        }
+        
+        updateCart();
+        openCart();
+      });
+    });
+
+    function updateCart() {
+      // Update cart items display
+      cartItems.innerHTML = cart.map(item => `
+        <div class="flex items-center gap-4 p-4 border rounded-lg">
+          <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded" />
+          <div class="flex-1">
+            <h4 class="font-medium">${item.name}</h4>
+            <p class="text-sm text-muted-foreground">$${item.price}</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="text-muted-foreground hover:text-foreground" onclick="updateQuantity(${item.id}, -1)">-</button>
+            <span class="w-8 text-center">${item.quantity}</span>
+            <button class="text-muted-foreground hover:text-foreground" onclick="updateQuantity(${item.id}, 1)">+</button>
+          </div>
+        </div>
+      `).join('');
+      
+      // Update total
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      cartTotal.textContent = `$${total}`;
+      
+      // Enable/disable checkout button
+      checkoutBtn.disabled = cart.length === 0;
+    }
+
+    function updateQuantity(productId, change) {
+      const item = cart.find(item => item.id === productId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          cart = cart.filter(item => item.id !== productId);
+        }
+        updateCart();
+      }
+    }
+
+    function openCart() {
+      cartSidebar.classList.remove('translate-x-full');
+      cartOverlay.classList.remove('hidden');
+    }
+
+    function closeCartSidebar() {
+      cartSidebar.classList.add('translate-x-full');
+      cartOverlay.classList.add('hidden');
+    }
+
+    // Event listeners
+    closeCart.addEventListener('click', closeCartSidebar);
+    cartOverlay.addEventListener('click', closeCartSidebar);
+
+    // Checkout functionality (Stripe integration)
+    checkoutBtn.addEventListener('click', async () => {
+      if (cart.length === 0) return;
+      
+      try {
+        // This would integrate with your Stripe backend
+        // For now, we'll just show an alert
+        alert('Redirecting to Stripe checkout...');
+        
+        // Example Stripe checkout integration:
+        // const response = await fetch('/api/create-checkout-session', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({ items: cart })
+        // });
+        // const { url } = await response.json();
+        // window.location.href = url;
+      } catch (error) {
+        console.error('Checkout error:', error);
+        alert('Checkout failed. Please try again.');
+      }
+    });
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('[data-category]');
+    const productItems = document.querySelectorAll('[data-category]');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('bg-primary', 'text-primary-foreground'));
+        button.classList.add('bg-primary', 'text-primary-foreground');
+        
+        // Filter products
+        productItems.forEach(item => {
+          if (category === 'All' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

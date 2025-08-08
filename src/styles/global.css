@@ -3,47 +3,47 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+    --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
+    --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 47.4% 11.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 75.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 217.2 91% 59.8%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
   }
 }
 
@@ -70,192 +70,347 @@
   --radius: var(--radius);
 }
 
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+/* Base styles */
+* {
+  border-color: hsl(var(--border));
+}
 
-:root {
-  --accent-dark: #000d8a;
-  --black: 15, 18, 25;
-  --gray: 96, 115, 159;
-  --gray-light: 229, 233, 240;
-  --gray-dark: 34, 41, 57;
-  --gray-gradient: rgba(var(--gray-light), 50%), #fff;
-  --box-shadow: 0 2px 6px rgba(var(--gray), 25%),
-    0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
-}
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Atkinson";
-  src: url("/fonts/atkinson-bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 body {
-  font-family: "Atkinson", sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: left;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  font-size: 20px;
-  line-height: 1.7;
-  min-height: 100vh;
-  overflow-x: hidden;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-main {
-  width: 100%;
-  max-width: 840px;
-  margin: 0 auto;
-  padding: 3rem clamp(1rem, 5vw, 3rem);
-  background-color: hsl(var(--background));
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 0.5rem 0;
-  color: hsl(var(--foreground));
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
   line-height: 1.2;
+  letter-spacing: -0.025em;
 }
+
 h1 {
-  font-size: 3.052em;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
+
 h2 {
-  font-size: 2.441em;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
+
 h3 {
-  font-size: 1.953em;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
+
 h4 {
-  font-size: 1.563em;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
-h5 {
-  font-size: 1.25em;
-}
-strong,
-b {
-  font-weight: 700;
-}
-a {
-  color: hsl(var(--primary));
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  transition: color 0.2s ease-in-out;
-}
-a:hover {
-  color: hsl(var(--primary) / 0.8);
-}
-p {
-  margin-bottom: 1em;
-}
-.prose p {
-  margin-bottom: 2em;
-}
-textarea {
-  width: 100%;
-  font-size: 16px;
-}
-input {
-  font-size: 16px;
-}
-table {
-  width: 100%;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-code {
-  padding: 2px 5px;
-  background-color: hsl(var(--muted));
-  color: hsl(var(--muted-foreground));
-  border-radius: 2px;
-  font-size: 0.875em;
-}
-pre {
-  padding: 1.5em;
-  border-radius: 8px;
-  background-color: hsl(var(--muted));
-  color: hsl(var(--muted-foreground));
-  border: 1px solid hsl(var(--border));
-}
-pre > code {
-  all: unset;
-}
-blockquote {
-  border-left: 4px solid hsl(var(--primary));
-  padding: 0 0 0 20px;
-  margin: 0px;
-  font-size: 1.333em;
-  color: hsl(var(--muted-foreground));
-  font-style: italic;
-}
-hr {
-  border: none;
-  border-top: 1px solid hsl(var(--border));
-}
-/* Container utility for consistent layouts */
+
+/* Container */
 .container {
   width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 5vw, 2rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-@media (max-width: 720px) {
-  body {
-    font-size: 18px;
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
   }
-  main {
-    padding: 2rem clamp(1rem, 5vw, 2rem);
-    max-width: 100%;
-  }
+}
 
-  /* Prevent horizontal overflow */
-  * {
-    max-width: 100%;
-    box-sizing: border-box;
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
   }
+}
 
-  /* Better mobile spacing */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* Focus styles */
+.focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Button base styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Button variants */
+.btn-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: hsl(var(--primary) / 0.9);
+}
+
+.btn-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: hsl(var(--secondary) / 0.8);
+}
+
+.btn-outline {
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+/* Button sizes */
+.btn-sm {
+  height: 2rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.btn-md {
+  height: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  height: 3rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Card styles */
+.card {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-footer {
+  padding: 1.5rem;
+  border-top: 1px solid hsl(var(--border));
+}
+
+/* Badge styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+}
+
+.badge-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.badge-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.badge-outline {
+  border: 1px solid hsl(var(--border));
+  background-color: transparent;
+  color: hsl(var(--foreground));
+}
+
+/* Input styles */
+.input {
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.input:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Textarea styles */
+.textarea {
+  display: flex;
+  min-height: 5rem;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  resize: vertical;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.textarea::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Select styles */
+.select {
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.select:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+/* Utility classes */
+.text-muted {
+  color: hsl(var(--muted-foreground));
+}
+
+.bg-muted {
+  background-color: hsl(var(--muted));
+}
+
+.border-border {
+  border-color: hsl(var(--border));
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-in-top {
+  animation: slideInFromTop 0.3s ease-in-out;
+}
+
+.animate-slide-in-bottom {
+  animation: slideInFromBottom 0.3s ease-in-out;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
   h1 {
-    font-size: 2.5rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
-
+  
   h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
-}
-
-.sr-only {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-  clip: rect(1px 1px 1px 1px);
-  /* maybe deprecated but we need to support legacy browsers */
-  clip: rect(1px, 1px, 1px, 1px);
-  /* modern browsers, clip-path works inwards from each corner */
-  clip-path: inset(50%);
-  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-  white-space: nowrap;
 }

@@ -1,63 +1,154 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<BaseLayout title="About - Junkerri" description="Artist bio, background, and creative statement">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-background via-background to-muted/20">
+      <div class="container">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-8 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+            About Junkerri
+          </h1>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Exploring the intersection of digital art, experimental music, and web development to create bold, expressive experiences.
+          </p>
+        </div>
+      </div>
+    </section>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+    <!-- Artist Portrait & Bio -->
+    <section class="py-20">
+      <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <!-- Portrait -->
+          <div class="relative">
+            <div class="aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20">
+              <img 
+                src="/src/assets/artist-photo.jpg" 
+                alt="Junkerri Portrait"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
+          </div>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+          <!-- Bio -->
+          <div class="space-y-8">
+            <div>
+              <h2 class="text-3xl font-bold mb-4">Artist & Creator</h2>
+              <p class="text-lg text-muted-foreground leading-relaxed">
+                Junkerri is a multidisciplinary artist working at the crossroads of digital art, experimental music, and interactive web experiences. With a background in both traditional art forms and cutting-edge technology, their work explores themes of digital consciousness, human-machine interaction, and the evolving nature of creative expression in the digital age.
+              </p>
+            </div>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+            <div>
+              <h3 class="text-xl font-semibold mb-3">Creative Philosophy</h3>
+              <p class="text-muted-foreground leading-relaxed">
+                I believe in pushing boundaries and challenging conventional forms. My work is driven by curiosity and a desire to explore new ways of creating and experiencing art. Whether through digital paintings, ambient soundscapes, or interactive web projects, I aim to create experiences that are both visually striking and conceptually engaging.
+              </p>
+            </div>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center p-4 rounded-lg bg-muted/50">
+                <div class="text-2xl font-bold text-primary">5+</div>
+                <div class="text-sm text-muted-foreground">Years Creating</div>
+              </div>
+              <div class="text-center p-4 rounded-lg bg-muted/50">
+                <div class="text-2xl font-bold text-primary">100+</div>
+                <div class="text-sm text-muted-foreground">Artworks</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artist Statement -->
+    <section class="py-20 bg-muted/30">
+      <div class="container">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-12">Artist Statement</h2>
+          
+          <div class="prose prose-lg max-w-none">
+            <blockquote class="text-xl text-muted-foreground italic border-l-4 border-primary pl-6 mb-8">
+              "In the digital realm, we have the power to create worlds that exist beyond physical constraints. My work is an exploration of these infinite possibilities."
+            </blockquote>
+
+            <p class="text-lg leading-relaxed mb-6">
+              My artistic practice is rooted in the belief that technology and creativity are not opposing forces, but complementary elements that can amplify each other. Through digital art, I explore themes of identity, consciousness, and the relationship between humans and machines.
+            </p>
+
+            <p class="text-lg leading-relaxed mb-6">
+              Each piece I create is a meditation on the digital landscape we inhabit. From glitch aesthetics to generative art, I use various techniques to question our understanding of reality and challenge the boundaries between the organic and the artificial.
+            </p>
+
+            <p class="text-lg leading-relaxed">
+              My music serves as an auditory companion to my visual work, creating immersive experiences that engage multiple senses. The ambient soundscapes I compose are designed to transport listeners to otherworldly realms, complementing the visual narratives I create through my art.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Influences & Inspirations -->
+    <section class="py-20">
+      <div class="container">
+        <h2 class="text-4xl font-bold text-center mb-12">Influences & Inspirations</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center p-6 rounded-lg border bg-card">
+            <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Digital Art</h3>
+            <p class="text-muted-foreground">Inspired by pioneers like Casey Reas, Zach Lieberman, and the Processing community</p>
+          </div>
+
+          <div class="text-center p-6 rounded-lg border bg-card">
+            <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Experimental Music</h3>
+            <p class="text-muted-foreground">Drawing from ambient, glitch, and electronic music traditions</p>
+          </div>
+
+          <div class="text-center p-6 rounded-lg border bg-card">
+            <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+            <p class="text-muted-foreground">Exploring interactive experiences and creative coding</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-primary-foreground">
+      <div class="container text-center">
+        <h2 class="text-4xl font-bold mb-4">Let's Connect</h2>
+        <p class="text-xl mb-8 opacity-90">Interested in collaboration or just want to say hello?</p>
+        <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-secondary text-secondary-foreground px-8 py-3 text-lg font-medium transition-colors hover:bg-secondary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+          Get in Touch
+          <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
