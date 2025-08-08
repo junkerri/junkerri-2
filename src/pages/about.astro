@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import artistPhoto from '../assets/artist-photo.jpg';
 ---
 
 <BaseLayout title="About - Junkerri" description="Artist bio, background, and creative statement">
@@ -29,10 +31,12 @@ import Footer from '../components/Footer.astro';
           <!-- Portrait -->
           <div class="relative">
             <div class="aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20">
-              <img 
-                src="/src/assets/artist-photo.jpg" 
+              <Image 
+                src={artistPhoto}
                 alt="Junkerri Portrait"
                 class="w-full h-full object-cover"
+                width={600}
+                height={600}
               />
             </div>
             <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>

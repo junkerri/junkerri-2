@@ -2,6 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import latestCollab from '../assets/latest-collab.jpg';
+import everythingWasBeautiful from '../assets/everything-was-beautiful.jpg';
+import beatkerriSquare from '../assets/beatkerri-square.jpg';
+import artistPhoto from '../assets/artist-photo.jpg';
+import blogPlaceholder4 from '../assets/blog-placeholder-4.jpg';
+import blogPlaceholder5 from '../assets/blog-placeholder-5.jpg';
+import blogPlaceholder1 from '../assets/blog-placeholder-1.jpg';
 ---
 
 <BaseLayout title="Junkerri - Artist, Musician, Developer">
@@ -44,10 +52,12 @@ import Footer from '../components/Footer.astro';
           <!-- Music Card -->
           <div class="card group">
             <div class="aspect-square bg-muted rounded-t-lg overflow-hidden">
-              <img 
-                src="/src/assets/latest-collab.jpg" 
+              <Image 
+                src={latestCollab}
                 alt="Back Where I Started - Junkerri X Nikki Kane lyrical video" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={400}
               />
             </div>
             <div class="card-content">
@@ -64,10 +74,12 @@ import Footer from '../components/Footer.astro';
           <!-- Art Card -->
           <div class="card group">
             <div class="aspect-square bg-muted rounded-t-lg overflow-hidden">
-              <img 
-                src="/src/assets/everything-was-beautiful.jpg" 
+              <Image 
+                src={everythingWasBeautiful}
                 alt="Digital art collection preview" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={400}
               />
             </div>
             <div class="card-content">
@@ -84,10 +96,12 @@ import Footer from '../components/Footer.astro';
           <!-- Projects Card -->
           <div class="card group">
             <div class="aspect-square bg-muted rounded-t-lg overflow-hidden">
-              <img 
-                src="/src/assets/beatkerri-square.jpg" 
+              <Image 
+                src={beatkerriSquare}
                 alt="Beatkerri web app preview" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={400}
               />
             </div>
             <div class="card-content">
@@ -121,10 +135,12 @@ import Footer from '../components/Footer.astro';
             </a>
           </div>
           <div class="aspect-square bg-muted rounded-lg overflow-hidden">
-            <img 
-              src="/src/assets/artist-photo.jpg" 
+            <Image 
+              src={artistPhoto}
               alt="Aastha Kumari Karki - Junkerri portrait" 
               class="w-full h-full object-cover"
+              width={600}
+              height={600}
             />
           </div>
         </div>
@@ -144,10 +160,12 @@ import Footer from '../components/Footer.astro';
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <article class="card group">
             <div class="aspect-video bg-muted rounded-t-lg overflow-hidden">
-              <img 
-                src="/src/assets/blog-placeholder-4.jpg" 
+              <Image 
+                src={blogPlaceholder4}
                 alt="Blog post preview" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={225}
               />
             </div>
             <div class="card-content">
@@ -167,10 +185,12 @@ import Footer from '../components/Footer.astro';
 
           <article class="card group">
             <div class="aspect-video bg-muted rounded-t-lg overflow-hidden">
-              <img 
-                src="/src/assets/blog-placeholder-5.jpg" 
+              <Image 
+                src={blogPlaceholder5}
                 alt="Blog post preview" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={225}
               />
             </div>
             <div class="card-content">
@@ -190,10 +210,12 @@ import Footer from '../components/Footer.astro';
 
           <article class="card group">
             <div class="aspect-video bg-muted rounded-t-lg overflow-hidden">
-              <img 
-                src="/src/assets/blog-placeholder-1.jpg" 
+              <Image 
+                src={blogPlaceholder1}
                 alt="Blog post preview" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={225}
               />
             </div>
             <div class="card-content">
