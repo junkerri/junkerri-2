@@ -6,6 +6,78 @@ npm create astro@latest -- --template blog
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
+## 🎨 Color Palette: "Cyberpunk--"
+
+This project now features the **"Cyberpunk--"** color palette from [Color Hex](https://www.color-hex.com/color-palette/1046370), creating a vibrant, neon cyberpunk aesthetic.
+
+### Color Palette
+
+| Color              | Hex       | RGB           | Usage                       |
+| ------------------ | --------- | ------------- | --------------------------- |
+| Bright Cyan        | `#00ffb1` | (0,255,177)   | Primary actions, highlights |
+| Neon Pink          | `#e500ff` | (229,0,255)   | Secondary elements, accents |
+| Deep Purple        | `#5e00ff` | (94,0,255)    | Muted elements, backgrounds |
+| Dark Purple        | `#2f006f` | (47,0,111)    | Text, headings              |
+| Pure Black         | `#000000` | (0,0,0)       | Dark mode backgrounds       |
+
+### Available Utility Classes
+
+#### Background Colors
+
+- `.bg-cyberpunk-cyan` - Bright cyan background
+- `.bg-cyberpunk-pink` - Neon pink background
+- `.bg-cyberpunk-purple` - Deep purple background
+- `.bg-cyberpunk-dark-purple` - Dark purple background
+- `.bg-cyberpunk-black` - Pure black background
+
+#### Text Colors
+
+- `.text-cyberpunk-cyan` - Bright cyan text
+- `.text-cyberpunk-pink` - Neon pink text
+- `.text-cyberpunk-purple` - Deep purple text
+- `.text-cyberpunk-dark-purple` - Dark purple text
+- `.text-cyberpunk-black` - Pure black text
+
+#### Border Colors
+
+- `.border-cyberpunk-cyan` - Bright cyan border
+- `.border-cyberpunk-pink` - Neon pink border
+- `.border-cyberpunk-purple` - Deep purple border
+- `.border-cyberpunk-dark-purple` - Dark purple border
+- `.border-cyberpunk-black` - Pure black border
+
+#### Gradients
+
+- `.bg-gradient-cyberpunk` - Full cyberpunk gradient
+- `.bg-gradient-cyberpunk-reverse` - Reverse cyberpunk gradient
+- `.bg-gradient-cyberpunk-vertical` - Vertical cyberpunk gradient
+
+#### Glow Effects
+
+- `.glow-cyberpunk-cyan` - Cyan glow effect
+- `.glow-cyberpunk-pink` - Pink glow effect
+- `.glow-cyberpunk-purple` - Purple glow effect
+
+### Usage Examples
+
+```html
+<!-- Hero section with cyberpunk gradient -->
+<section class="bg-gradient-cyberpunk">
+  <h1 class="text-cyberpunk-cyan">Title</h1>
+</section>
+
+<!-- Card with cyberpunk colors -->
+<div class="card bg-cyberpunk-dark-purple/10 border-cyberpunk-pink">
+  <h3 class="text-cyberpunk-cyan">Card Title</h3>
+  <p class="text-cyberpunk-pink/70">Card content</p>
+</div>
+
+<!-- Button with cyberpunk styling -->
+<button class="btn bg-cyberpunk-cyan hover:bg-cyberpunk-pink glow-cyberpunk-cyan">
+  Click me
+</button>
+```
+
 Features:
 
 - ✅ Minimal styling (make it your own!)

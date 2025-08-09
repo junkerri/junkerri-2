@@ -1,61 +1,89 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @layer base {
   :root {
+    /* Cyberpunk-- color palette - https://www.color-hex.com/color-palette/1046370 */
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+
+    /* Primary: Bright cyan from palette (#00ffb1) */
+    --primary: 165 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    /* Secondary: Neon purple from palette (#e500ff) */
+    --secondary: 292 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted: Deep purple from palette (#5e00ff) */
+    --muted: 264 100% 50%;
+    --muted-foreground: 0 0% 100%;
+
+    /* Accent: Dark purple from palette (#2f006f) */
+    --accent: 264 100% 22%;
+    --accent-foreground: 0 0% 100%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --ring: 165 100% 50%;
     --radius: 0.5rem;
 
-    /* Enhanced color palette */
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --gradient-dark: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    /* Enhanced color palette using cyberpunk colors */
+    --gradient-primary: linear-gradient(135deg, #00ffb1 0%, #e500ff 100%);
+    --gradient-secondary: linear-gradient(135deg, #e500ff 0%, #5e00ff 100%);
+    --gradient-accent: linear-gradient(135deg, #2f006f 0%, #5e00ff 100%);
+    --gradient-dark: linear-gradient(135deg, #000000 0%, #2f006f 100%);
+
+    /* Additional cyberpunk palette colors */
+    --cyberpunk-cyan: 165 100% 50%; /* #00ffb1 */
+    --cyberpunk-pink: 292 100% 50%; /* #e500ff */
+    --cyberpunk-purple: 264 100% 50%; /* #5e00ff */
+    --cyberpunk-dark-purple: 264 100% 22%; /* #2f006f */
+    --cyberpunk-black: 0 0% 0%; /* #000000 */
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    /* Dark mode using cyberpunk palette */
+    --background: 0 0% 0%; /* Pure black #000000 */
+    --foreground: 0 0% 95%; /* Light gray for readability */
+    --card: 264 100% 22%; /* Dark purple #2f006f */
+    --card-foreground: 0 0% 95%;
+    --popover: 264 100% 22%;
+    --popover-foreground: 0 0% 95%;
 
-    /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+    /* Primary: Bright cyan from palette */
+    --primary: 165 100% 50%; /* #00ffb1 */
+    --primary-foreground: 0 0% 0%;
+
+    /* Secondary: Neon purple from palette */
+    --secondary: 292 100% 50%; /* #e500ff */
+    --secondary-foreground: 0 0% 0%;
+
+    /* Muted: Deep purple from palette */
+    --muted: 264 100% 50%; /* #5e00ff */
+    --muted-foreground: 0 0% 95%;
+
+    /* Accent: Neon purple from palette */
+    --accent: 292 100% 50%; /* #e500ff */
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 165 100% 50%;
+    --border: 264 100% 50%;
+    --input: 264 100% 50%;
+    --ring: 165 100% 50%;
+
+    /* Dark mode gradients using cyberpunk colors */
+    --gradient-primary: linear-gradient(135deg, #00ffb1 0%, #e500ff 100%);
+    --gradient-secondary: linear-gradient(135deg, #e500ff 0%, #5e00ff 100%);
+    --gradient-accent: linear-gradient(135deg, #2f006f 0%, #5e00ff 100%);
+    --gradient-dark: linear-gradient(135deg, #000000 0%, #2f006f 100%);
   }
 }
 
@@ -80,6 +108,13 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   --radius: var(--radius);
+
+  /* Cyberpunk palette colors */
+  --color-cyberpunk-cyan: hsl(var(--cyberpunk-cyan));
+  --color-cyberpunk-pink: hsl(var(--cyberpunk-pink));
+  --color-cyberpunk-purple: hsl(var(--cyberpunk-purple));
+  --color-cyberpunk-dark-purple: hsl(var(--cyberpunk-dark-purple));
+  --color-cyberpunk-black: hsl(var(--cyberpunk-black));
 }
 
 /* Base styles */
@@ -90,12 +125,47 @@
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-feature-settings: "rlig" 1, "calt" 1;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  line-height: 1.6;
+  font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
 }
 
 /* Typography */
@@ -927,4 +997,1456 @@ h4 {
 .glow-border:hover::before {
   opacity: 1;
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Cyberpunk color palette utility classes */
+.bg-cyberpunk-cyan {
+  background-color: hsl(var(--cyberpunk-cyan));
+}
+
+.bg-cyberpunk-pink {
+  background-color: hsl(var(--cyberpunk-pink));
+}
+
+.bg-cyberpunk-purple {
+  background-color: hsl(var(--cyberpunk-purple));
+}
+
+.bg-cyberpunk-dark-purple {
+  background-color: hsl(var(--cyberpunk-dark-purple));
+}
+
+.bg-cyberpunk-black {
+  background-color: hsl(var(--cyberpunk-black));
+}
+
+.text-cyberpunk-cyan {
+  color: hsl(var(--cyberpunk-cyan));
+}
+
+.text-cyberpunk-pink {
+  color: hsl(var(--cyberpunk-pink));
+}
+
+.text-cyberpunk-purple {
+  color: hsl(var(--cyberpunk-purple));
+}
+
+.text-cyberpunk-dark-purple {
+  color: hsl(var(--cyberpunk-dark-purple));
+}
+
+.text-cyberpunk-black {
+  color: hsl(var(--cyberpunk-black));
+}
+
+.border-cyberpunk-cyan {
+  border-color: hsl(var(--cyberpunk-cyan));
+}
+
+.border-cyberpunk-pink {
+  border-color: hsl(var(--cyberpunk-pink));
+}
+
+.border-cyberpunk-purple {
+  border-color: hsl(var(--cyberpunk-purple));
+}
+
+.border-cyberpunk-dark-purple {
+  border-color: hsl(var(--cyberpunk-dark-purple));
+}
+
+.border-cyberpunk-black {
+  border-color: hsl(var(--cyberpunk-black));
+}
+
+/* Cyberpunk gradient utilities */
+.bg-gradient-cyberpunk {
+  background: linear-gradient(135deg, #00ffb1 0%, #e500ff 50%, #5e00ff 100%);
+}
+
+.bg-gradient-cyberpunk-reverse {
+  background: linear-gradient(135deg, #000000 0%, #2f006f 50%, #5e00ff 100%);
+}
+
+.bg-gradient-cyberpunk-vertical {
+  background: linear-gradient(180deg, #00ffb1 0%, #e500ff 50%, #5e00ff 100%);
+}
+
+/* Cyberpunk glow effects */
+.glow-cyberpunk-cyan {
+  box-shadow: 0 0 20px rgba(0, 255, 177, 0.8);
+}
+
+.glow-cyberpunk-pink {
+  box-shadow: 0 0 20px rgba(229, 0, 255, 0.8);
+}
+
+.glow-cyberpunk-purple {
+  box-shadow: 0 0 20px rgba(94, 0, 255, 0.8);
+}
+
+/* Arvo font family */
+.font-arvo {
+  font-family: "Arvo", serif;
+}
+
+/* Hero section animations */
+@keyframes hero-title-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes hero-title-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 20px rgba(0, 255, 177, 0.8),
+      0 0 40px rgba(229, 0, 255, 0.6), 0 0 60px rgba(94, 0, 255, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(0, 255, 177, 1), 0 0 60px rgba(229, 0, 255, 0.8),
+      0 0 90px rgba(94, 0, 255, 0.6);
+  }
+}
+
+@keyframes hero-title-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes hero-subtitle-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero title styles */
+/* Circular reveal animation for JUNKERRI text */
+@keyframes letter-reveal {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    clip-path: circle(50% at 50% 50%);
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    clip-path: circle(100% at 50% 50%);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes letter-expand {
+  0% {
+    clip-path: circle(100% at 50% 50%);
+    transform: scale(1);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+
+.hero-title {
+  font-family: "Arvo", "Georgia", serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  background: linear-gradient(
+    135deg,
+    #00ffb1 0%,
+    #e500ff 25%,
+    #5e00ff 50%,
+    #2f006f 75%,
+    #000000 100%
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hero-title-float 6s ease-in-out infinite,
+    hero-title-glow 4s ease-in-out infinite,
+    hero-title-shimmer 8s linear infinite;
+  position: relative;
+  z-index: 10;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  filter: contrast(1.1) brightness(1.05);
+}
+
+.dark .hero-title {
+  background: linear-gradient(
+    135deg,
+    #00ffb1 0%,
+    #e500ff 25%,
+    #5e00ff 50%,
+    #2f006f 75%,
+    #ffffff 100%
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(0, 255, 177, 0.8), 0 0 20px rgba(0, 255, 177, 0.6),
+    0 0 30px rgba(0, 255, 177, 0.4);
+}
+
+.hero-title span {
+  display: inline-block;
+  animation: letter-reveal 1.5s ease-out forwards,
+    letter-expand 1s ease-out 1.5s forwards;
+  opacity: 0;
+  transform: scale(0);
+  clip-path: circle(0% at 50% 50%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  will-change: transform, opacity, clip-path;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5), 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero-title span:nth-child(1) {
+  animation-delay: 0s, 1.5s;
+}
+.hero-title span:nth-child(2) {
+  animation-delay: 0.2s, 1.7s;
+}
+.hero-title span:nth-child(3) {
+  animation-delay: 0.4s, 1.9s;
+}
+.hero-title span:nth-child(4) {
+  animation-delay: 0.6s, 2.1s;
+}
+.hero-title span:nth-child(5) {
+  animation-delay: 0.8s, 2.3s;
+}
+.hero-title span:nth-child(6) {
+  animation-delay: 1s, 2.5s;
+}
+.hero-title span:nth-child(7) {
+  animation-delay: 1.2s, 2.7s;
+}
+.hero-title span:nth-child(8) {
+  animation-delay: 1.4s, 2.9s;
+}
+
+.hero-title::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 177, 0.3),
+    rgba(229, 0, 255, 0.3)
+  );
+  border-radius: 20px;
+  z-index: -1;
+  filter: blur(20px);
+  animation: hero-title-glow 4s ease-in-out infinite;
+}
+
+.hero-subtitle {
+  animation: hero-subtitle-fade 1.5s ease-out 0.5s both;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 177, 0.3);
+  color: #00ffb1;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 255, 177, 0.3);
+  position: relative;
+}
+
+.dark .hero-subtitle {
+  background: rgba(0, 0, 0, 0.9);
+  color: #00ffb1;
+  border: 1px solid rgba(0, 255, 177, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 255, 177, 0.5);
+}
+
+/* Hero section background enhancement */
+.hero-section {
+  background: linear-gradient(135deg, #00ffb1 0%, #e500ff 50%, #5e00ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(0, 255, 177, 0.4) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(229, 0, 255, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(94, 0, 255, 0.2) 0%,
+      transparent 50%
+    );
+  animation: float-orb 20s ease-in-out infinite;
+}
+
+/* Mandela art-style animations */
+@keyframes mandela-rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes mandela-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes mandela-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-40px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(270deg);
+  }
+}
+
+@keyframes mandela-color-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Mandela art background */
+.mandela-background {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #000000 0%, #2f006f 50%, #5e00ff 100%);
+}
+
+.mandela-background::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+      circle at 25% 25%,
+      rgba(0, 255, 177, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(229, 0, 255, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(94, 0, 255, 0.2) 0%,
+      transparent 50%
+    ),
+    conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(0, 255, 177, 0.1),
+      transparent,
+      rgba(229, 0, 255, 0.1),
+      transparent,
+      rgba(94, 0, 255, 0.1),
+      transparent
+    );
+  animation: mandela-rotate 20s linear infinite;
+  z-index: 1;
+}
+
+.mandela-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(0, 255, 177, 0.05) 10deg,
+      transparent 20deg
+    ),
+    repeating-conic-gradient(
+      from 180deg,
+      transparent 0deg,
+      rgba(229, 0, 255, 0.05) 15deg,
+      transparent 30deg
+    );
+  animation: mandela-rotate 15s linear infinite reverse;
+  z-index: 2;
+}
+
+.mandela-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff);
+  box-shadow: 0 0 20px rgba(0, 255, 177, 0.5), 0 0 40px rgba(229, 0, 255, 0.3),
+    0 0 60px rgba(94, 0, 255, 0.2);
+  animation: mandela-float 8s ease-in-out infinite,
+    mandela-color-shift 12s linear infinite;
+  z-index: 3;
+}
+
+.mandela-orb::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: mandela-pulse 4s ease-in-out infinite;
+}
+
+.mandela-orb:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s, 0s;
+}
+
+.mandela-orb:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 20%;
+  animation-delay: -2s, -4s;
+}
+
+.mandela-orb:nth-child(3) {
+  width: 80px;
+  height: 80px;
+  bottom: 20%;
+  left: 60%;
+  animation-delay: -4s, -8s;
+}
+
+.mandela-orb:nth-child(4) {
+  width: 120px;
+  height: 120px;
+  top: 40%;
+  left: 50%;
+  animation-delay: -6s, -12s;
+}
+
+/* About page hero section improvements */
+.about-hero {
+  position: relative;
+  z-index: 10;
+}
+
+.about-hero .hero-title {
+  color: #000000;
+  text-shadow: 0 0 10px rgba(0, 255, 177, 0.8), 0 0 20px rgba(0, 255, 177, 0.6),
+    0 0 30px rgba(0, 255, 177, 0.4);
+  background: linear-gradient(135deg, #000000 0%, #2f006f 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.dark .about-hero .hero-title {
+  color: #00ffb1;
+  background: linear-gradient(135deg, #00ffb1 0%, #e500ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(0, 255, 177, 0.8), 0 0 20px rgba(0, 255, 177, 0.6),
+    0 0 30px rgba(0, 255, 177, 0.4);
+}
+
+.about-hero .hero-title span {
+  display: inline-block;
+  animation: letter-reveal 1.5s ease-out forwards,
+    letter-expand 1s ease-out 1.5s forwards;
+  opacity: 0;
+  transform: scale(0);
+  clip-path: circle(0% at 50% 50%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  will-change: transform, opacity, clip-path;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.about-hero .hero-title span:nth-child(1) {
+  animation-delay: 0s, 1.5s;
+}
+.about-hero .hero-title span:nth-child(2) {
+  animation-delay: 0.1s, 1.6s;
+}
+.about-hero .hero-title span:nth-child(3) {
+  animation-delay: 0.2s, 1.7s;
+}
+.about-hero .hero-title span:nth-child(4) {
+  animation-delay: 0.3s, 1.8s;
+}
+.about-hero .hero-title span:nth-child(5) {
+  animation-delay: 0.4s, 1.9s;
+}
+.about-hero .hero-title span:nth-child(6) {
+  animation-delay: 0.5s, 2s;
+}
+.about-hero .hero-title span:nth-child(7) {
+  animation-delay: 0.6s, 2.1s;
+}
+.about-hero .hero-title span:nth-child(8) {
+  animation-delay: 0.7s, 2.2s;
+}
+.about-hero .hero-title span:nth-child(9) {
+  animation-delay: 0.8s, 2.3s;
+}
+.about-hero .hero-title span:nth-child(10) {
+  animation-delay: 0.9s, 2.4s;
+}
+.about-hero .hero-title span:nth-child(11) {
+  animation-delay: 1s, 2.5s;
+}
+.about-hero .hero-title span:nth-child(12) {
+  animation-delay: 1.1s, 2.6s;
+}
+.about-hero .hero-title span:nth-child(13) {
+  animation-delay: 1.2s, 2.7s;
+}
+.about-hero .hero-title span:nth-child(14) {
+  animation-delay: 1.3s, 2.8s;
+}
+
+.about-hero p {
+  color: #000000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 177, 0.3);
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .about-hero p {
+  color: #00ffb1;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 255, 177, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 255, 177, 0.3);
+}
+
+/* Dark mode text consistency */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: hsl(var(--foreground));
+}
+
+.dark p {
+  color: hsl(var(--foreground));
+}
+
+.dark a {
+  color: hsl(var(--primary));
+}
+
+.dark a:hover {
+  color: hsl(var(--primary));
+  opacity: 0.8;
+}
+
+.dark .text-muted {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .bg-muted {
+  background-color: hsl(var(--muted));
+}
+
+.dark .border-border {
+  border-color: hsl(var(--border));
+}
+
+/* Card styles for dark mode */
+.dark .card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+/* Button styles for dark mode */
+.dark .btn {
+  color: hsl(var(--primary-foreground));
+}
+
+.dark .btn-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.dark .btn-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.dark .btn-outline {
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.dark .btn-outline:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+/* Input styles for dark mode */
+.dark .input {
+  background-color: hsl(var(--input));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+.dark .input:focus {
+  border-color: hsl(var(--ring));
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.dark .input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Specific text color fixes for dark mode */
+.dark .text-cyberpunk-cyan {
+  color: #00ffb1;
+}
+
+.dark .text-cyberpunk-pink {
+  color: #e500ff;
+}
+
+.dark .text-cyberpunk-purple {
+  color: #5e00ff;
+}
+
+.dark .text-cyberpunk-dark-purple {
+  color: #2f006f;
+}
+
+.dark .text-cyberpunk-black {
+  color: #000000;
+}
+
+/* Header and navigation dark mode */
+.dark header {
+  background-color: hsl(var(--background) / 0.95);
+  border-bottom-color: hsl(var(--border));
+}
+
+.dark header a {
+  color: hsl(var(--foreground));
+}
+
+.dark header a:hover {
+  color: hsl(var(--primary));
+}
+
+/* Footer dark mode */
+.dark footer {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--background)) 0%,
+    hsl(var(--muted) / 0.2) 100%
+  );
+  border-top-color: hsl(var(--border));
+}
+
+.dark footer h3,
+.dark footer h4 {
+  color: hsl(var(--foreground));
+}
+
+.dark footer p,
+.dark footer a {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark footer a:hover {
+  color: hsl(var(--foreground));
+}
+
+/* Card content dark mode */
+.dark .card-content h3 {
+  color: hsl(var(--foreground));
+}
+
+.dark .card-content p {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Badge dark mode */
+.dark .badge {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .badge-outline {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+/* About page dark mode styles */
+.dark .about-hero .hero-title {
+  color: #00ffb1;
+  background: linear-gradient(135deg, #00ffb1 0%, #e500ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(0, 255, 177, 0.8), 0 0 20px rgba(0, 255, 177, 0.6),
+    0 0 30px rgba(0, 255, 177, 0.4);
+}
+
+.dark .about-hero p {
+  color: #00ffb1;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 255, 177, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 255, 177, 0.3);
+}
+
+.dark .about-hero .hero-title span {
+  display: inline-block;
+  animation: letter-reveal 1.5s ease-out forwards,
+    letter-expand 1s ease-out 1.5s forwards;
+  opacity: 0;
+  transform: scale(0);
+  clip-path: circle(0% at 50% 50%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  will-change: transform, opacity, clip-path;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* About page content dark mode */
+.dark .about-hero h2,
+.dark .about-hero h3 {
+  color: hsl(var(--foreground));
+}
+
+.dark .about-hero .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .about-hero .bg-muted\/50 {
+  background-color: hsl(var(--muted) / 0.5);
+}
+
+.dark .about-hero .bg-card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .about-hero .border-primary {
+  border-color: hsl(var(--primary));
+}
+
+.dark .about-hero .text-primary {
+  color: hsl(var(--primary));
+}
+
+.dark .about-hero .bg-primary\/20 {
+  background-color: hsl(var(--primary) / 0.2);
+}
+
+.dark .about-hero .bg-primary\/10 {
+  background-color: hsl(var(--primary) / 0.1);
+}
+
+.dark .about-hero .bg-secondary\/20 {
+  background-color: hsl(var(--secondary) / 0.2);
+}
+
+.dark .about-hero .bg-muted\/30 {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+/* Music page dark mode styles */
+.dark .music-page h1,
+.dark .music-page h2,
+.dark .music-page h3 {
+  color: hsl(var(--foreground));
+}
+
+.dark .music-page p {
+  color: hsl(var(--foreground));
+}
+
+.dark .music-page .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .music-page .bg-muted\/30 {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+.dark .music-page .bg-muted\/20 {
+  background-color: hsl(var(--muted) / 0.2);
+}
+
+.dark .music-page .border-input {
+  border-color: hsl(var(--border));
+}
+
+.dark .music-page .bg-background {
+  background-color: hsl(var(--background));
+}
+
+.dark .music-page .bg-accent {
+  background-color: hsl(var(--accent));
+}
+
+.dark .music-page .text-accent-foreground {
+  color: hsl(var(--accent-foreground));
+}
+
+.dark .music-page .card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .music-page .bg-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.dark .music-page .bg-muted {
+  background-color: hsl(var(--muted));
+}
+
+/* Art page dark mode styles */
+.dark .art-page h1,
+.dark .art-page h2,
+.dark .art-page h3 {
+  color: hsl(var(--foreground));
+}
+
+.dark .art-page p {
+  color: hsl(var(--foreground));
+}
+
+.dark .art-page .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .art-page .bg-muted\/30 {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+.dark .art-page .bg-muted\/20 {
+  background-color: hsl(var(--muted) / 0.2);
+}
+
+.dark .art-page .border-input {
+  border-color: hsl(var(--border));
+}
+
+.dark .art-page .bg-background {
+  background-color: hsl(var(--background));
+}
+
+.dark .art-page .bg-accent {
+  background-color: hsl(var(--accent));
+}
+
+.dark .art-page .text-accent-foreground {
+  color: hsl(var(--accent-foreground));
+}
+
+.dark .art-page .card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .art-page .bg-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.dark .art-page .bg-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.dark .art-page .text-primary {
+  color: hsl(var(--primary));
+}
+
+.dark .art-page .border {
+  border-color: hsl(var(--border));
+}
+
+/* Contact page dark mode styles */
+.dark .contact-page h1,
+.dark .contact-page h2,
+.dark .contact-page h3,
+.dark .contact-page h4 {
+  color: hsl(var(--foreground));
+}
+
+.dark .contact-page p {
+  color: hsl(var(--foreground));
+}
+
+.dark .contact-page .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .contact-page .bg-muted\/30 {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+.dark .contact-page .bg-muted\/20 {
+  background-color: hsl(var(--muted) / 0.2);
+}
+
+.dark .contact-page .border-input {
+  border-color: hsl(var(--border));
+}
+
+.dark .contact-page .bg-background {
+  background-color: hsl(var(--background));
+}
+
+.dark .contact-page .bg-accent {
+  background-color: hsl(var(--accent));
+}
+
+.dark .contact-page .text-accent-foreground {
+  color: hsl(var(--accent-foreground));
+}
+
+.dark .contact-page .card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .contact-page .input {
+  background-color: hsl(var(--input));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .contact-page .input:focus {
+  border-color: hsl(var(--ring));
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.dark .contact-page .input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .contact-page .select {
+  background-color: hsl(var(--input));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .contact-page .textarea {
+  background-color: hsl(var(--input));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .contact-page .textarea:focus {
+  border-color: hsl(var(--ring));
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.dark .contact-page .textarea::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .contact-page label {
+  color: hsl(var(--foreground));
+}
+
+/* Blog page dark mode styles */
+.dark .blog-page h1,
+.dark .blog-page h2,
+.dark .blog-page h3,
+.dark .blog-page h4 {
+  color: hsl(var(--foreground));
+}
+
+.dark .blog-page p {
+  color: hsl(var(--foreground));
+}
+
+.dark .blog-page .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .blog-page .title {
+  color: hsl(var(--foreground));
+}
+
+.dark .blog-page .date {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .blog-page a:hover h4,
+.dark .blog-page a:hover .date {
+  color: hsl(var(--primary));
+}
+
+.dark .blog-page main {
+  background-color: hsl(var(--background));
+}
+
+.dark .blog-page ul li a {
+  color: hsl(var(--foreground));
+}
+
+.dark .blog-page ul li a:hover {
+  color: hsl(var(--primary));
+}
+
+/* Web-projects page dark mode styles */
+.dark .web-projects-page h1,
+.dark .web-projects-page h2,
+.dark .web-projects-page h3 {
+  color: hsl(var(--foreground));
+}
+
+.dark .web-projects-page p {
+  color: hsl(var(--foreground));
+}
+
+.dark .web-projects-page .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .web-projects-page .bg-muted\/30 {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+.dark .web-projects-page .bg-muted\/20 {
+  background-color: hsl(var(--muted) / 0.2);
+}
+
+.dark .web-projects-page .border {
+  border-color: hsl(var(--border));
+}
+
+.dark .web-projects-page .bg-background {
+  background-color: hsl(var(--background));
+}
+
+.dark .web-projects-page .bg-accent {
+  background-color: hsl(var(--accent));
+}
+
+.dark .web-projects-page .text-accent-foreground {
+  color: hsl(var(--accent-foreground));
+}
+
+.dark .web-projects-page .card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .web-projects-page .bg-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.dark .web-projects-page .bg-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.dark .web-projects-page .text-primary {
+  color: hsl(var(--primary));
+}
+
+.dark .web-projects-page .badge {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .web-projects-page .badge-outline {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .web-projects-page .badge-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+/* Shop page dark mode styles */
+.dark .shop-page h1,
+.dark .shop-page h2,
+.dark .shop-page h3 {
+  color: hsl(var(--foreground));
+}
+
+.dark .shop-page p {
+  color: hsl(var(--foreground));
+}
+
+.dark .shop-page .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .shop-page .bg-muted\/30 {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+.dark .shop-page .bg-muted\/20 {
+  background-color: hsl(var(--muted) / 0.2);
+}
+
+.dark .shop-page .border {
+  border-color: hsl(var(--border));
+}
+
+.dark .shop-page .bg-background {
+  background-color: hsl(var(--background));
+}
+
+.dark .shop-page .bg-accent {
+  background-color: hsl(var(--accent));
+}
+
+.dark .shop-page .text-accent-foreground {
+  color: hsl(var(--accent-foreground));
+}
+
+.dark .shop-page .card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-color: hsl(var(--border));
+}
+
+.dark .shop-page .bg-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.dark .shop-page .bg-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.dark .shop-page .text-primary {
+  color: hsl(var(--primary));
+}
+
+.dark .shop-page .border-input {
+  border-color: hsl(var(--border));
+}
+
+.dark .shop-page .bg-card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+.dark .shop-page .text-card-foreground {
+  color: hsl(var(--card-foreground));
+}
+
+/* Blog post page dark mode styles */
+.dark .blog-post-page h1,
+.dark .blog-post-page h2,
+.dark .blog-post-page h3,
+.dark .blog-post-page h4,
+.dark .blog-post-page h5,
+.dark .blog-post-page h6 {
+  color: hsl(var(--foreground));
+}
+
+.dark .blog-post-page p {
+  color: hsl(var(--foreground));
+}
+
+.dark .blog-post-page .text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .blog-post-page .title h1 {
+  color: hsl(var(--foreground));
+}
+
+.dark .blog-post-page .date {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .blog-post-page .last-updated-on {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .blog-post-page .prose {
+  color: hsl(var(--foreground));
+}
+
+.dark .blog-post-page main {
+  background-color: hsl(var(--background));
+}
+
+.dark .blog-post-page .hero-image img {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+}
+
+/* Dark mode specific styles for teal sections */
+.dark .bg-cyberpunk-cyan,
+.dark .bg-cyberpunk-cyan\/20,
+.dark .bg-cyberpunk-cyan\/30,
+.dark .bg-cyberpunk-cyan\/40 {
+  color: hsl(var(--background)); /* Black text on teal background */
+}
+
+.dark .bg-cyberpunk-cyan h1,
+.dark .bg-cyberpunk-cyan h2,
+.dark .bg-cyberpunk-cyan h3,
+.dark .bg-cyberpunk-cyan h4,
+.dark .bg-cyberpunk-cyan h5,
+.dark .bg-cyberpunk-cyan h6,
+.dark .bg-cyberpunk-cyan p,
+.dark .bg-cyberpunk-cyan span,
+.dark .bg-cyberpunk-cyan div {
+  color: hsl(var(--background)) !important; /* Force black text */
+}
+
+.dark .bg-cyberpunk-cyan\/20 h1,
+.dark .bg-cyberpunk-cyan\/20 h2,
+.dark .bg-cyberpunk-cyan\/20 h3,
+.dark .bg-cyberpunk-cyan\/20 h4,
+.dark .bg-cyberpunk-cyan\/20 h5,
+.dark .bg-cyberpunk-cyan\/20 h6,
+.dark .bg-cyberpunk-cyan\/20 p,
+.dark .bg-cyberpunk-cyan\/20 span,
+.dark .bg-cyberpunk-cyan\/20 div {
+  color: hsl(var(--background)) !important; /* Force black text */
+}
+
+.dark .bg-cyberpunk-cyan\/30 h1,
+.dark .bg-cyberpunk-cyan\/30 h2,
+.dark .bg-cyberpunk-cyan\/30 h3,
+.dark .bg-cyberpunk-cyan\/30 h4,
+.dark .bg-cyberpunk-cyan\/30 h5,
+.dark .bg-cyberpunk-cyan\/30 h6,
+.dark .bg-cyberpunk-cyan\/30 p,
+.dark .bg-cyberpunk-cyan\/30 span,
+.dark .bg-cyberpunk-cyan\/30 div {
+  color: hsl(var(--background)) !important; /* Force black text */
+}
+
+.dark .bg-cyberpunk-cyan\/40 h1,
+.dark .bg-cyberpunk-cyan\/40 h2,
+.dark .bg-cyberpunk-cyan\/40 h3,
+.dark .bg-cyberpunk-cyan\/40 h4,
+.dark .bg-cyberpunk-cyan\/40 h5,
+.dark .bg-cyberpunk-cyan\/40 h6,
+.dark .bg-cyberpunk-cyan\/40 p,
+.dark .bg-cyberpunk-cyan\/40 span,
+.dark .bg-cyberpunk-cyan\/40 div {
+  color: hsl(var(--background)) !important; /* Force black text */
+}
+
+/* Specific page sections that need better contrast */
+.dark .web-projects-page .bg-cyberpunk-cyan,
+.dark .art-page .bg-cyberpunk-cyan,
+.dark .music-page .bg-cyberpunk-cyan,
+.dark .shop-page .bg-cyberpunk-cyan {
+  color: hsl(var(--background));
+}
+
+.dark .web-projects-page .bg-cyberpunk-cyan h1,
+.dark .web-projects-page .bg-cyberpunk-cyan h2,
+.dark .web-projects-page .bg-cyberpunk-cyan h3,
+.dark .web-projects-page .bg-cyberpunk-cyan p,
+.dark .art-page .bg-cyberpunk-cyan h1,
+.dark .art-page .bg-cyberpunk-cyan h2,
+.dark .art-page .bg-cyberpunk-cyan h3,
+.dark .art-page .bg-cyberpunk-cyan p,
+.dark .music-page .bg-cyberpunk-cyan h1,
+.dark .music-page .bg-cyberpunk-cyan h2,
+.dark .music-page .bg-cyberpunk-cyan h3,
+.dark .music-page .bg-cyberpunk-cyan p,
+.dark .shop-page .bg-cyberpunk-cyan h1,
+.dark .shop-page .bg-cyberpunk-cyan h2,
+.dark .shop-page .bg-cyberpunk-cyan h3,
+.dark .shop-page .bg-cyberpunk-cyan p {
+  color: hsl(var(--background)) !important;
+  text-shadow: none;
+}
+
+/* Ensure buttons and interactive elements remain visible */
+.dark .bg-cyberpunk-cyan .btn,
+.dark .bg-cyberpunk-cyan button {
+  color: hsl(var(--background));
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+}
+
+.dark .bg-cyberpunk-cyan .btn:hover,
+.dark .bg-cyberpunk-cyan button:hover {
+  background-color: hsl(var(--secondary));
+  border-color: hsl(--secondary);
+}
+
+/* Ensure proper contrast for primary and muted background sections */
+.dark .bg-primary {
+  color: hsl(var(--background)) !important; /* Black text on teal background */
+}
+
+.dark .bg-primary h1,
+.dark .bg-primary h2,
+.dark .bg-primary h3,
+.dark .bg-primary h4,
+.dark .bg-primary h5,
+.dark .bg-primary h6,
+.dark .bg-primary p,
+.dark .bg-primary span,
+.dark .bg-primary div {
+  color: hsl(var(--background)) !important; /* Force black text */
+}
+
+.dark .bg-muted\/30 {
+  color: hsl(var(--foreground)) !important; /* White text on muted background */
+}
+
+.dark .bg-muted\/30 h1,
+.dark .bg-muted\/30 h2,
+.dark .bg-muted\/30 h3,
+.dark .bg-muted\/30 h4,
+.dark .bg-muted\/30 h5,
+.dark .bg-muted\/30 h6,
+.dark .bg-muted\/30 p,
+.dark .bg-muted\/30 span,
+.dark .bg-muted\/30 div {
+  color: hsl(var(--foreground)) !important; /* Force white text */
+}
+
+/* Override primary-foreground text color in dark mode for better contrast */
+.dark .text-primary-foreground {
+  color: hsl(var(--background)) !important; /* Black text instead of white */
+}
+
+/* Ensure buttons in these sections have proper contrast */
+.dark .bg-primary .btn,
+.dark .bg-primary button {
+  color: hsl(var(--background));
+  background-color: hsl(var(--secondary));
+  border-color: hsl(var(--secondary));
+}
+
+.dark .bg-primary .btn:hover,
+.dark .bg-primary button:hover {
+  background-color: hsl(var(--accent));
+  border-color: hsl(var(--accent));
 }

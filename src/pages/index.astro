@@ -17,20 +17,29 @@ import blogPlaceholder1 from '../assets/blog-placeholder-1.jpg';
   
   <main class="min-h-screen">
     <!-- Hero Section -->
-    <section class="py-20 bg-gradient-to-b from-background to-muted/20">
-      <div class="container">
-        <div class="text-center space-y-6">
-          <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
-            JUNKERRI
+    <section class="hero-section py-20 relative overflow-hidden mandela-background">
+      <div class="mandela-orb"></div>
+      <div class="mandela-orb"></div>
+      <div class="mandela-orb"></div>
+      <div class="mandela-orb"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/20 via-cyberpunk-pink/30 to-cyberpunk-purple/40"></div>
+      <div class="container relative z-10">
+        <div class="text-center space-y-8">
+          <h1 class="hero-title">
+            <span>J</span>
+            <span>U</span>
+            <span>N</span>
+            <span>K</span>
+            <span>E</span>
+            <span>R</span>
+            <span>R</span>
+            <span>I</span>
           </h1>
-          <p class="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            Hi, I'm Aastha Kumari Karki. I create under the name Junkerri as a multidisciplinary artist and musician exploring identity, memory, and belonging through music, art, technology, and community.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style="animation-delay: 1s;">
+            <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg glow-cyberpunk-cyan hover:scale-105 transition-all duration-300 bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black font-semibold">
               Latest Collaboration
             </a>
-            <a href="/art" class="btn btn-outline btn-lg">
+            <a href="/art" class="btn btn-outline btn-lg border-2 border-cyberpunk-pink text-cyberpunk-pink hover:bg-cyberpunk-pink hover:text-black transition-all duration-300 font-semibold">
               View Art
             </a>
           </div>
@@ -39,19 +48,19 @@ import blogPlaceholder1 from '../assets/blog-placeholder-1.jpg';
     </section>
 
     <!-- Featured Work -->
-    <section class="py-16">
+    <section class="py-16 bg-gradient-to-br from-cyberpunk-cyan/10 to-cyberpunk-pink/10">
       <div class="container">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold mb-4">Featured Work</h2>
-          <p class="text-muted-foreground max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold mb-4 text-cyberpunk-cyan">Featured Work</h2>
+          <p class="text-cyberpunk-pink/80 max-w-2xl mx-auto">
             Explore my latest creations across art, music, and digital experiences.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Music Card -->
-          <div class="card group">
-            <div class="aspect-square bg-muted rounded-t-lg overflow-hidden">
+          <div class="card group hover:glow-cyberpunk-cyan transition-all duration-300">
+            <div class="aspect-square bg-gradient-to-br from-cyberpunk-cyan/20 to-cyberpunk-pink/20 rounded-t-lg overflow-hidden">
               <Image 
                 src={latestCollab}
                 alt="Back Where I Started - Junkerri X Nikki Kane lyrical video" 
@@ -61,19 +70,19 @@ import blogPlaceholder1 from '../assets/blog-placeholder-1.jpg';
               />
             </div>
             <div class="card-content">
-              <h3 class="text-xl font-semibold mb-2">Back Where I Started</h3>
-              <p class="text-muted-foreground mb-4">
+              <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">Back Where I Started</h3>
+              <p class="text-cyberpunk-pink/70 mb-4">
                 New collaboration with Nikki Kane - "Back Where I Started" official lyrical video.
               </p>
-              <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
                 Watch Now
               </a>
             </div>
           </div>
 
           <!-- Art Card -->
-          <div class="card group">
-            <div class="aspect-square bg-muted rounded-t-lg overflow-hidden">
+          <div class="card group hover:glow-cyberpunk-pink transition-all duration-300">
+            <div class="aspect-square bg-gradient-to-br from-cyberpunk-cyan/20 to-cyberpunk-pink/20 rounded-t-lg overflow-hidden">
               <Image 
                 src={everythingWasBeautiful}
                 alt="Digital art collection preview" 
@@ -83,19 +92,19 @@ import blogPlaceholder1 from '../assets/blog-placeholder-1.jpg';
               />
             </div>
             <div class="card-content">
-              <h3 class="text-xl font-semibold mb-2">Digital Art Collection</h3>
-              <p class="text-muted-foreground mb-4">
+              <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">Digital Art Collection</h3>
+              <p class="text-cyberpunk-pink/70 mb-4">
                 Bold, expressive digital artwork exploring themes of identity and technology.
               </p>
-              <a href="/art" class="btn btn-primary btn-sm">
+              <a href="/art" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
                 View Gallery
               </a>
             </div>
           </div>
 
           <!-- Projects Card -->
-          <div class="card group">
-            <div class="aspect-square bg-muted rounded-t-lg overflow-hidden">
+          <div class="card group hover:glow-cyberpunk-purple transition-all duration-300">
+            <div class="aspect-square bg-gradient-to-br from-cyberpunk-cyan/20 to-cyberpunk-pink/20 rounded-t-lg overflow-hidden">
               <Image 
                 src={beatkerriSquare}
                 alt="Beatkerri web app preview" 
@@ -105,11 +114,11 @@ import blogPlaceholder1 from '../assets/blog-placeholder-1.jpg';
               />
             </div>
             <div class="card-content">
-              <h3 class="text-xl font-semibold mb-2">Web Projects</h3>
-              <p class="text-muted-foreground mb-4">
+              <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">Web Projects</h3>
+              <p class="text-cyberpunk-pink/70 mb-4">
                 Innovative digital experiences and interactive web applications.
               </p>
-              <a href="/web-projects" class="btn btn-primary btn-sm">
+              <a href="/web-projects" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
                 Explore Projects
               </a>
             </div>

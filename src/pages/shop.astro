@@ -73,7 +73,7 @@ const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessorie
 <BaseLayout title="Shop - Junkerri" description="Original artwork, prints, and merchandise">
   <Header />
   
-  <main>
+  <main class="shop-page">
     <!-- Hero Section -->
     <section class="py-20 bg-gradient-to-br from-background via-background to-muted/20">
       <div class="container">
@@ -109,7 +109,7 @@ const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessorie
       <div class="container">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
-            <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300" data-category={product.category}>
+            <div class="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 product-item" data-category={product.category}>
               <div class="aspect-square overflow-hidden relative">
                 <img 
                   src={product.image} 
@@ -330,7 +330,7 @@ const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessorie
 
     // Filter functionality
     const filterButtons = document.querySelectorAll('[data-category]');
-    const productItems = document.querySelectorAll('[data-category]');
+    const productItems = document.querySelectorAll('.product-item[data-category]'); // Only select product items, not filter buttons
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {

@@ -16,7 +16,7 @@ const projects = [
     image: pulseCoop,
     liveUrl: "https://pulse-coop.vercel.app/",
     githubUrl: "https://github.com/junkerri/pulse-coop",
-    category: "Web App",
+    category: "Business Web App",
     featured: true
   },
   {
@@ -27,18 +27,28 @@ const projects = [
     image: beatkerri,
     liveUrl: "https://www.beatkerri.com/",
     githubUrl: "https://github.com/junkerri/beatkerri",
-    category: "Web App"
+    category: "Creative Web App"
+  },
+  {
+    id: 3,
+    title: "Junkerri Portfolio",
+    description: "A multidisciplinary artist and musician portfolio website built with Astro, featuring music, art, web projects, and creative work. Includes a dark cyberpunk aesthetic, interactive animations, responsive design, and content collections for blog posts.",
+    tech: ["Astro", "React", "Tailwind CSS", "TypeScript", "Vercel"],
+    image: beatkerri, // Using beatkerri image as placeholder - you can add a specific portfolio image later
+    liveUrl: "https://junkerri-2.vercel.app/",
+    githubUrl: "https://github.com/junkerri/junkerri-2",
+    category: "Personal Portfolio"
   }
 ];
 
-const categories = ["All", "Creative Coding", "Web App"];
+const categories = ["All", "Creative Web App", "Business Web App", "Personal Portfolio"];
 const featuredProject = projects.find(p => p.featured) || projects[0];
 ---
 
 <BaseLayout title="Web Projects - Junkerri" description="Interactive web projects and creative coding experiments">
   <Header />
   
-  <main class="min-h-screen">
+  <main class="web-projects-page min-h-screen">
     <!-- Hero Section -->
     <section class="py-20 bg-gradient-to-b from-background to-muted/20">
       <div class="container">
@@ -206,7 +216,7 @@ const featuredProject = projects.find(p => p.featured) || projects[0];
   <script>
     // Filter functionality
     const filterButtons = document.querySelectorAll('[data-category]');
-    const projectItems = document.querySelectorAll('[data-category]');
+    const projectItems = document.querySelectorAll('.card[data-category]'); // Only select project cards, not filter buttons
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
