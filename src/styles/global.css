@@ -1454,13 +1454,14 @@ h4 {
 
 .mandela-orb {
   position: absolute;
+  display: block;
   border-radius: 50%;
   background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff);
   box-shadow: 0 0 20px rgba(0, 255, 177, 0.5), 0 0 40px rgba(229, 0, 255, 0.3),
     0 0 60px rgba(94, 0, 255, 0.2);
   animation: mandela-float 8s ease-in-out infinite,
     mandela-color-shift 12s linear infinite;
-  z-index: 3;
+  z-index: 1;
 }
 
 .mandela-orb::before {
@@ -2449,4 +2450,1172 @@ h4 {
 .dark .bg-primary button:hover {
   background-color: hsl(var(--accent));
   border-color: hsl(var(--accent));
+}
+
+/* Monument Valley / Unearthly Delights Styles */
+.monument-valley-hero {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--cyberpunk-black)) 0%,
+    hsl(var(--cyberpunk-dark-purple)) 50%,
+    hsl(var(--cyberpunk-purple)) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.monument-title {
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+  color: hsl(var(--cyberpunk-cyan));
+  text-shadow: 0 0 20px hsl(var(--cyberpunk-cyan)),
+    0 0 40px hsl(var(--cyberpunk-cyan)), 0 0 60px hsl(var(--cyberpunk-cyan));
+  animation: monument-title-glow 3s ease-in-out infinite alternate;
+}
+
+.monument-title span {
+  display: inline-block;
+  animation: monument-letter-float 4s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.1s);
+}
+
+.monument-title span:nth-child(1) {
+  --i: 0;
+}
+.monument-title span:nth-child(2) {
+  --i: 1;
+}
+.monument-title span:nth-child(3) {
+  --i: 2;
+}
+.monument-title span:nth-child(4) {
+  --i: 3;
+}
+.monument-title span:nth-child(5) {
+  --i: 4;
+}
+.monument-title span:nth-child(6) {
+  --i: 5;
+}
+.monument-title span:nth-child(7) {
+  --i: 6;
+}
+.monument-title span:nth-child(8) {
+  --i: 7;
+}
+.monument-title span:nth-child(9) {
+  --i: 8;
+}
+.monument-title span:nth-child(10) {
+  --i: 9;
+}
+.monument-title span:nth-child(11) {
+  --i: 10;
+}
+.monument-title span:nth-child(12) {
+  --i: 11;
+}
+.monument-title span:nth-child(13) {
+  --i: 12;
+}
+.monument-title span:nth-child(14) {
+  --i: 13;
+}
+.monument-title span:nth-child(15) {
+  --i: 14;
+}
+.monument-title span:nth-child(16) {
+  --i: 15;
+}
+.monument-title span:nth-child(17) {
+  --i: 16;
+}
+
+/* Floating Geometry */
+.floating-geometry {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.geometry-cube,
+.geometry-pyramid,
+.geometry-sphere {
+  position: absolute;
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+.geometry-cube {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    45deg,
+    hsl(var(--cyberpunk-cyan)),
+    hsl(var(--cyberpunk-pink))
+  );
+  transform: rotate(45deg);
+  animation: float-geometry 8s ease-in-out infinite;
+}
+
+.geometry-pyramid {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 52px solid hsl(var(--cyberpunk-pink));
+  animation: float-geometry 10s ease-in-out infinite reverse;
+}
+
+.geometry-sphere {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(
+    circle,
+    hsl(var(--cyberpunk-purple)),
+    hsl(var(--cyberpunk-dark-purple))
+  );
+  border-radius: 50%;
+  animation: float-geometry 12s ease-in-out infinite;
+}
+
+.geometry-cube-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+.geometry-cube-2 {
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+.geometry-cube-3 {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+.geometry-pyramid-1 {
+  top: 40%;
+  right: 25%;
+  animation-delay: 1s;
+}
+.geometry-pyramid-2 {
+  bottom: 20%;
+  right: 10%;
+  animation-delay: 3s;
+}
+.geometry-sphere-1 {
+  top: 80%;
+  left: 30%;
+  animation-delay: 0.5s;
+}
+.geometry-sphere-2 {
+  top: 10%;
+  left: 60%;
+  animation-delay: 2.5s;
+}
+
+/* Impossible Staircase */
+.impossible-staircase {
+  position: absolute;
+  right: 10%;
+  bottom: 20%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stair {
+  width: 80px;
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--cyberpunk-cyan)),
+    hsl(var(--cyberpunk-pink))
+  );
+  margin-bottom: 5px;
+  transform: perspective(200px) rotateX(60deg);
+  animation: stair-float 6s ease-in-out infinite;
+}
+
+.stair:nth-child(1) {
+  animation-delay: 0s;
+}
+.stair:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.stair:nth-child(3) {
+  animation-delay: 1s;
+}
+.stair:nth-child(4) {
+  animation-delay: 1.5s;
+}
+.stair:nth-child(5) {
+  animation-delay: 2s;
+}
+
+/* Interactive Geometry Playground */
+.geometry-playground {
+  perspective: 1000px;
+  cursor: grab;
+}
+
+.geometry-playground:active {
+  cursor: grabbing;
+}
+
+.perspective-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.rotating-cube {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -50%) rotateX(15deg) rotateY(15deg);
+  transition: transform 0.1s ease-out;
+}
+
+.cube-face {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(
+    45deg,
+    hsl(var(--cyberpunk-cyan)),
+    hsl(var(--cyberpunk-pink))
+  );
+  border: 2px solid hsl(var(--cyberpunk-purple));
+  opacity: 0.8;
+}
+
+.cube-front {
+  transform: translateZ(60px);
+}
+.cube-back {
+  transform: translateZ(-60px);
+}
+.cube-right {
+  transform: rotateY(90deg) translateZ(60px);
+}
+.cube-left {
+  transform: rotateY(-90deg) translateZ(60px);
+}
+.cube-top {
+  transform: rotateX(90deg) translateZ(60px);
+}
+.cube-bottom {
+  transform: rotateX(-90deg) translateZ(60px);
+}
+
+.floating-platforms {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.platform {
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--cyberpunk-purple)),
+    hsl(var(--cyberpunk-cyan))
+  );
+  border-radius: 10px;
+  opacity: 0.7;
+}
+
+.platform-1 {
+  top: 20%;
+  left: 20%;
+  transform: rotateZ(15deg);
+}
+.platform-2 {
+  top: 50%;
+  right: 25%;
+  transform: rotateZ(-20deg);
+}
+.platform-3 {
+  bottom: 30%;
+  left: 60%;
+  transform: rotateZ(10deg);
+}
+
+/* Interactive Cards */
+.interactive-card {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--cyberpunk-dark-purple)),
+    hsl(var(--cyberpunk-purple))
+  );
+  border: 2px solid hsl(var(--cyberpunk-cyan));
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.interactive-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--cyberpunk-cyan) / 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.interactive-card:hover::before {
+  left: 100%;
+}
+
+.interactive-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px hsl(var(--cyberpunk-cyan) / 0.3),
+    0 0 20px hsl(var(--cyberpunk-cyan) / 0.5);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(
+    45deg,
+    hsl(var(--cyberpunk-cyan)),
+    hsl(var(--cyberpunk-pink))
+  );
+  border-radius: 12px;
+  position: relative;
+}
+
+.cube-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background: hsl(var(--cyberpunk-black));
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.staircase-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 8px;
+  background: hsl(var(--cyberpunk-black));
+  transform: translate(-50%, -50%);
+  box-shadow: 0 12px 0 hsl(var(--cyberpunk-black)),
+    0 24px 0 hsl(var(--cyberpunk-black));
+}
+
+.platforms-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 8px;
+  background: hsl(var(--cyberpunk-black));
+  transform: translate(-50%, -50%);
+  box-shadow: 0 16px 0 hsl(var(--cyberpunk-black));
+}
+
+/* Album Cover Container */
+.album-cover-container {
+  position: relative;
+  display: inline-block;
+}
+
+.album-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    circle,
+    hsl(var(--cyberpunk-cyan) / 0.3),
+    transparent 70%
+  );
+  border-radius: 16px;
+  z-index: -1;
+  animation: album-glow-pulse 4s ease-in-out infinite;
+}
+
+/* Track Preview */
+.track-preview {
+  padding: 1rem;
+  background: hsl(var(--cyberpunk-dark-purple) / 0.3);
+  border-radius: 12px;
+  border-left: 4px solid hsl(var(--cyberpunk-pink));
+  transition: all 0.3s ease;
+}
+
+.track-preview:hover {
+  background: hsl(var(--cyberpunk-dark-purple) / 0.5);
+  transform: translateX(8px);
+}
+
+/* Animations */
+@keyframes monument-title-glow {
+  0% {
+    text-shadow: 0 0 20px hsl(var(--cyberpunk-cyan)),
+      0 0 40px hsl(var(--cyberpunk-cyan)), 0 0 60px hsl(var(--cyberpunk-cyan));
+  }
+  100% {
+    text-shadow: 0 0 30px hsl(var(--cyberpunk-cyan)),
+      0 0 60px hsl(var(--cyberpunk-cyan)), 0 0 90px hsl(var(--cyberpunk-cyan));
+  }
+}
+
+@keyframes monument-letter-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotateZ(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotateZ(2deg);
+  }
+}
+
+@keyframes float-geometry {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes stair-float {
+  0%,
+  100% {
+    transform: perspective(200px) rotateX(60deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(200px) rotateX(60deg) translateY(-10px);
+  }
+}
+
+@keyframes album-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateX(15deg) rotateY(15deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateX(375deg) rotateY(375deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .monument-title {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  .geometry-cube,
+  .geometry-pyramid,
+  .geometry-sphere {
+    display: none;
+  }
+
+  .impossible-staircase {
+    display: none;
+  }
+
+  .rotating-cube {
+    width: 80px;
+    height: 80px;
+  }
+
+  .cube-face {
+    width: 80px;
+    height: 80px;
+  }
+
+  .cube-front {
+    transform: translateZ(40px);
+  }
+  .cube-back {
+    transform: translateZ(-40px);
+  }
+  .cube-right {
+    transform: rotateY(90deg) translateZ(40px);
+  }
+  .cube-left {
+    transform: rotateY(-90deg) translateZ(40px);
+  }
+  .cube-top {
+    transform: rotateX(90deg) translateZ(40px);
+  }
+  .cube-bottom {
+    transform: rotateX(-90deg) translateZ(40px);
+  }
+}
+
+/* Cosmic Universe Styles */
+.cosmic-universe-background {
+  background: radial-gradient(
+    ellipse at center,
+    hsl(var(--cyberpunk-dark-purple)) 0%,
+    hsl(var(--cyberpunk-black)) 50%,
+    #000000 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.cosmic-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 20% 30%,
+      hsl(var(--cyberpunk-purple) / 0.5) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      hsl(var(--cyberpunk-cyan) / 0.4) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      hsl(var(--cyberpunk-pink) / 0.45) 0%,
+      transparent 50%
+    );
+  z-index: 0;
+}
+
+/* Stars Container */
+.stars-container {
+  position: absolute;
+  display: block !important;
+  inset: 0;
+  overflow: hidden;
+  /* Debug: Add background to see container */
+  background: rgba(0, 255, 177, 0.1);
+}
+
+.stars {
+  position: absolute;
+  display: block !important;
+  inset: 0;
+  background-image: radial-gradient(
+      3px 3px at 20px 30px,
+      hsl(var(--cyberpunk-cyan), 1),
+      transparent
+    ),
+    radial-gradient(
+      3px 3px at 40px 70px,
+      hsl(var(--cyberpunk-pink), 1),
+      transparent
+    ),
+    radial-gradient(
+      2px 2px at 90px 40px,
+      hsl(var(--cyberpunk-purple), 1),
+      transparent
+    ),
+    radial-gradient(
+      2px 2px at 130px 80px,
+      hsl(var(--cyberpunk-cyan), 0.9),
+      transparent
+    ),
+    radial-gradient(
+      3px 3px at 160px 30px,
+      hsl(var(--cyberpunk-pink), 1),
+      transparent
+    ),
+    radial-gradient(
+      2px 2px at 200px 60px,
+      hsl(var(--cyberpunk-purple), 0.9),
+      transparent
+    ),
+    radial-gradient(
+      3px 3px at 240px 90px,
+      hsl(var(--cyberpunk-cyan), 1),
+      transparent
+    ),
+    radial-gradient(
+      2px 2px at 280px 20px,
+      hsl(var(--cyberpunk-pink), 0.9),
+      transparent
+    ),
+    radial-gradient(
+      3px 3px at 320px 70px,
+      hsl(var(--cyberpunk-purple), 1),
+      transparent
+    ),
+    radial-gradient(
+      2px 2px at 360px 50px,
+      hsl(var(--cyberpunk-cyan), 0.9),
+      transparent
+    );
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  animation: stars-float 60s linear infinite;
+  z-index: 2;
+  /* Debug: Ensure stars are visible */
+  opacity: 1 !important;
+}
+
+.stars-1 {
+  animation-duration: 60s;
+  opacity: 0.8;
+}
+
+.stars-2 {
+  animation-duration: 90s;
+  opacity: 0.6;
+  animation-direction: reverse;
+}
+
+.stars-3 {
+  animation-duration: 120s;
+  opacity: 0.4;
+}
+
+/* Nebulae */
+.cosmic-nebulae {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.nebula {
+  position: absolute;
+  display: block !important;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.6;
+  animation: nebula-drift 30s ease-in-out infinite;
+  z-index: 1;
+  /* Debug: Add border to see nebula boundaries */
+  border: 1px solid rgba(229, 0, 255, 0.3);
+}
+
+.nebula-1 {
+  width: 300px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+  background: radial-gradient(
+    ellipse,
+    hsl(var(--cyberpunk-purple) / 0.4),
+    transparent
+  );
+  animation-delay: 0s;
+}
+
+.nebula-2 {
+  width: 250px;
+  height: 180px;
+  top: 60%;
+  right: 15%;
+  background: radial-gradient(
+    ellipse,
+    hsl(var(--cyberpunk-pink) / 0.3),
+    transparent
+  );
+  animation-delay: 10s;
+}
+
+.nebula-3 {
+  width: 200px;
+  height: 150px;
+  bottom: 20%;
+  left: 60%;
+  background: radial-gradient(
+    ellipse,
+    hsl(var(--cyberpunk-cyan) / 0.35),
+    transparent
+  );
+  animation-delay: 20s;
+}
+
+/* Cosmic Geometry */
+.cosmic-geometry {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cosmic-cube,
+.cosmic-pyramid,
+.cosmic-sphere,
+.cosmic-asteroid,
+.cosmic-satellite {
+  position: absolute;
+  display: block !important;
+  opacity: 0.7;
+  animation: cosmic-float 20s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px hsl(var(--cyberpunk-cyan), 0.6));
+  z-index: 5;
+  /* Debug: Add border to see element boundaries */
+  border: 1px solid rgba(0, 255, 177, 0.3);
+}
+
+.cosmic-cube {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(
+    45deg,
+    hsl(var(--cyberpunk-cyan), 0.8),
+    hsl(var(--cyberpunk-purple), 0.6)
+  );
+  transform: rotate(45deg);
+  box-shadow: 0 0 20px hsl(var(--cyberpunk-cyan), 0.5);
+}
+
+.cosmic-pyramid {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 40px solid hsl(var(--cyberpunk-pink), 0.8);
+  filter: drop-shadow(0 0 15px hsl(var(--cyberpunk-pink), 0.6));
+}
+
+.cosmic-sphere {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    hsl(var(--cyberpunk-cyan), 0.8),
+    hsl(var(--cyberpunk-dark-purple), 0.6)
+  );
+  box-shadow: 0 0 20px hsl(var(--cyberpunk-cyan), 0.5);
+}
+
+.cosmic-asteroid {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(
+    45deg,
+    hsl(var(--cyberpunk-dark-purple), 0.8),
+    hsl(var(--cyberpunk-black), 0.6)
+  );
+  border-radius: 50%;
+  box-shadow: 0 0 15px hsl(var(--cyberpunk-dark-purple), 0.4);
+}
+
+.cosmic-satellite {
+  width: 50px;
+  height: 25px;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--cyberpunk-cyan), 0.8),
+    hsl(var(--cyberpunk-pink), 0.6)
+  );
+  border-radius: 12px;
+  box-shadow: 0 0 20px hsl(var(--cyberpunk-cyan), 0.5);
+}
+
+/* Position cosmic geometry */
+.cosmic-cube-1 {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.cosmic-cube-2 {
+  top: 70%;
+  right: 20%;
+  animation-delay: 5s;
+}
+
+.cosmic-pyramid-1 {
+  top: 30%;
+  right: 25%;
+  animation-delay: 2s;
+}
+
+.cosmic-pyramid-2 {
+  bottom: 30%;
+  left: 25%;
+  animation-delay: 7s;
+}
+
+.cosmic-sphere-1 {
+  top: 50%;
+  left: 60%;
+  animation-delay: 3s;
+}
+
+.cosmic-sphere-2 {
+  top: 80%;
+  right: 10%;
+  animation-delay: 8s;
+}
+
+.cosmic-asteroid {
+  top: 15%;
+  right: 60%;
+  animation-delay: 4s;
+}
+
+.cosmic-satellite {
+  bottom: 15%;
+  left: 70%;
+  animation-delay: 6s;
+}
+
+/* Cosmic Dust */
+.cosmic-dust {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.dust-particle {
+  position: absolute;
+  display: block;
+  width: 3px;
+  height: 3px;
+  background: hsl(var(--cyberpunk-cyan), 0.8);
+  border-radius: 50%;
+  animation: dust-drift 25s linear infinite;
+  filter: drop-shadow(0 0 8px hsl(var(--cyberpunk-cyan), 0.9));
+  z-index: 3;
+}
+
+.dust-particle:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.dust-particle:nth-child(2) {
+  top: 25%;
+  right: 30%;
+  animation-delay: 5s;
+}
+
+.dust-particle:nth-child(3) {
+  top: 60%;
+  left: 10%;
+  animation-delay: 10s;
+}
+
+.dust-particle:nth-child(4) {
+  top: 75%;
+  right: 20%;
+  animation-delay: 15s;
+}
+
+.dust-particle:nth-child(5) {
+  bottom: 20%;
+  left: 40%;
+  animation-delay: 3s;
+}
+
+.dust-particle:nth-child(6) {
+  bottom: 35%;
+  right: 10%;
+  animation-delay: 8s;
+}
+
+.dust-particle:nth-child(7) {
+  top: 40%;
+  left: 80%;
+  animation-delay: 12s;
+}
+
+.dust-particle:nth-child(8) {
+  top: 85%;
+  left: 50%;
+  animation-delay: 18s;
+}
+
+/* Shooting Stars */
+.shooting-stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.shooting-star {
+  position: absolute;
+  display: block !important;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    hsl(var(--cyberpunk-cyan), 1),
+    transparent
+  );
+  border-radius: 2px;
+  animation: shooting-star-trail 8s linear infinite;
+  transform: rotate(-45deg);
+  filter: drop-shadow(0 0 10px hsl(var(--cyberpunk-cyan), 0.8));
+  z-index: 4;
+  /* Debug: Ensure shooting stars are visible */
+  opacity: 1 !important;
+}
+
+.shooting-star:nth-child(1) {
+  top: 20%;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.shooting-star:nth-child(2) {
+  top: 50%;
+  left: -100px;
+  animation-delay: 3s;
+}
+
+.shooting-star:nth-child(3) {
+  top: 80%;
+  left: -100px;
+  animation-delay: 6s;
+}
+
+/* Cosmic Title */
+.cosmic-title {
+  color: hsl(var(--cyberpunk-cyan)) !important;
+  text-shadow: 0 0 20px hsl(var(--cyberpunk-cyan), 0.8),
+    0 0 40px hsl(var(--cyberpunk-cyan), 0.6);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 4rem;
+  line-height: 1.1;
+  z-index: 30;
+  position: relative;
+  background: none !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: hsl(var(--cyberpunk-cyan)) !important;
+}
+
+.cosmic-title span {
+  animation: cosmic-letter-float 4s ease-in-out infinite;
+  display: inline-block;
+  margin: 0 0.1em;
+  color: hsl(var(--cyberpunk-cyan)) !important;
+  text-shadow: 0 0 15px hsl(var(--cyberpunk-cyan), 0.9),
+    0 0 30px hsl(var(--cyberpunk-pink), 0.7);
+  background: none !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: hsl(var(--cyberpunk-cyan)) !important;
+}
+
+.cosmic-title span:nth-child(1) {
+  animation-delay: 0s;
+}
+.cosmic-title span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.cosmic-title span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.cosmic-title span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.cosmic-title span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.cosmic-title span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.cosmic-title span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.cosmic-title span:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+/* Cosmic Animations */
+@keyframes stars-float {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-400px);
+  }
+}
+
+@keyframes nebula-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(30px, -20px) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes cosmic-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-30px) rotate(270deg);
+  }
+}
+
+@keyframes dust-drift {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(100px) translateY(-50px);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-trail {
+  0% {
+    transform: translateX(0) rotate(-45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(400px) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes cosmic-letter-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cosmic-cube,
+  .cosmic-pyramid,
+  .cosmic-sphere,
+  .cosmic-asteroid,
+  .cosmic-satellite {
+    transform: scale(0.7);
+  }
+
+  .nebula {
+    filter: blur(20px);
+  }
+
+  .shooting-star {
+    width: 60px;
+  }
+
+  .cosmic-title {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  .cosmic-title span {
+    margin: 0 0.05em;
+  }
+
+  .mandela-orb {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .mandela-orb:nth-child(2) {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .mandela-orb:nth-child(3) {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .mandela-orb:nth-child(4) {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .mandela-orb-1 {
+    top: 15% !important;
+    left: 10% !important;
+  }
+
+  .mandela-orb-2 {
+    top: 70% !important;
+    right: 10% !important;
+  }
+
+  .mandela-orb-3 {
+    bottom: 15% !important;
+    left: 50% !important;
+  }
+
+  .mandela-orb-4 {
+    top: 50% !important;
+    left: 40% !important;
+  }
 }
