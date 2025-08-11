@@ -2,7 +2,7 @@
 title: "Second post"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 09 2022"
-heroImage: "../../assets/blog-placeholder-2.jpg"
+heroImage: "../../assets/blog-images/blog-placeholder-2.jpg"
 category: "short-story"
 ---
 

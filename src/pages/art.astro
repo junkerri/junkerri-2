@@ -3,65 +3,213 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-// Sample art data (replace with real data)
+// Import all artwork images
+import hurt from '../assets/album art/hurt.jpg';
+import easternGold from '../assets/album art/eastern-gold.jpg';
+import unearthlyDelights from '../assets/album art/unearthly-delights.jpg';
+
+import moonIsCake from '../assets/album art/moon-is-cake.jpg';
+import backWhereIStarted from '../assets/album art/back-where-i-started.jpg';
+
+import ngorongoro from '../assets/illustrations/ngorongoro.jpg';
+import iGotLost from '../assets/illustrations/I-got-lost.jpg';
+import everythingWasBeautiful from '../assets/illustrations/everything-was-beautiful.jpg';
+import postEclipse from '../assets/illustrations/post-eclipse.jpg';
+import decadence from '../assets/illustrations/decadence.jpg';
+import bliss from '../assets/illustrations/bliss.JPG';
+import timeAndSpace from '../assets/illustrations/time and space.JPG';
+import elephantsWay from '../assets/illustrations/elephant\'s-way.JPG';
+import landlockedBlues from '../assets/illustrations/landlocked-blues.JPG';
+
+import hootinForYou from '../assets/t-shirt-design/hootin-for-you.jpg';
+import terlinguaTshirt from '../assets/t-shirt-design/tshirt-design-terlingua.jpg';
+
+import calendar2024 from '../assets/custom-calendar/custom-calendar-2024.jpg';
+import calendar2023 from '../assets/custom-calendar/custom-calendar-2023.jpg';
+
+// Real artwork data organized by categories
 const artworks = [
+  // Illustrations (First)
   {
     id: 1,
-    title: "Digital Dreams",
-    description: "A bold exploration of digital consciousness",
-    image: "/src/assets/blog-placeholder-1.jpg",
-    category: "Digital Art",
+    title: "Ngorongoro",
+    description: "Illustration inspired by my visit to the vast landscapes and wildlife of Tanzania, specifically the Ngorongoro Crater",
+    image: ngorongoro.src,
+    category: "Illustrations",
     year: "2024",
-    dimensions: "1920x1080px"
+    dimensions: "Digital Art"
   },
   {
     id: 2,
-    title: "Neon Cityscape",
-    description: "Cyberpunk-inspired urban landscape",
-    image: "/src/assets/blog-placeholder-2.jpg",
-    category: "Digital Art",
+    title: "I Got Lost",
+    description: "Illustration exploring the feeling of being lost and finding new paths",
+    image: iGotLost.src,
+    category: "Illustrations",
     year: "2024",
-    dimensions: "2560x1440px"
+    dimensions: "Digital Art"
   },
   {
     id: 3,
-    title: "Abstract Flow",
-    description: "Fluid dynamics in digital form",
-    image: "/src/assets/blog-placeholder-3.jpg",
-    category: "Abstract",
-    year: "2023",
-    dimensions: "1920x1080px"
+    title: "Everything Was Beautiful",
+    description: "Illustration finding beauty in chaos and complexity",
+    image: everythingWasBeautiful.src,
+    category: "Illustrations",
+    year: "2022",
+    dimensions: "Digital Art"
   },
   {
     id: 4,
-    title: "Glitch Portrait",
-    description: "Digital distortion and human form",
-    image: "/src/assets/blog-placeholder-4.jpg",
-    category: "Portrait",
-    year: "2023",
-    dimensions: "1920x1080px"
+    title: "Post Eclipse",
+    description: "Illustration capturing the aftermath of celestial events",
+    image: postEclipse.src,
+    category: "Illustrations",
+    year: "2024",
+    dimensions: "Digital Art"
   },
   {
     id: 5,
-    title: "Data Visualization",
-    description: "Information as art",
-    image: "/src/assets/blog-placeholder-5.jpg",
-    category: "Digital Art",
-    year: "2024",
-    dimensions: "1920x1080px"
+    title: "Decadence",
+    description: "Illustration exploring themes of luxury, excess, and beauty, in a surreal landscape",
+    image: decadence.src,
+    category: "Illustrations",
+    year: "2023",
+    dimensions: "Digital Art"
   },
   {
     id: 6,
-    title: "Minimalist Geometry",
-    description: "Clean lines and simple forms",
-    image: "/src/assets/blog-placeholder-1.jpg",
-    category: "Abstract",
+    title: "Bliss",
+    description: "Illustration capturing moments of pure joy and contentment in otherworldly landscapes",
+    image: bliss.src,
+    category: "Illustrations",
     year: "2023",
-    dimensions: "1920x1080px"
+    dimensions: "Digital Art"
+  },
+  {
+    id: 7,
+    title: "Time and Space",
+    description: "Illustration exploring the relationship between temporal and spatial dimensions",
+    image: timeAndSpace.src,
+    category: "Illustrations",
+    year: "2024",
+    dimensions: "Digital Art"
+  },
+  {
+    id: 8,
+    title: "Elephant's Way",
+    description: "Illustration celebrating the wisdom and majesty of elephants",
+    image: elephantsWay.src,
+    category: "Illustrations",
+    year: "2022",
+    dimensions: "Digital Art"
+  },
+  {
+    id: 9,
+    title: "Landlocked Blues",
+    description: "Illustration capturing the feeling of being trapped by geography",
+    image: landlockedBlues.src,
+    category: "Illustrations",
+    year: "2022",
+    dimensions: "Digital Art"
+  },
+  
+  // T-Shirt Designs (Second)
+  {
+    id: 7,
+    title: "Hootin' For You",
+    description: "Collaborative t-shirt design with Raw Paw local print shop, featuring night-themed creatures that make nighttime delightful and surreal",
+    image: hootinForYou.src,
+    category: "T-Shirt Designs",
+    year: "2023",
+    dimensions: "T-Shirt Print"
+  },
+  {
+    id: 8,
+    title: "Terlingua T-Shirt",
+    description: "Designed for the 2023 Chili Cook-off in collaboration with friend Caitlin, celebrating the yearly chili cook-off in Terlingua, Texas",
+    image: terlinguaTshirt.src,
+    category: "T-Shirt Designs",
+    year: "2023",
+    dimensions: "T-Shirt Print"
+  },
+  
+  // Custom Calendars (Third)
+  {
+    id: 9,
+    title: "Custom Calendar 2024",
+    description: "Personalized calendar design for 2024 artwork that represents popular hangouts in Austin",
+    image: calendar2024.src,
+    category: "Custom Calendars",
+    year: "2024",
+    dimensions: "Calendar Design"
+  },
+  {
+    id: 10,
+    title: "Custom Calendar 2023",
+    description: "Personalized calendar design for 2023 with custom pet portraits in Zilker Park, Austin",
+    image: calendar2023.src,
+    category: "Custom Calendars",
+    year: "2023",
+    dimensions: "Calendar Design"
+  },
+  
+  // Album Art (Last)
+  {
+    id: 11,
+    title: "Hurt",
+    description: "Album artwork for 'Hurt' - exploring emotional depth through visual storytelling",
+    image: hurt.src,
+    category: "Album Art",
+    year: "2024",
+    dimensions: "Album Cover"
+  },
+  {
+    id: 12,
+    title: "Eastern Gold",
+    description: "Album artwork for 'Eastern Gold' - capturing the essence of golden moments",
+    image: easternGold.src,
+    category: "Album Art",
+    year: "2024",
+    dimensions: "Album Cover"
+  },
+  {
+    id: 13,
+    title: "Unearthly Delights",
+    description: "Album artwork for 'Unearthly Delights' - otherworldly visual exploration",
+    image: unearthlyDelights.src,
+    category: "Album Art",
+    year: "2024",
+    dimensions: "Album Cover"
+  },
+  {
+    id: 14,
+    title: "Everything Was Beautiful",
+    description: "Album artwork for 'Everything Was Beautiful' - finding beauty in chaos",
+    image: everythingWasBeautiful.src,
+    category: "Album Art",
+    year: "2024",
+    dimensions: "Album Cover"
+  },
+  {
+    id: 15,
+    title: "Moon Is Cake",
+    description: "Album artwork for 'Moon Is Cake' - whimsical cosmic imagery",
+    image: moonIsCake.src,
+    category: "Album Art",
+    year: "2024",
+    dimensions: "Album Cover"
+  },
+  {
+    id: 16,
+    title: "Back Where I Started",
+    description: "Album artwork for 'Back Where I Started' - journey of return and reflection",
+    image: backWhereIStarted.src,
+    category: "Album Art",
+    year: "2024",
+    dimensions: "Album Cover"
   }
 ];
 
-const categories = ["All", "Digital Art", "Abstract", "Portrait"];
+const categories = ["All", "Album Art", "Illustrations", "T-Shirt Designs", "Custom Calendars"];
 ---
 
 <BaseLayout title="Art Gallery - Junkerri" description="Digital art gallery featuring bold, experimental works">
@@ -177,11 +325,11 @@ const categories = ["All", "Digital Art", "Abstract", "Portrait"];
         <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
           {artworks.map((artwork) => (
             <div class="group break-inside-avoid overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 artwork-item" data-category={artwork.category}>
-              <div class="aspect-square overflow-hidden">
+              <div class="aspect-[4/3] overflow-hidden">
                 <img 
                   src={artwork.image} 
                   alt={artwork.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 cursor-pointer"
                   data-artwork={artwork.id}
                 />
               </div>
@@ -213,8 +361,8 @@ const categories = ["All", "Digital Art", "Abstract", "Portrait"];
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
-        <div class="aspect-square overflow-hidden rounded-lg">
-          <img id="lightbox-image" src="" alt="" class="w-full h-full object-contain" />
+        <div class="max-h-[80vh] overflow-hidden rounded-lg">
+          <img id="lightbox-image" src="" alt="" class="w-full h-auto max-h-[80vh] object-contain" />
         </div>
         <div id="lightbox-info" class="mt-4 text-white text-center">
           <h3 id="lightbox-title" class="text-2xl font-bold mb-2"></h3>
@@ -240,13 +388,19 @@ const categories = ["All", "Digital Art", "Abstract", "Portrait"];
 
   <Footer />
 
+
+
   <script>
+
+    
     // Filter functionality
     const filterButtons = document.querySelectorAll('[data-category]');
     const artworkItems = document.querySelectorAll('.artwork-item[data-category]'); // Only select artwork items, not filter buttons
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
+        playClickSound(); // Play futuristic click sound
+        
         const category = button.getAttribute('data-category');
         
         // Update active button
@@ -262,6 +416,8 @@ const categories = ["All", "Digital Art", "Abstract", "Portrait"];
           }
         });
       });
+      
+
     });
 
     // Lightbox functionality
@@ -271,49 +427,69 @@ const categories = ["All", "Digital Art", "Abstract", "Portrait"];
     const lightboxDescription = document.getElementById('lightbox-description');
     const closeLightbox = document.getElementById('close-lightbox');
 
-    // Sample artwork data for lightbox
+    // Real artwork data for lightbox
     const artworkData = {
-      1: { title: "Digital Dreams", description: "A bold exploration of digital consciousness" },
-      2: { title: "Neon Cityscape", description: "Cyberpunk-inspired urban landscape" },
-      3: { title: "Abstract Flow", description: "Fluid dynamics in digital form" },
-      4: { title: "Glitch Portrait", description: "Digital distortion and human form" },
-      5: { title: "Data Visualization", description: "Information as art" },
-      6: { title: "Minimalist Geometry", description: "Clean lines and simple forms" }
+      1: { title: "Nogrongoro", description: "Illustration inspired by the vast landscapes and wildlife of Africa" },
+      2: { title: "I Got Lost", description: "Illustration exploring the feeling of being lost and finding new paths" },
+      3: { title: "Post Eclipse", description: "Illustration capturing the aftermath of celestial events" },
+      4: { title: "Decadence", description: "Illustration exploring themes of luxury, excess, and beauty" },
+      5: { title: "Elephant's Way", description: "Illustration celebrating the wisdom and majesty of elephants" },
+      6: { title: "Landlocked Blues", description: "Illustration capturing the feeling of being trapped by geography" },
+      7: { title: "Hootin' For You", description: "Collaborative t-shirt design with Raw Paw local print shop, featuring night-themed creatures that make nighttime delightful and surreal" },
+      8: { title: "Terlingua T-Shirt", description: "Designed for the 2023 Chili Cook-off in collaboration with friend Caitlin, celebrating the rugged beauty of Terlingua" },
+      9: { title: "Custom Calendar 2024", description: "Personalized calendar design for 2024 with unique artwork" },
+      10: { title: "Custom Calendar 2023", description: "Personalized calendar design for 2023 with unique artwork" },
+      11: { title: "Hurt", description: "Album artwork for 'Hurt' - exploring emotional depth through visual storytelling" },
+      12: { title: "Eastern Gold", description: "Album artwork for 'Eastern Gold' - capturing the essence of golden moments" },
+      13: { title: "Unearthly Delights", description: "Album artwork for 'Unearthly Delights' - otherworldly visual exploration" },
+      14: { title: "Everything Was Beautiful", description: "Album artwork for 'Everything Was Beautiful' - finding beauty in chaos" },
+      15: { title: "Moon Is Cake", description: "Album artwork for 'Moon Is Cake' - whimsical cosmic imagery" },
+      16: { title: "Back Where I Started", description: "Album artwork for 'Back Where I Started' - journey of return and reflection" }
     };
 
     // Add click handlers to artwork images
     document.querySelectorAll('[data-artwork]').forEach(img => {
       img.addEventListener('click', () => {
+        if (!lightbox || !lightboxImage || !lightboxTitle || !lightboxDescription) return;
+        
         const artworkId = img.getAttribute('data-artwork');
         const artwork = artworkData[artworkId];
         
-        lightboxImage.src = img.src;
-        lightboxImage.alt = artwork.title;
-        lightboxTitle.textContent = artwork.title;
-        lightboxDescription.textContent = artwork.description;
-        
-        lightbox.classList.remove('hidden');
-        lightbox.classList.add('flex');
+        if (artwork) {
+          lightboxImage.src = img.src;
+          lightboxImage.alt = artwork.title;
+          lightboxTitle.textContent = artwork.title;
+          lightboxDescription.textContent = artwork.description;
+          
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+        }
       });
     });
 
     // Close lightbox
-    closeLightbox.addEventListener('click', () => {
-      lightbox.classList.add('hidden');
-      lightbox.classList.remove('flex');
-    });
+    if (closeLightbox) {
+      closeLightbox.addEventListener('click', () => {
+        if (lightbox) {
+          lightbox.classList.add('hidden');
+          lightbox.classList.remove('flex');
+        }
+      });
+    }
 
     // Close lightbox on background click
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-      }
-    });
+    if (lightbox) {
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.add('hidden');
+          lightbox.classList.remove('flex');
+        }
+      });
+    }
 
     // Close lightbox on escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+      if (e.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
         lightbox.classList.add('hidden');
         lightbox.classList.remove('flex');
       }

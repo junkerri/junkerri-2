@@ -3,8 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
-import pulseCoop from '../assets/pulse-coop.jpg';
-import beatkerri from '../assets/beatkerri.jpg';
+import pulseCoop from '../assets/photos/pulse-coop.jpg';
+import beatkerri from '../assets/photos/beatkerri.jpg';
+import personalWebsitePortfolio from '../assets/photos/personal-website-portfolio.jpg';
 
 // Web projects data
 const projects = [
@@ -22,8 +23,8 @@ const projects = [
   {
     id: 2,
     title: "Beatkerri",
-    description: "A 16-step digital sequencer and beat-making web application with challenge mode, jam mode, and daily beat challenges. Features an intuitive interface for creating and sharing beats.",
-    tech: ["TypeScript", "React", "Web Audio API", "Canvas API", "Vercel"],
+    description: "A 16-step digital sequencer and beat-making web application that doubles as a daily puzzle web app game. Features challenge mode, jam mode, and daily beat challenges with an intuitive interface. Users can create, share, and download their beats as WAV and MIDI files. Built with Tone.js for high-quality audio synthesis and Web Audio API for real-time processing.",
+    tech: ["TypeScript", "React", "Tone.js", "Web Audio API", "Canvas API", "Vercel"],
     image: beatkerri,
     liveUrl: "https://www.beatkerri.com/",
     githubUrl: "https://github.com/junkerri/beatkerri",
@@ -32,9 +33,9 @@ const projects = [
   {
     id: 3,
     title: "Junkerri Portfolio",
-    description: "A multidisciplinary artist and musician portfolio website built with Astro, featuring music, art, web projects, and creative work. Includes a dark cyberpunk aesthetic, interactive animations, responsive design, and content collections for blog posts.",
-    tech: ["Astro", "React", "Tailwind CSS", "TypeScript", "Vercel"],
-    image: beatkerri, // Using beatkerri image as placeholder - you can add a specific portfolio image later
+    description: "A comprehensive multidisciplinary artist and musician portfolio website built with Astro, featuring music releases, art gallery, web projects, and creative work. Includes dark cyberpunk aesthetic, cosmic animations, responsive design, content collections for blog posts, Stripe integration for the shop, contact forms, and a fully functional e-commerce experience.",
+    tech: ["Astro", "React", "Tailwind CSS", "TypeScript", "Stripe", "Vercel"],
+    image: personalWebsitePortfolio,
     liveUrl: "https://junkerri-2.vercel.app/",
     githubUrl: "https://github.com/junkerri/junkerri-2",
     category: "Personal Portfolio"
