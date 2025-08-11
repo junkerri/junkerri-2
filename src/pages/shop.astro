@@ -1,73 +1,58 @@
 ---
+export const prerender = false;
+
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { STRIPE_PUBLIC_KEY } from 'astro:env/client';
 
-// Sample product data (replace with real Stripe products)
-const products = [
-  {
-    id: 1,
-    name: "Digital Dreams Print",
-    description: "High-quality digital art print, limited edition",
-    price: 45,
-    image: "../assets/blog-images/blog-placeholder-1.jpg",
-    category: "Prints",
-    inStock: true,
-    stripePriceId: "price_example1"
-  },
-  {
-    id: 2,
-    name: "Neon Cityscape Poster",
-    description: "Cyberpunk-inspired poster, 18x24 inches",
-    price: 25,
-    image: "../assets/blog-images/blog-placeholder-2.jpg",
-    category: "Posters",
-    inStock: true,
-    stripePriceId: "price_example2"
-  },
-  {
-    id: 3,
-    name: "Abstract Flow Canvas",
-    description: "Gallery-wrapped canvas print, 24x36 inches",
-    price: 85,
-    image: "../assets/blog-images/blog-placeholder-3.jpg",
-    category: "Canvas",
-    inStock: true,
-    stripePriceId: "price_example3"
-  },
-  {
-    id: 4,
-    name: "Glitch Portrait T-Shirt",
-    description: "Premium cotton t-shirt with original artwork",
-    price: 35,
-    image: "../assets/blog-images/blog-placeholder-4.jpg",
-    category: "Apparel",
-    inStock: true,
-    stripePriceId: "price_example4"
-  },
-  {
-    id: 5,
-    name: "Data Visualization Hoodie",
-    description: "Comfortable hoodie with digital art design",
-    price: 55,
-    image: "../assets/blog-images/blog-placeholder-5.jpg",
-    category: "Apparel",
-    inStock: false,
-    stripePriceId: "price_example5"
-  },
-  {
-    id: 6,
-    name: "Minimalist Geometry Mug",
-    description: "Ceramic mug with geometric design",
-    price: 18,
-    image: "../assets/blog-images/blog-placeholder-1.jpg",
-    category: "Accessories",
-    inStock: true,
-    stripePriceId: "price_example6"
+// Define product type
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  category: string;
+  inStock: boolean;
+  stripePriceId: string;
+}
+
+// Fetch products from API
+let products: Product[] = [];
+let categories: string[] = ["All"];
+
+try {
+  const response = await fetch(`${Astro.url.origin}/api/stripe/products`);
+  if (response.ok) {
+    const data = await response.json();
+    if (data.success) {
+      // Filter out products without prices and map the data safely
+      products = data.products
+        .filter((product: any) => product.default_price && product.default_price.unit_amount)
+        .map((product: any): Product => ({
+          id: product.id,
+          name: product.name,
+          description: product.description,
+          price: product.default_price.unit_amount / 100, // Convert cents to dollars
+          image: product.images?.[0] || "../assets/blog-images/blog-placeholder-1.jpg",
+          category: product.metadata?.category || "Uncategorized",
+          inStock: product.metadata?.inStock !== 'false', // Default to true unless explicitly set to false
+          stripePriceId: product.default_price.id
+        }));
+      
+      // Extract unique categories
+      const uniqueCategories = [...new Set(products.map((p: Product) => p.category))];
+      categories = ["All", ...uniqueCategories];
+      
+      console.log('🛍️ Products loaded from API:', products);
+      console.log(`📊 Found ${products.length} products with valid prices out of ${data.products.length} total products`);
+    }
   }
-];
-
-const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessories"];
+} catch (error) {
+  console.error('❌ Error loading products:', error);
+  // Fallback to empty products array
+}
 ---
 
 <BaseLayout title="Shop - Junkerri" description="Original artwork, prints, and merchandise">
@@ -273,29 +258,54 @@ const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessorie
 
   <script>
     // Cart functionality
-    let cart = [];
+    interface CartItem {
+      id: string;
+      name: string;
+      price: number;
+      image: string;
+      quantity: number;
+    }
+
+    let cart: CartItem[] = [];
     const cartSidebar = document.getElementById('cart-sidebar');
     const cartOverlay = document.getElementById('cart-overlay');
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
-    const checkoutBtn = document.getElementById('checkout-btn');
+    const checkoutBtn = document.getElementById('checkout-btn') as HTMLButtonElement;
     const closeCart = document.getElementById('close-cart');
 
-    // Product data for cart
-    const productData = {
-      1: { name: "Digital Dreams Print", price: 45, image: "../assets/blog-images/blog-placeholder-1.jpg" },
-      2: { name: "Neon Cityscape Poster", price: 25, image: "../assets/blog-images/blog-placeholder-2.jpg" },
-      3: { name: "Abstract Flow Canvas", price: 85, image: "../assets/blog-images/blog-placeholder-3.jpg" },
-      4: { name: "Glitch Portrait T-Shirt", price: 35, image: "../assets/blog-images/blog-placeholder-4.jpg" },
-      5: { name: "Data Visualization Hoodie", price: 55, image: "../assets/blog-images/blog-placeholder-5.jpg" },
-      6: { name: "Minimalist Geometry Mug", price: 18, image: "../assets/blog-images/blog-placeholder-1.jpg" }
-    };
+    // Product data for cart - will be populated dynamically from Stripe data
+    let productData: Record<string, { name: string; price: number; image: string }> = {};
+
+    // Function to update product data when products are loaded
+    function updateProductData() {
+      const productElements = document.querySelectorAll('.product-item');
+      productElements.forEach(element => {
+        const productId = element.getAttribute('data-product-id');
+        const productName = element.querySelector('h3')?.textContent;
+        const productPrice = element.querySelector('.text-primary')?.textContent;
+        const productImage = element.querySelector('img')?.getAttribute('src');
+        
+        if (productId && productName && productPrice && productImage) {
+          const price = parseFloat(productPrice.replace('$', ''));
+          productData[productId] = {
+            name: productName,
+            price: price,
+            image: productImage
+          };
+        }
+      });
+      console.log('🛒 Product data updated for cart:', productData);
+    }
 
     // Add to cart functionality
     document.querySelectorAll('[data-product-id]').forEach(button => {
       button.addEventListener('click', () => {
-        const productId = parseInt(button.getAttribute('data-product-id'));
+        const productId = button.getAttribute('data-product-id');
+        if (!productId) return;
+        
         const product = productData[productId];
+        if (!product) return;
         
         // Check if product is already in cart
         const existingItem = cart.find(item => item.id === productId);
@@ -317,6 +327,8 @@ const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessorie
     });
 
     function updateCart() {
+      if (!cartItems || !cartTotal || !checkoutBtn) return;
+      
       // Update cart items display
       cartItems.innerHTML = cart.map(item => `
         <div class="flex items-center gap-4 p-4 border rounded-lg">
@@ -326,9 +338,9 @@ const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessorie
             <p class="text-sm text-muted-foreground">$${item.price}</p>
           </div>
           <div class="flex items-center gap-2">
-            <button class="text-muted-foreground hover:text-foreground" onclick="updateQuantity(${item.id}, -1)">-</button>
+            <button class="text-muted-foreground hover:text-foreground" onclick="updateQuantity('${item.id}', -1)">-</button>
             <span class="w-8 text-center">${item.quantity}</span>
-            <button class="text-muted-foreground hover:text-foreground" onclick="updateQuantity(${item.id}, 1)">+</button>
+            <button class="text-muted-foreground hover:text-foreground" onclick="updateQuantity('${item.id}', 1)">+</button>
           </div>
         </div>
       `).join('');
@@ -341,7 +353,7 @@ const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessorie
       checkoutBtn.disabled = cart.length === 0;
     }
 
-    function updateQuantity(productId, change) {
+    function updateQuantity(productId: string, change: number) {
       const item = cart.find(item => item.id === productId);
       if (item) {
         item.quantity += change;
@@ -353,49 +365,74 @@ const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessorie
     }
 
     function openCart() {
+      if (!cartSidebar || !cartOverlay) return;
       cartSidebar.classList.remove('translate-x-full');
       cartOverlay.classList.remove('hidden');
     }
 
     function closeCartSidebar() {
+      if (!cartSidebar || !cartOverlay) return;
       cartSidebar.classList.add('translate-x-full');
       cartOverlay.classList.add('hidden');
     }
 
     // Event listeners
-    closeCart.addEventListener('click', closeCartSidebar);
-    cartOverlay.addEventListener('click', closeCartSidebar);
+    if (closeCart) {
+      closeCart.addEventListener('click', closeCartSidebar);
+    }
+    if (cartOverlay) {
+      cartOverlay.addEventListener('click', closeCartSidebar);
+    }
 
     // Checkout functionality (Stripe integration)
-    checkoutBtn.addEventListener('click', async () => {
-      if (cart.length === 0) return;
-      
-      try {
-        // This would integrate with your Stripe backend
-        // For now, we'll just show an alert
-        alert('Redirecting to Stripe checkout...');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', async () => {
+        if (cart.length === 0) return;
         
-        // Example Stripe checkout integration:
-        // const response = await fetch('/api/create-checkout-session', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({ items: cart })
-        // });
-        // const { url } = await response.json();
-        // window.location.href = url;
-      } catch (error) {
-        console.error('Checkout error:', error);
-        alert('Checkout failed. Please try again.');
-      }
-    });
+        try {
+          // Prepare items for Stripe checkout
+          const checkoutItems = cart.map(item => ({
+            price: item.id, // This should be the Stripe price ID
+            quantity: item.quantity
+          }));
+
+          console.log('🛒 Creating checkout session for:', checkoutItems);
+          
+          // Create checkout session
+          const response = await fetch('/api/stripe/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: checkoutItems })
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          
+          if (data.success && data.url) {
+            console.log('✅ Redirecting to Stripe checkout...');
+            window.location.href = data.url;
+          } else {
+            throw new Error(data.error || 'Checkout failed');
+          }
+          
+        } catch (error) {
+          console.error('❌ Checkout error:', error);
+          alert(`Checkout failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+      });
+    }
 
     // Filter functionality
     const filterButtons = document.querySelectorAll('[data-category]');
-    const productItems = document.querySelectorAll('.product-item[data-category]'); // Only select product items, not filter buttons
+    const productItems = document.querySelectorAll('.product-item');
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         const category = button.getAttribute('data-category');
+        if (!category) return;
         
         // Update active button
         filterButtons.forEach(btn => btn.classList.remove('bg-primary', 'text-primary-foreground'));
@@ -404,12 +441,17 @@ const categories = ["All", "Prints", "Posters", "Canvas", "Apparel", "Accessorie
         // Filter products
         productItems.forEach(item => {
           if (category === 'All' || item.getAttribute('data-category') === category) {
-            item.style.display = 'block';
+            (item as HTMLElement).style.display = 'block';
           } else {
-            item.style.display = 'none';
+            (item as HTMLElement).style.display = 'none';
           }
         });
       });
     });
+
+    // Initialize product data for cart after page loads
+    setTimeout(() => {
+      updateProductData();
+    }, 100);
   </script>
 </BaseLayout>

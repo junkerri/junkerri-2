@@ -2,7 +2,8 @@
 
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
+import vercel from "@astrojs/vercel";
 
 import react from "@astrojs/react";
 
@@ -11,7 +12,32 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: "https://junkerri.com",
+  output: "static", // Static by default, SSR only when prerender = false
+  adapter: vercel({
+    // Vercel configuration
+    webAnalytics: {
+      enabled: false,
+    },
+  }),
   integrations: [mdx(), sitemap(), react()],
+
+  env: {
+    schema: {
+      STRIPE_PUBLIC_KEY: envField.string({
+        context: "client",
+        access: "public",
+      }),
+      STRIPE_SECRET_KEY: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+      SITE: envField.string({
+        context: "server",
+        access: "public",
+        default: "https://junkerri.com",
+      }),
+    },
+  },
 
   vite: {
     plugins: [tailwindcss()],
