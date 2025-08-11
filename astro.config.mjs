@@ -34,7 +34,11 @@ export default defineConfig({
       SITE: envField.string({
         context: "server",
         access: "public",
-        default: "https://junkerri.com",
+        default: process.env.VERCEL_PROJECT_PRODUCTION_URL
+          ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` // Production deployment
+          : process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}` // Preview/branch deployment
+          : "https://junkerri.com", // Local development fallback
       }),
     },
   },
