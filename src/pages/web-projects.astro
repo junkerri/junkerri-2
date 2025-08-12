@@ -15,7 +15,7 @@ const projects = [
     description: "A worker-owned tech cooperative website for creatives, musicians, and web technologists based in Austin, TX. Features democratic decision-making, community empowerment, and sustainable practices.",
     tech: ["Astro", "React", "Tailwind CSS", "TypeScript", "Vercel"],
     image: pulseCoop,
-    liveUrl: "https://pulse-coop.vercel.app/",
+    liveUrl: "https://pulse.coop",
     githubUrl: "https://github.com/junkerri/pulse-coop",
     category: "Business Web App",
     featured: true
@@ -144,7 +144,7 @@ const featuredProject = projects.find(p => p.featured) || projects[0];
         <div class="flex flex-wrap gap-4 justify-center">
           {categories.map((category) => (
             <button 
-              class="category-filter px-6 py-2 rounded-full border border-input bg-background text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              class="category-filter px-6 py-2 rounded-full border border-input bg-background text-foreground text-sm font-medium transition-colors hover:!bg-primary hover:!text-black hover:!border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               data-category={category}
             >
               {category}

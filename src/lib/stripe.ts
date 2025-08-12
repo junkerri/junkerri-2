@@ -45,7 +45,8 @@ export async function fetchStripeProducts() {
 
 // Create a checkout session
 export async function createCheckoutSession(
-  items: Array<{ price: string; quantity: number }>
+  items: Array<{ price: string; quantity: number }>,
+  currentPageUrl?: string
 ) {
   const stripe = getStripe();
   if (!stripe) {
@@ -53,16 +54,16 @@ export async function createCheckoutSession(
   }
 
   try {
-    // Use dynamic site URL for different environments
-    const siteUrl = SITE || "https://junkerri.com";
-    console.log("🌐 Using site URL for checkout:", siteUrl);
+    // Use current page URL if provided, otherwise fall back to site URL
+    const baseUrl = currentPageUrl || SITE || "https://junkerri.com";
+    console.log("🌐 Using base URL for checkout:", baseUrl);
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: items,
       mode: "payment",
-      success_url: `${siteUrl}/shop?success=true`,
-      cancel_url: `${siteUrl}/shop?canceled=true`,
+      success_url: `${baseUrl}?success=true`,
+      cancel_url: `${baseUrl}?canceled=true`,
     });
 
     return session;

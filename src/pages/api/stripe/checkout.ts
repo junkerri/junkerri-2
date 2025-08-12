@@ -6,7 +6,7 @@ export const prerender = false; // Enable server-side rendering
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { items } = body;
+    const { items, currentPageUrl } = body;
 
     if (!items || !Array.isArray(items) || items.length === 0) {
       return new Response(JSON.stringify({
@@ -21,9 +21,10 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     console.log('🛒 Creating checkout session for items:', items);
+    console.log('🌐 Current page URL for redirect:', currentPageUrl);
 
-    // Create Stripe checkout session
-    const session = await createCheckoutSession(items);
+    // Create Stripe checkout session with current page URL
+    const session = await createCheckoutSession(items, currentPageUrl);
 
     console.log('✅ Checkout session created:', session.id);
 

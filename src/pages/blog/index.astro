@@ -12,7 +12,7 @@ const posts = (await getCollection('blog')).sort(
 );
 
 // Get unique categories
-const categories = ['all', 'essay', 'short-story', 'poem', 'article', 'review'] as const;
+const categories = ['all', 'essay', 'short-story', 'poem', 'article', 'review', 'thoughts'] as const;
 type Category = typeof categories[number];
 
 const categoryLabels: Record<Category, string> = {
@@ -21,7 +21,8 @@ const categoryLabels: Record<Category, string> = {
   'short-story': 'Short Stories',
   'poem': 'Poems',
   'article': 'Articles',
-  'review': 'Reviews'
+  'review': 'Reviews',
+  'thoughts': 'Thoughts'
 };
 ---
 
@@ -112,17 +113,14 @@ const categoryLabels: Record<Category, string> = {
 				<!-- Category Filter -->
 				<div class="mb-12 text-center">
 					<div class="flex flex-wrap justify-center gap-4" id="category-filter">
-						{categories.map((category) => (
-							<button 
-								class="category-btn px-6 py-3 rounded-full border-2 transition-all duration-300 font-medium text-sm uppercase tracking-wider hover:scale-105"
-								data-category={category}
-								class:list={[
-									category === 'all' ? 'border-cyberpunk-cyan text-cyberpunk-cyan hover:bg-cyberpunk-cyan hover:text-black' : 'border-cyberpunk-pink text-cyberpunk-pink hover:bg-cyberpunk-pink hover:text-black'
-								]}
-							>
-								{categoryLabels[category]}
-							</button>
-						))}
+            {categories.map((category) => (
+              <button 
+                class="category-filter px-6 py-2 rounded-full border border-input bg-background text-foreground text-sm font-medium transition-colors hover:!bg-primary hover:!text-black hover:!border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[active=true]:bg-primary data-[active=true]:!text-black data-[active=true]:border-transparent"
+                data-category={category}
+              >
+                {categoryLabels[category]}
+              </button>
+            ))}
 					</div>
 				</div>
 
@@ -157,50 +155,43 @@ const categoryLabels: Record<Category, string> = {
 	<Footer />
 
 	<script>
-		// Category filtering functionality
+		// Category filtering functionality (consistent with Art/Shop)
 		document.addEventListener('DOMContentLoaded', function() {
-			const categoryButtons = document.querySelectorAll('.category-btn') as NodeListOf<HTMLButtonElement>;
-			const blogPosts = document.querySelectorAll('[data-category]') as NodeListOf<HTMLElement>;
+			const filterButtons = document.querySelectorAll<HTMLButtonElement>('.category-filter');
+			const blogPosts = document.querySelectorAll<HTMLElement>('#blog-posts [data-category]');
 
-			categoryButtons.forEach((button: HTMLButtonElement) => {
-				button.addEventListener('click', function(this: HTMLButtonElement) {
-					const selectedCategory = this.getAttribute('data-category');
-					
-					// Update active button state
-					categoryButtons.forEach((btn: HTMLButtonElement) => {
-						btn.classList.remove('bg-cyberpunk-cyan', 'text-black', 'bg-cyberpunk-pink', 'text-black');
-						if (btn.getAttribute('data-category') === 'all') {
-							btn.classList.add('border-cyberpunk-cyan', 'text-cyberpunk-cyan');
-						} else {
-							btn.classList.add('border-cyberpunk-pink', 'text-cyberpunk-pink');
-						}
-					});
+			function setActiveButton(active: HTMLButtonElement) {
+				filterButtons.forEach(btn => btn.removeAttribute('data-active'));
+				active.setAttribute('data-active', 'true');
+			}
 
-					if (selectedCategory === 'all') {
-						this.classList.add('bg-cyberpunk-cyan', 'text-black');
-						this.classList.remove('border-cyberpunk-cyan', 'text-cyberpunk-cyan');
-					} else {
-						this.classList.add('bg-cyberpunk-pink', 'text-black');
-						this.classList.remove('border-cyberpunk-pink', 'text-cyberpunk-pink');
+			function applyFilter(category: string) {
+				blogPosts.forEach((post) => {
+					const isMatch = category === 'all' || post.getAttribute('data-category') === category;
+					post.classList.toggle('hidden', !isMatch);
+					if (isMatch) {
+						post.style.animation = 'fadeIn 0.5s ease-in-out';
 					}
+				});
+				// Persist selection in URL hash without adding history entries
+				history.replaceState(null, '', `#${category}`);
+			}
 
-					// Filter posts
-					blogPosts.forEach((post: HTMLElement) => {
-						const postCategory = post.getAttribute('data-category');
-						if (selectedCategory === 'all' || postCategory === selectedCategory) {
-							post.style.display = 'block';
-							post.style.animation = 'fadeIn 0.5s ease-in-out';
-						} else {
-							post.style.display = 'none';
-						}
-					});
+			filterButtons.forEach((button) => {
+				button.addEventListener('click', () => {
+					const category = button.getAttribute('data-category');
+					if (!category) return;
+					setActiveButton(button);
+					applyFilter(category);
 				});
 			});
 
-			// Set initial active state
-			const allButton = document.querySelector('[data-category="all"]') as HTMLButtonElement;
-			if (allButton) {
-				allButton.classList.add('bg-cyberpunk-cyan', 'text-black');
+			// Initialize from URL hash if present
+			const initial = (location.hash?.replace('#','') || 'all');
+			const initialButton = Array.from(filterButtons).find(btn => btn.getAttribute('data-category') === initial) || Array.from(filterButtons).find(btn => btn.getAttribute('data-category') === 'all');
+			if (initialButton) {
+				setActiveButton(initialButton);
+				applyFilter(initial);
 			}
 		});
 	</script>
@@ -211,16 +202,7 @@ const categoryLabels: Record<Category, string> = {
 			to { opacity: 1; transform: translateY(0); }
 		}
 
-		.category-btn {
-			box-shadow: 0 0 10px rgba(0, 255, 177, 0.3);
-		}
-
-		.category-btn:hover {
-			box-shadow: 0 0 20px rgba(0, 255, 177, 0.5);
-		}
-
-		.category-badge {
-			box-shadow: 0 0 8px rgba(0, 255, 177, 0.2);
-		}
+		/* optional hover glow for filters */
+		.category-filter:hover { box-shadow: 0 0 12px rgba(0,0,0,0.08); }
 	</style>
 </BaseLayout>
