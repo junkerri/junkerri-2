@@ -12,7 +12,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: "https://junkerri.com",
-  output: "static", // Static by default, SSR only when prerender = false
+  output: "server", // Server mode required for API routes to work
   adapter: vercel({
     // Vercel configuration
     webAnalytics: {

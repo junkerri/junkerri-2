@@ -1,0 +1,226 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// Get unique categories
+const categories = ['all', 'essay', 'short-story', 'poem', 'article', 'review'] as const;
+type Category = typeof categories[number];
+
+const categoryLabels: Record<Category, string> = {
+  'all': 'All Posts',
+  'essay': 'Essays',
+  'short-story': 'Short Stories',
+  'poem': 'Poems',
+  'article': 'Articles',
+  'review': 'Reviews'
+};
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<Header />
+	<main class="blog-page min-h-screen">
+		<!-- Hero Section with Cosmic Animations -->
+		<section class="py-12 relative overflow-hidden cosmic-universe-background">
+			<!-- Cosmic Background -->
+			<div class="cosmic-bg"></div>
+			
+			<!-- Stars Layer -->
+			<div class="stars-container">
+				<div class="stars stars-1"></div>
+				<div class="stars stars-2"></div>
+				<div class="stars stars-3"></div>
+			</div>
+			
+			<!-- Nebulae and Cosmic Clouds -->
+			<div class="cosmic-nebulae">
+				<div class="nebula nebula-1"></div>
+				<div class="nebula nebula-2"></div>
+				<div class="nebula nebula-3"></div>
+			</div>
+			
+			<!-- Floating Space Geometry -->
+			<div class="cosmic-geometry">
+				<div class="cosmic-cube cosmic-cube-1"></div>
+				<div class="cosmic-pyramid cosmic-pyramid-1"></div>
+				<div class="cosmic-sphere cosmic-sphere-1"></div>
+				<div class="cosmic-cube cosmic-cube-2"></div>
+				<div class="cosmic-pyramid cosmic-pyramid-2"></div>
+				<div class="cosmic-sphere cosmic-sphere-2"></div>
+				<div class="cosmic-asteroid"></div>
+				<div class="cosmic-satellite"></div>
+				
+				<!-- Additional geometric elements for more visual impact -->
+				<div class="cosmic-cube" style="top: 25%; left: 15%; transform: rotate(60deg) scale(0.8); animation-delay: 2s;"></div>
+				<div class="cosmic-pyramid" style="top: 75%; right: 25%; transform: scale(0.6); animation-delay: 1.5s;"></div>
+				<div class="cosmic-sphere" style="top: 45%; left: 75%; transform: scale(0.7); animation-delay: 2.5s;"></div>
+				<div class="cosmic-cube" style="bottom: 30%; right: 10%; transform: rotate(30deg) scale(0.5); animation-delay: 1s;"></div>
+			</div>
+			
+			<!-- Cosmic Dust Particles -->
+			<div class="cosmic-dust">
+				<div class="dust-particle"></div>
+				<div class="dust-particle"></div>
+				<div class="dust-particle"></div>
+				<div class="dust-particle"></div>
+				<div class="dust-particle"></div>
+				<div class="dust-particle"></div>
+				<div class="dust-particle"></div>
+				<div class="dust-particle"></div>
+			</div>
+			
+			<!-- Shooting Stars -->
+			<div class="shooting-stars">
+				<div class="shooting-star"></div>
+				<div class="shooting-star"></div>
+				<div class="shooting-star"></div>
+			</div>
+			
+			<!-- Mandela Art Circles - Same as home page -->
+			<div class="mandela-orb mandela-orb-1" style="position: absolute; top: 20%; left: 20%; width: 100px; height: 100px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
+			<div class="mandela-orb mandela-orb-2" style="position: absolute; top: 60%; right: 20%; width: 150px; height: 150px; background: linear-gradient(135deg, #e500ff, #5e00ff, #00ffb1); border-radius: 50%; box-shadow: 0 0 20px rgba(229, 0, 255, 0.5); z-index: 5;"></div>
+			<div class="mandela-orb mandela-orb-3" style="position: absolute; bottom: 20%; left: 60%; width: 80px; height: 80px; background: linear-gradient(135deg, #5e00ff, #00ffb1, #e500ff); border-radius: 50%; box-shadow: 0 0 20px rgba(94, 0, 255, 0.5); z-index: 5;"></div>
+			<div class="mandela-orb mandela-orb-4" style="position: absolute; top: 40%; left: 50%; width: 120px; height: 120px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
+			
+			<div class="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/10 via-cyberpunk-pink/15 to-cyberpunk-purple/20"></div>
+			<div class="container relative z-10">
+				<div class="max-w-4xl mx-auto text-center">
+					<h1 class="cosmic-title text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-wider leading-tight">
+						<span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0s;">B</span>
+						<span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.1s;">L</span>
+						<span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.2s;">O</span>
+						<span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.3s;">G</span>
+					</h1>
+					<p class="text-xl text-cyberpunk-pink/90 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 1.2s;">
+						Thoughts, stories, and creative explorations across various forms of expression.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Blog Content Section -->
+		<section class="py-16">
+			<div class="container">
+				<!-- Category Filter -->
+				<div class="mb-12 text-center">
+					<div class="flex flex-wrap justify-center gap-4" id="category-filter">
+						{categories.map((category) => (
+							<button 
+								class="category-btn px-6 py-3 rounded-full border-2 transition-all duration-300 font-medium text-sm uppercase tracking-wider hover:scale-105"
+								data-category={category}
+								class:list={[
+									category === 'all' ? 'border-cyberpunk-cyan text-cyberpunk-cyan hover:bg-cyberpunk-cyan hover:text-black' : 'border-cyberpunk-pink text-cyberpunk-pink hover:bg-cyberpunk-pink hover:text-black'
+								]}
+							>
+								{categoryLabels[category]}
+							</button>
+						))}
+					</div>
+				</div>
+
+				<!-- Blog Posts Grid -->
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="blog-posts">
+					{
+						posts.map((post) => (
+							<li class="card group hover:shadow-lg transition-all duration-300" data-category={post.data.category}>
+								<a href={`/blog/${post.id}/`} class="block">
+									<div class="p-6">
+										<div class="flex items-center justify-between mb-3">
+											<span class="category-badge px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider bg-cyberpunk-cyan/10 text-cyberpunk-cyan border border-cyberpunk-cyan/20">
+												{post.data.category}
+											</span>
+											<p class="date text-sm text-muted-foreground">
+												<FormattedDate date={post.data.pubDate} />
+											</p>
+										</div>
+										<h4 class="title text-xl font-semibold mb-2">{post.data.title}</h4>
+										{post.data.description && (
+											<p class="text-muted-foreground line-clamp-3">{post.data.description}</p>
+										)}
+									</div>
+								</a>
+							</li>
+						))
+					}
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer />
+
+	<script>
+		// Category filtering functionality
+		document.addEventListener('DOMContentLoaded', function() {
+			const categoryButtons = document.querySelectorAll('.category-btn') as NodeListOf<HTMLButtonElement>;
+			const blogPosts = document.querySelectorAll('[data-category]') as NodeListOf<HTMLElement>;
+
+			categoryButtons.forEach((button: HTMLButtonElement) => {
+				button.addEventListener('click', function(this: HTMLButtonElement) {
+					const selectedCategory = this.getAttribute('data-category');
+					
+					// Update active button state
+					categoryButtons.forEach((btn: HTMLButtonElement) => {
+						btn.classList.remove('bg-cyberpunk-cyan', 'text-black', 'bg-cyberpunk-pink', 'text-black');
+						if (btn.getAttribute('data-category') === 'all') {
+							btn.classList.add('border-cyberpunk-cyan', 'text-cyberpunk-cyan');
+						} else {
+							btn.classList.add('border-cyberpunk-pink', 'text-cyberpunk-pink');
+						}
+					});
+
+					if (selectedCategory === 'all') {
+						this.classList.add('bg-cyberpunk-cyan', 'text-black');
+						this.classList.remove('border-cyberpunk-cyan', 'text-cyberpunk-cyan');
+					} else {
+						this.classList.add('bg-cyberpunk-pink', 'text-black');
+						this.classList.remove('border-cyberpunk-pink', 'text-cyberpunk-pink');
+					}
+
+					// Filter posts
+					blogPosts.forEach((post: HTMLElement) => {
+						const postCategory = post.getAttribute('data-category');
+						if (selectedCategory === 'all' || postCategory === selectedCategory) {
+							post.style.display = 'block';
+							post.style.animation = 'fadeIn 0.5s ease-in-out';
+						} else {
+							post.style.display = 'none';
+						}
+					});
+				});
+			});
+
+			// Set initial active state
+			const allButton = document.querySelector('[data-category="all"]') as HTMLButtonElement;
+			if (allButton) {
+				allButton.classList.add('bg-cyberpunk-cyan', 'text-black');
+			}
+		});
+	</script>
+
+	<style>
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(20px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		.category-btn {
+			box-shadow: 0 0 10px rgba(0, 255, 177, 0.3);
+		}
+
+		.category-btn:hover {
+			box-shadow: 0 0 20px rgba(0, 255, 177, 0.5);
+		}
+
+		.category-badge {
+			box-shadow: 0 0 8px rgba(0, 255, 177, 0.2);
+		}
+	</style>
+</BaseLayout>

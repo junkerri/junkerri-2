@@ -16,8 +16,8 @@ import blogPlaceholder1 from '../assets/blog-images/blog-placeholder-1.jpg';
   <Header />
   
   <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section class="hero-section py-12 relative overflow-hidden cosmic-universe-background">
+    <!-- Restored custom homepage hero with animated radial/rectangular light -->
+    <section class="hero-section py-12 relative overflow-hidden cosmic-universe-background min-h-[300px]">
       <!-- Cosmic Background -->
       <div class="cosmic-bg"></div>
       
@@ -77,6 +77,11 @@ import blogPlaceholder1 from '../assets/blog-images/blog-placeholder-1.jpg';
       <div class="mandela-orb mandela-orb-2" style="position: absolute; top: 60%; right: 20%; width: 150px; height: 150px; background: linear-gradient(135deg, #e500ff, #5e00ff, #00ffb1); border-radius: 50%; box-shadow: 0 0 20px rgba(229, 0, 255, 0.5); z-index: 5;"></div>
       <div class="mandela-orb mandela-orb-3" style="position: absolute; bottom: 20%; left: 60%; width: 80px; height: 80px; background: linear-gradient(135deg, #5e00ff, #00ffb1, #e500ff); border-radius: 50%; box-shadow: 0 0 20px rgba(94, 0, 255, 0.5); z-index: 5;"></div>
       <div class="mandela-orb mandela-orb-4" style="position: absolute; top: 40%; left: 50%; width: 120px; height: 120px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
+
+      <!-- Radial rectangular light (restored) -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="mx-auto h-[240px] w-[70%] max-w-4xl rounded-2xl bg-gradient-to-tr from-cyberpunk-cyan/25 via-cyberpunk-pink/20 to-cyberpunk-purple/25 blur-2xl animate-[spin_20s_linear_infinite] origin-center"></div>
+      </div>
       
       <div class="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/10 via-cyberpunk-pink/15 to-cyberpunk-purple/20"></div>
       <div class="container relative z-10">

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import pulseCoop from '../assets/photos/pulse-coop.jpg';
@@ -50,93 +51,7 @@ const featuredProject = projects.find(p => p.featured) || projects[0];
   <Header />
   
   <main class="web-projects-page min-h-screen">
-    <!-- Hero Section -->
-    <section class="py-12 relative overflow-hidden cosmic-universe-background">
-      <!-- Cosmic Background -->
-      <div class="cosmic-bg"></div>
-      
-      <!-- Stars Layer -->
-      <div class="stars-container">
-        <div class="stars stars-1"></div>
-        <div class="stars stars-2"></div>
-        <div class="stars stars-3"></div>
-      </div>
-      
-      <!-- Nebulae and Cosmic Clouds -->
-      <div class="cosmic-nebulae">
-        <div class="nebula nebula-1"></div>
-        <div class="nebula nebula-2"></div>
-        <div class="nebula nebula-3"></div>
-      </div>
-      
-      <!-- Floating Space Geometry -->
-      <div class="cosmic-geometry">
-        <div class="cosmic-cube cosmic-cube-1"></div>
-        <div class="cosmic-pyramid cosmic-pyramid-1"></div>
-        <div class="cosmic-sphere cosmic-sphere-1"></div>
-        <div class="cosmic-cube cosmic-cube-2"></div>
-        <div class="cosmic-pyramid cosmic-pyramid-2"></div>
-        <div class="cosmic-sphere cosmic-sphere-2"></div>
-        <div class="cosmic-asteroid"></div>
-        <div class="cosmic-satellite"></div>
-        
-        <!-- Additional geometric elements for more visual impact -->
-        <div class="cosmic-cube" style="top: 25%; left: 15%; transform: rotate(60deg) scale(0.8); animation-delay: 2s;"></div>
-        <div class="cosmic-pyramid" style="top: 75%; right: 25%; transform: scale(0.6); animation-delay: 1.5s;"></div>
-        <div class="cosmic-sphere" style="top: 45%; left: 75%; transform: scale(0.7); animation-delay: 2.5s;"></div>
-        <div class="cosmic-cube" style="bottom: 30%; right: 10%; transform: rotate(30deg) scale(0.5); animation-delay: 1s;"></div>
-      </div>
-      
-      <!-- Cosmic Dust Particles -->
-      <div class="cosmic-dust">
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-      </div>
-      
-      <!-- Shooting Stars -->
-      <div class="shooting-stars">
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
-      </div>
-      
-      <!-- Mandela Art Circles -->
-      <div class="mandela-orb mandela-orb-1" style="position: absolute; top: 20%; left: 20%; width: 100px; height: 100px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
-      <div class="mandela-orb mandela-orb-2" style="position: absolute; top: 60%; right: 20%; width: 150px; height: 150px; background: linear-gradient(135deg, #e500ff, #5e00ff, #00ffb1); border-radius: 50%; box-shadow: 0 0 20px rgba(229, 0, 255, 0.5); z-index: 5;"></div>
-      <div class="mandela-orb mandela-orb-3" style="position: absolute; bottom: 20%; left: 60%; width: 80px; height: 80px; background: linear-gradient(135deg, #5e00ff, #00ffb1, #e500ff); border-radius: 50%; box-shadow: 0 0 20px rgba(94, 0, 255, 0.5); z-index: 5;"></div>
-      <div class="mandela-orb mandela-orb-4" style="position: absolute; top: 40%; left: 50%; width: 120px; height: 120px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
-      
-      <div class="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/10 via-cyberpunk-pink/15 to-cyberpunk-purple/20"></div>
-      <div class="container relative z-10">
-        <div class="text-center space-y-6">
-          <h1 class="cosmic-title text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-wider leading-tight">
-            <div class="flex flex-col items-center">
-              <div class="flex justify-center">
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0s;">W</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.1s;">E</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.2s;">B</span>
-              </div>
-              <div class="flex justify-center mt-2">
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.4s;">P</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.5s;">R</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.6s;">O</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.7s;">J</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.8s;">E</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.9s;">C</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 1.0s;">T</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 1.1s;">S</span>
-              </div>
-            </div>
-          </h1>
-        </div>
-      </div>
-    </section>
+    <Hero title={["WEB", "PROJECTS"]} minHeight={300} />
 
     <!-- Project Categories -->
     <section class="py-8">
