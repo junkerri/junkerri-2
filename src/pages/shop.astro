@@ -408,7 +408,7 @@ try {
   <script>
     // Cart functionality
     interface CartItem {
-      id: string; // Product ID for display
+      id: string; // Composite key: productId or productId__SIZE
       priceId: string; // Stripe price ID for checkout
       name: string;
       price: number;
@@ -450,9 +450,14 @@ try {
     // Initialize cart from localStorage
     cart = loadCart();
     console.log('🛒 Cart loaded from storage:', cart);
+    // Render cart immediately so visiting /shop shows saved items without needing to add an item first
+    updateCart();
+    updateCartBadge();
 
     // Product data for cart - will be populated dynamically from Stripe data
     let productData: Record<string, { name: string; price: number; image: string; priceId: string }> = {};
+    // Track currently selected size per product
+    let selectedSizeByProduct: Record<string, string | null> = {};
 
     // Function to update product data when products are loaded
     function updateProductData() {
@@ -533,16 +538,20 @@ try {
         return;
       }
       
-      // Check if product is already in cart
-      const existingItem = cart.find(item => item.id === productId);
+      // Compose a cart key by product + selected size so different sizes are separate lines
+      const selectedSize = selectedSizeByProduct[productId] || null;
+      const cartKey = selectedSize ? `${productId}__${selectedSize}` : productId;
+
+      // Check if product (with size) is already in cart
+      const existingItem = cart.find(item => item.id === cartKey);
       if (existingItem) {
         existingItem.quantity += 1;
         showNotification(`Updated quantity for ${product.name}`, 'success');
       } else {
         cart.push({
-          id: productId,
+          id: cartKey,
           priceId: product.priceId,
-          name: product.name,
+          name: selectedSize ? `${product.name} (${selectedSize})` : product.name,
           price: product.price,
           image: product.image,
           quantity: 1
@@ -594,6 +603,8 @@ try {
       
       // Update cart count badge if it exists
       updateCartBadge();
+      // Notify header to refresh badge
+      window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { count: cart.reduce((s, i) => s + i.quantity, 0) } }));
     }
 
     // Update shipping information based on order total
@@ -723,7 +734,7 @@ try {
           
           // Prepare items for Stripe checkout
           const checkoutItems = cart.map(item => ({
-            price: item.priceId, // Use Stripe price ID
+            price: item.priceId,
             quantity: item.quantity
           }));
 
@@ -867,6 +878,12 @@ try {
       setupSizeToggles();
     }, 100);
 
+    // Auto-open cart if query param indicates so (e.g., /shop?cart=open)
+    const urlParamsCart = new URLSearchParams(window.location.search).get('cart');
+    if (urlParamsCart === 'open') {
+      setTimeout(() => openCart(), 250);
+    }
+
     // Check for Stripe redirect messages
     function checkStripeRedirect() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -940,10 +957,11 @@ try {
           target.classList.remove('border-input', 'bg-background', 'text-foreground');
           target.classList.add('bg-primary', 'text-white', 'border-primary');
           
-          // Update price display
-          const priceElement = document.querySelector(`[data-product-id="${productId}"] .text-primary`);
+          // Update price display within the same product card
+          const productContainer = target.closest('.product-item');
+          const priceElement = productContainer?.querySelector('.text-primary');
           if (priceElement) {
-            priceElement.textContent = `$${price}`;
+            (priceElement as HTMLElement).textContent = `$${price}`;
             console.log(`💰 Updated price for ${productId} to $${price}`);
           } else {
             console.log(`❌ Could not find price element for ${productId}`);
@@ -953,6 +971,9 @@ try {
           if (productData[productId]) {
             productData[productId].price = parseFloat(price);
           }
+
+          // Track selected size for this product so cart items are unique per size
+          selectedSizeByProduct[productId] = size;
         });
       });
     }

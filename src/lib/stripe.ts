@@ -105,7 +105,7 @@ export async function fetchStripeProducts() {
 
 // Create a checkout session
 export async function createCheckoutSession(
-  items: Array<{ price: string; quantity: number }>,
+  items: any[],
   currentPageUrl?: string,
   orderTotal?: number
 ) {
@@ -194,7 +194,8 @@ export async function createCheckoutSession(
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      line_items: items,
+      // items may contain either {price: priceId} or {price_data: {...}}
+      line_items: items as any,
       mode: "payment",
       success_url: `${baseUrl}?success=true`,
       cancel_url: `${baseUrl}?canceled=true`,

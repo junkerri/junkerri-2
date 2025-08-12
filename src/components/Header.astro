@@ -33,8 +33,8 @@ const navItems = [
         ))}
         
         <!-- Cart Icon with Badge -->
-        <a 
-          href="/shop" 
+        <button 
+          id="header-cart-btn"
           class="relative p-2 text-foreground hover:text-primary transition-colors duration-300 hover:scale-105"
           aria-label="Shopping Cart"
         >
@@ -42,19 +42,32 @@ const navItems = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m12 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"/>
           </svg>
           <span class="cart-badge absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium hidden">0</span>
-        </a>
+        </button>
       </nav>
 
-      <!-- Mobile Navigation Toggle -->
-      <button 
-        id="mobile-menu-toggle" 
-        class="md:hidden inline-flex items-center justify-center rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9 hover:scale-105"
-        aria-label="Toggle menu"
-      >
-        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
+      <!-- Mobile Cart + Menu Toggle -->
+      <div class="md:hidden flex items-center gap-2">
+        <button 
+          id="header-cart-btn-mobile"
+          class="relative p-2 text-foreground hover:text-primary transition-colors duration-300 hover:scale-105"
+          aria-label="Shopping Cart"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m12 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"/>
+          </svg>
+          <span class="cart-badge absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium hidden">0</span>
+        </button>
+
+        <button 
+          id="mobile-menu-toggle" 
+          class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9 hover:scale-105"
+          aria-label="Toggle menu"
+        >
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Menu -->
@@ -72,16 +85,16 @@ const navItems = [
           ))}
           
           <!-- Mobile Cart Item -->
-          <a
-            href="/shop"
-            class="text-lg font-medium transition-all duration-300 hover:text-primary hover:translate-x-2 pl-4 text-foreground flex items-center gap-2"
+          <button
+            id="mobile-cart-btn"
+            class="text-lg font-medium transition-all duration-300 hover:text-primary hover:translate-x-2 pl-4 text-foreground flex items-center gap-2 w-full text-left"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m12 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"/>
             </svg>
-            Shop
+            Cart
             <span class="cart-badge ml-auto bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium hidden">0</span>
-          </a>
+          </button>
         </div>
       </nav>
     </div>
@@ -103,5 +116,56 @@ const navItems = [
     link.addEventListener('click', () => {
       mobileMenu?.classList.add('hidden');
     });
+  });
+
+  // Cart functionality: if on /shop, open sidebar; otherwise navigate to /shop?cart=open to auto-open
+  function openCart() {
+    if (window.location.pathname.startsWith('/shop')) {
+      window.dispatchEvent(new CustomEvent('openCart'));
+    } else {
+      window.location.href = '/shop?cart=open';
+    }
+  }
+
+  // Add click handlers to cart buttons
+  document.getElementById('header-cart-btn')?.addEventListener('click', openCart);
+  document.getElementById('header-cart-btn-mobile')?.addEventListener('click', openCart);
+  document.getElementById('mobile-cart-btn')?.addEventListener('click', openCart);
+
+  // Keep header cart badge in sync across pages
+  const CART_STORAGE_KEY = 'junkerri-cart';
+  function getCartCountFromStorage(): number {
+    try {
+      const saved = localStorage.getItem(CART_STORAGE_KEY);
+      const cart = saved ? JSON.parse(saved) : [];
+      return Array.isArray(cart) ? cart.reduce((sum: number, item: any) => sum + (item.quantity || 0), 0) : 0;
+    } catch {
+      return 0;
+    }
+  }
+
+  function renderHeaderCartBadge(count?: number) {
+    const badgeEls = document.querySelectorAll<HTMLElement>('.cart-badge');
+    const total = typeof count === 'number' ? count : getCartCountFromStorage();
+    badgeEls.forEach((el) => {
+      el.textContent = String(total);
+      el.classList.toggle('hidden', total === 0);
+    });
+  }
+
+  // Initial render
+  renderHeaderCartBadge();
+
+  // Update when storage changes (other tabs/pages)
+  window.addEventListener('storage', (e) => {
+    if (e.key === CART_STORAGE_KEY) {
+      renderHeaderCartBadge();
+    }
+  });
+
+  // Update when shop page dispatches cartUpdated
+  window.addEventListener('cartUpdated', (e: any) => {
+    const count = e?.detail?.count;
+    renderHeaderCartBadge(typeof count === 'number' ? count : undefined);
   });
 </script>
