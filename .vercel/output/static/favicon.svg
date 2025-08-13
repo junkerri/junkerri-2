@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <!-- Background circle with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00D4FF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF0080;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0E0E0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="64" cy="64" r="60" fill="url(#bgGradient)" stroke="#00D4FF" stroke-width="2"/>
+  
+  <!-- Junkerri "J" stylized -->
+  <path d="M45 35 L45 85 L65 85 L65 75 L55 75 L55 45 L75 45 L75 35 Z" fill="url(#textGradient)"/>
+  
+  <!-- Musical note symbol -->
+  <circle cx="85" cy="65" r="8" fill="url(#textGradient)"/>
+  <rect x="85" y="65" width="3" height="20" fill="url(#textGradient)"/>
+  <rect x="75" y="75" width="15" height="3" fill="url(#textGradient)"/>
+  
+  <!-- Digital/tech elements -->
+  <rect x="35" y="35" width="8" height="8" fill="url(#textGradient)" opacity="0.8"/>
+  <rect x="35" y="85" width="8" height="8" fill="url(#textGradient)" opacity="0.8"/>
+  <rect x="85" y="35" width="8" height="8" fill="url(#textGradient)" opacity="0.8"/>
+  
+  <!-- Glitch effect lines -->
+  <rect x="40" y="60" width="48" height="1" fill="url(#textGradient)" opacity="0.6"/>
+  <rect x="42" y="62" width="44" height="1" fill="url(#textGradient)" opacity="0.4"/>
+  
+  <!-- Dark mode override -->
+  <style>
+    @media (prefers-color-scheme: dark) {
+      circle[fill="url(#bgGradient)"] { fill: #0F0F23; }
+      circle[stroke="#00D4FF"] { stroke: #00D4FF; }
+      path[fill="url(#textGradient)"], rect[fill="url(#textGradient)"] { fill: #00D4FF; }
+    }
+  </style>
+</svg>

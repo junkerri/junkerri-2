@@ -1,0 +1,359 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import latestCollab from '../assets/photos/latest-collab.jpg';
+import everythingWasBeautiful from '../assets/illustrations/everything-was-beautiful.jpg';
+import beatkerriSquare from '../assets/photos/beatkerri-square.jpg';
+import artistPhoto from '../assets/photos/artist-photo.jpg';
+import blogPlaceholder4 from '../assets/blog-images/blog-placeholder-4.jpg';
+import blogPlaceholder5 from '../assets/blog-images/blog-placeholder-5.jpg';
+import blogPlaceholder1 from '../assets/blog-images/blog-placeholder-1.jpg';
+---
+
+<BaseLayout title="Junkerri - Artist, Musician, Developer">
+  <Header />
+  
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="hero-section py-12 relative overflow-hidden cosmic-universe-background">
+      <!-- Cosmic Background -->
+      <div class="cosmic-bg"></div>
+      
+      <!-- Stars Layer -->
+      <div class="stars-container">
+        <div class="stars stars-1"></div>
+        <div class="stars stars-2"></div>
+        <div class="stars stars-3"></div>
+      </div>
+      
+      <!-- Nebulae and Cosmic Clouds -->
+      <div class="cosmic-nebulae">
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+        <div class="nebula nebula-3"></div>
+      </div>
+      
+      <!-- Floating Space Geometry -->
+      <div class="cosmic-geometry">
+        <div class="cosmic-cube cosmic-cube-1"></div>
+        <div class="cosmic-pyramid cosmic-pyramid-1"></div>
+        <div class="cosmic-sphere cosmic-sphere-1"></div>
+        <div class="cosmic-cube cosmic-cube-2"></div>
+        <div class="cosmic-pyramid cosmic-pyramid-2"></div>
+        <div class="cosmic-sphere cosmic-sphere-2"></div>
+        <div class="cosmic-asteroid"></div>
+        <div class="cosmic-satellite"></div>
+        
+        <!-- Additional geometric elements for more visual impact -->
+        <div class="cosmic-cube" style="top: 25%; left: 15%; transform: rotate(60deg) scale(0.8); animation-delay: 2s;"></div>
+        <div class="cosmic-pyramid" style="top: 75%; right: 25%; transform: scale(0.6); animation-delay: 1.5s;"></div>
+        <div class="cosmic-sphere" style="top: 45%; left: 75%; transform: scale(0.7); animation-delay: 2.5s;"></div>
+        <div class="cosmic-cube" style="bottom: 30%; right: 10%; transform: rotate(30deg) scale(0.5); animation-delay: 1s;"></div>
+      </div>
+      
+      <!-- Cosmic Dust Particles -->
+      <div class="cosmic-dust">
+        <div class="dust-particle"></div>
+        <div class="dust-particle"></div>
+        <div class="dust-particle"></div>
+        <div class="dust-particle"></div>
+        <div class="dust-particle"></div>
+        <div class="dust-particle"></div>
+        <div class="dust-particle"></div>
+        <div class="dust-particle"></div>
+      </div>
+      
+      <!-- Shooting Stars -->
+      <div class="shooting-stars">
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+      </div>
+      
+      <!-- Mandela Art Circles -->
+      <div class="mandela-orb mandela-orb-1" style="position: absolute; top: 20%; left: 20%; width: 100px; height: 100px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
+      <div class="mandela-orb mandela-orb-2" style="position: absolute; top: 60%; right: 20%; width: 150px; height: 150px; background: linear-gradient(135deg, #e500ff, #5e00ff, #00ffb1); border-radius: 50%; box-shadow: 0 0 20px rgba(229, 0, 255, 0.5); z-index: 5;"></div>
+      <div class="mandela-orb mandela-orb-3" style="position: absolute; bottom: 20%; left: 60%; width: 80px; height: 80px; background: linear-gradient(135deg, #5e00ff, #00ffb1, #e500ff); border-radius: 50%; box-shadow: 0 0 20px rgba(94, 0, 255, 0.5); z-index: 5;"></div>
+      <div class="mandela-orb mandela-orb-4" style="position: absolute; top: 40%; left: 50%; width: 120px; height: 120px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
+      
+      <div class="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/10 via-cyberpunk-pink/15 to-cyberpunk-purple/20"></div>
+      <div class="container relative z-10">
+        <div class="text-center space-y-8">
+          <h1 class="cosmic-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-wider whitespace-nowrap">
+            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0s;">J</span>
+            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.1s;">U</span>
+            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.2s;">N</span>
+            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.3s;">K</span>
+            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.4s;">E</span>
+            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.5s;">R</span>
+            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.6s;">R</span>
+            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.7s;">I</span>
+          </h1>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in px-4" style="animation-delay: 1s;">
+            <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg glow-cyberpunk-cyan hover:scale-105 transition-all duration-300 bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black font-semibold w-full sm:w-auto">
+              Latest Collaboration
+            </a>
+            <a href="/art" class="btn btn-outline btn-lg border-2 border-cyberpunk-pink text-cyberpunk-pink hover:bg-cyberpunk-pink hover:text-black transition-all duration-300 font-semibold w-full sm:w-auto">
+              View Art
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Work -->
+    <section class="py-16 bg-gradient-to-br from-cyberpunk-cyan/10 to-cyberpunk-pink/10 relative overflow-hidden">
+      <!-- Background Geometry -->
+      <div class="absolute inset-0 opacity-20">
+        <div class="geometry-cube geometry-cube-3" style="top: 15%; right: 10%; transform: rotate(45deg) scale(0.8);"></div>
+        <div class="geometry-sphere" style="top: 70%; left: 5%; transform: scale(0.6);"></div>
+        <div class="geometry-pyramid" style="top: 30%; left: 80%; transform: scale(0.7);"></div>
+      </div>
+      
+      <div class="container relative z-10">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 text-cyberpunk-cyan">Featured Work</h2>
+          <p class="text-cyberpunk-pink/80 max-w-2xl mx-auto">
+            Multidisciplinary artist creating across art, music, and web experiences.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Music Card -->
+          <div class="card group hover:glow-cyberpunk-cyan transition-all duration-300">
+            <div class="aspect-square bg-gradient-to-br from-cyberpunk-cyan/20 to-cyberpunk-pink/20 rounded-t-lg overflow-hidden">
+              <Image 
+                src={latestCollab}
+                alt="Back Where I Started - Junkerri X Nikki Kane lyrical video" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={400}
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">Back Where I Started</h3>
+              <p class="text-cyberpunk-pink/70 mb-4">
+                New collaboration with Nikki Kane - "Back Where I Started" official lyrical video.
+              </p>
+              <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
+                Watch Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Art Card -->
+          <div class="card group hover:glow-cyberpunk-pink transition-all duration-300">
+            <div class="aspect-square bg-gradient-to-br from-cyberpunk-cyan/20 to-cyberpunk-pink/20 rounded-t-lg overflow-hidden">
+              <Image 
+                src={everythingWasBeautiful}
+                alt="Digital art collection preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={400}
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">Digital Art Collection</h3>
+              <p class="text-cyberpunk-pink/70 mb-4">
+                Bold, expressive digital artwork exploring themes of identity and technology.
+              </p>
+              <a href="/art" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
+                View Gallery
+              </a>
+            </div>
+          </div>
+
+          <!-- Projects Card -->
+          <div class="card group hover:glow-cyberpunk-purple transition-all duration-300">
+            <div class="aspect-square bg-gradient-to-br from-cyberpunk-cyan/20 to-cyberpunk-pink/20 rounded-t-lg overflow-hidden">
+              <Image 
+                src={beatkerriSquare}
+                alt="Beatkerri web app preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={400}
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">Web Projects</h3>
+              <p class="text-cyberpunk-pink/70 mb-4">
+                Innovative digital experiences and interactive web applications.
+              </p>
+              <a href="/web-projects" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
+                Explore Projects
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="py-16 bg-muted/30 relative overflow-hidden">
+      <!-- Subtle Background Geometry -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="geometry-cube" style="top: 20%; right: 15%; transform: rotate(30deg) scale(0.5);"></div>
+        <div class="geometry-pyramid" style="bottom: 25%; left: 10%; transform: scale(0.4);"></div>
+      </div>
+      
+      <div class="container relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold">About Junkerri</h2>
+            <p class="text-lg text-muted-foreground">
+              I'm a multidisciplinary artist and musician based in Austin, TX, originally from Nepal. As a first-generation immigrant, my work is often shaped by questions of identity, memory, and belonging.
+            </p>
+            <p class="text-muted-foreground">
+              I work across different mediums — including digital design, illustration, and music production — and I'm always curious about new ways to express and connect. I also co-founded Pulse COOP, a worker-owned creative tech cooperative, where we build thoughtful digital tools with values at the center.
+            </p>
+            <a href="/about" class="btn btn-outline btn-lg">
+              Learn More
+            </a>
+          </div>
+          <div class="aspect-square bg-muted rounded-lg overflow-hidden relative">
+            <!-- Geometric overlay on the image -->
+            <div class="absolute inset-0 opacity-30">
+              <div class="geometry-cube" style="top: 20%; right: 20%; transform: rotate(45deg) scale(0.3);"></div>
+              <div class="geometry-sphere" style="bottom: 30%; left: 25%; transform: scale(0.25);"></div>
+            </div>
+            <Image 
+              src={artistPhoto}
+              alt="Aastha Kumari Karki - Junkerri portrait" 
+              class="w-full h-full object-cover relative z-10"
+              width={600}
+              height={600}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Blog Posts -->
+    <section class="py-16 relative overflow-hidden">
+      <!-- Floating Geometry Accents -->
+      <div class="absolute inset-0 opacity-15">
+        <div class="geometry-pyramid" style="top: 10%; left: 5%; transform: scale(0.6);"></div>
+        <div class="geometry-cube" style="top: 60%; right: 8%; transform: rotate(60deg) scale(0.5);"></div>
+        <div class="geometry-sphere" style="bottom: 20%; left: 70%; transform: scale(0.4);"></div>
+      </div>
+      
+      <div class="container relative z-10">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Latest Thoughts</h2>
+          <p class="text-muted-foreground max-w-2xl mx-auto">
+            Insights, process, and reflections on art, music, and digital creation.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <article class="card group">
+            <div class="aspect-video bg-muted rounded-t-lg overflow-hidden">
+              <Image 
+                src={blogPlaceholder4}
+                alt="Blog post preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={225}
+              />
+            </div>
+            <div class="card-content">
+              <div class="flex gap-2 mb-3">
+                <span class="badge badge-outline">Art</span>
+                <span class="badge badge-outline">Identity</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Digital Identity & Memory</h3>
+              <p class="text-muted-foreground mb-4">
+                Exploring how digital art can capture and express the complexities of immigrant identity and cultural memory.
+              </p>
+              <a href="/blog" class="text-primary hover:underline font-medium">
+                Read More →
+              </a>
+            </div>
+          </article>
+
+          <article class="card group">
+            <div class="aspect-video bg-muted rounded-t-lg overflow-hidden">
+              <Image 
+                src={blogPlaceholder5}
+                alt="Blog post preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={225}
+              />
+            </div>
+            <div class="card-content">
+              <div class="flex gap-2 mb-3">
+                <span class="badge badge-outline">Music</span>
+                <span class="badge badge-outline">Community</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Sound Design Philosophy</h3>
+              <p class="text-muted-foreground mb-4">
+                My approach to creating unique sonic landscapes and experimental compositions that explore belonging.
+              </p>
+              <a href="/blog" class="text-primary hover:underline font-medium">
+                Read More →
+              </a>
+            </div>
+          </article>
+
+          <article class="card group">
+            <div class="aspect-video bg-muted rounded-t-lg overflow-hidden">
+              <Image 
+                src={blogPlaceholder1}
+                alt="Blog post preview" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={400}
+                height={225}
+              />
+            </div>
+            <div class="card-content">
+              <div class="flex gap-2 mb-3">
+                <span class="badge badge-outline">Community</span>
+                <span class="badge badge-outline">Cooperative</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Building Pulse COOP</h3>
+              <p class="text-muted-foreground mb-4">
+                How we're creating thoughtful digital tools with values at the center through worker-owned cooperative models.
+              </p>
+              <a href="/blog" class="text-primary hover:underline font-medium">
+                Read More →
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="/blog" class="btn btn-outline btn-lg">
+            View All Posts
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-16 bg-primary text-primary-foreground relative overflow-hidden">
+      <!-- Geometric Background Elements -->
+      <div class="absolute inset-0 opacity-20">
+        <div class="geometry-cube" style="top: 15%; left: 10%; transform: rotate(45deg) scale(0.7); background: hsl(var(--cyberpunk-cyan));"></div>
+        <div class="geometry-pyramid" style="top: 70%; right: 15%; transform: scale(0.6); border-bottom-color: hsl(var(--cyberpunk-pink));"></div>
+        <div class="geometry-sphere" style="bottom: 25%; left: 60%; transform: scale(0.5); background: radial-gradient(circle, hsl(var(--cyberpunk-purple)), hsl(var(--cyberpunk-dark-purple)));"></div>
+      </div>
+      
+      <div class="container text-center relative z-10">
+        <h2 class="text-3xl font-bold mb-4">Let's Create Together</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+          Interested in collaboration, commissions, or just want to connect? 
+          I'd love to hear from you.
+        </p>
+        <a href="/contact" class="btn btn-secondary btn-lg">
+          Get in Touch
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
