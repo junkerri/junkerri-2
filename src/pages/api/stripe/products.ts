@@ -1,11 +1,19 @@
 import type { APIRoute } from 'astro';
-import { fetchStripeProducts } from '../../../lib/stripe.js';
+import { fetchStripeProducts, getStripe } from '../../../lib/stripe.js';
 
 export const prerender = false; // Enable server-side rendering
 
 export const GET: APIRoute = async () => {
   try {
     console.log('🔍 Fetching products from Stripe API...');
+    
+    // If Stripe is not configured (no secret key), return empty list gracefully
+    if (!getStripe()) {
+      return new Response(JSON.stringify({ success: true, products: [] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
     
     // Fetch real products from Stripe
     const stripeProducts = await fetchStripeProducts();

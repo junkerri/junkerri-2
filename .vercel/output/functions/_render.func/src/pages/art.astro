@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
 
 // Import all artwork images
 import hurt from '../assets/album art/hurt.jpg';
@@ -34,82 +35,82 @@ const artworks = [
     id: 1,
     title: "Ngorongoro",
     description: "Illustration inspired by my visit to the vast landscapes and wildlife of Tanzania, specifically the Ngorongoro Crater",
-    image: ngorongoro.src,
+    image: ngorongoro,
     category: "Illustrations",
     year: "2024",
-    dimensions: "Digital Art"
+    dimensions: "Illustration"
   },
   {
     id: 2,
     title: "I Got Lost",
     description: "Illustration exploring the feeling of being lost and finding new paths",
-    image: iGotLost.src,
+    image: iGotLost,
     category: "Illustrations",
     year: "2024",
-    dimensions: "Digital Art"
+    dimensions: "Illustration"
   },
   {
     id: 3,
     title: "Everything Was Beautiful",
     description: "Illustration finding beauty in chaos and complexity",
-    image: everythingWasBeautiful.src,
+    image: everythingWasBeautiful,
     category: "Illustrations",
     year: "2022",
-    dimensions: "Digital Art"
+    dimensions: "Illustration"
   },
   {
     id: 4,
     title: "Post Eclipse",
     description: "Illustration capturing the aftermath of celestial events",
-    image: postEclipse.src,
+    image: postEclipse,
     category: "Illustrations",
     year: "2024",
-    dimensions: "Digital Art"
+    dimensions: "Illustration"
   },
   {
     id: 5,
     title: "Decadence",
     description: "Illustration exploring themes of luxury, excess, and beauty, in a surreal landscape",
-    image: decadence.src,
+    image: decadence,
     category: "Illustrations",
     year: "2023",
-    dimensions: "Digital Art"
+    dimensions: "Illustration"
   },
   {
     id: 6,
     title: "Bliss",
     description: "Illustration capturing moments of pure joy and contentment in otherworldly landscapes",
-    image: bliss.src,
+    image: bliss,
     category: "Illustrations",
     year: "2023",
-    dimensions: "Digital Art"
+    dimensions: "Illustration"
   },
   {
     id: 7,
     title: "Time and Space",
     description: "Illustration exploring the relationship between temporal and spatial dimensions",
-    image: timeAndSpace.src,
+    image: timeAndSpace,
     category: "Illustrations",
     year: "2024",
-    dimensions: "Digital Art"
+    dimensions: "Illustration"
   },
   {
     id: 8,
     title: "Elephant's Way",
     description: "Illustration celebrating the wisdom and majesty of elephants",
-    image: elephantsWay.src,
+    image: elephantsWay,
     category: "Illustrations",
     year: "2022",
-    dimensions: "Digital Art"
+    dimensions: "Illustration"
   },
   {
     id: 9,
     title: "Landlocked Blues",
     description: "Illustration capturing the feeling of being trapped by geography",
-    image: landlockedBlues.src,
+    image: landlockedBlues,
     category: "Illustrations",
     year: "2022",
-    dimensions: "Digital Art"
+    dimensions: "Illustration"
   },
   
   // T-Shirt Designs (Second)
@@ -117,7 +118,7 @@ const artworks = [
     id: 7,
     title: "Hootin' For You",
     description: "Collaborative t-shirt design with Raw Paw local print shop, featuring night-themed creatures that make nighttime delightful and surreal",
-    image: hootinForYou.src,
+    image: hootinForYou,
     category: "T-Shirt Designs",
     year: "2023",
     dimensions: "T-Shirt Print"
@@ -126,10 +127,10 @@ const artworks = [
     id: 8,
     title: "Terlingua T-Shirt",
     description: "Designed for the 2023 Chili Cook-off in collaboration with friend Caitlin, celebrating the yearly chili cook-off in Terlingua, Texas",
-    image: terlinguaTshirt.src,
+    image: terlinguaTshirt,
     category: "T-Shirt Designs",
     year: "2023",
-    dimensions: "T-Shirt Print"
+    dimensions: "T-Shirt Design"
   },
   
   // Custom Calendars (Third)
@@ -137,7 +138,7 @@ const artworks = [
     id: 9,
     title: "Custom Calendar 2024",
     description: "Personalized calendar design for 2024 artwork that represents popular hangouts in Austin",
-    image: calendar2024.src,
+    image: calendar2024,
     category: "Custom Calendars",
     year: "2024",
     dimensions: "Calendar Design"
@@ -146,7 +147,7 @@ const artworks = [
     id: 10,
     title: "Custom Calendar 2023",
     description: "Personalized calendar design for 2023 with custom pet portraits in Zilker Park, Austin",
-    image: calendar2023.src,
+    image: calendar2023,
     category: "Custom Calendars",
     year: "2023",
     dimensions: "Calendar Design"
@@ -157,7 +158,7 @@ const artworks = [
     id: 11,
     title: "Hurt",
     description: "Album artwork for 'Hurt' - exploring emotional depth through visual storytelling",
-    image: hurt.src,
+    image: hurt,
     category: "Album Art",
     year: "2024",
     dimensions: "Album Cover"
@@ -166,7 +167,7 @@ const artworks = [
     id: 12,
     title: "Eastern Gold",
     description: "Album artwork for 'Eastern Gold' - capturing the essence of golden moments",
-    image: easternGold.src,
+    image: easternGold,
     category: "Album Art",
     year: "2024",
     dimensions: "Album Cover"
@@ -175,7 +176,7 @@ const artworks = [
     id: 13,
     title: "Unearthly Delights",
     description: "Album artwork for 'Unearthly Delights' - otherworldly visual exploration",
-    image: unearthlyDelights.src,
+    image: unearthlyDelights,
     category: "Album Art",
     year: "2024",
     dimensions: "Album Cover"
@@ -184,7 +185,7 @@ const artworks = [
     id: 14,
     title: "Everything Was Beautiful",
     description: "Album artwork for 'Everything Was Beautiful' - finding beauty in chaos",
-    image: everythingWasBeautiful.src,
+    image: everythingWasBeautiful,
     category: "Album Art",
     year: "2024",
     dimensions: "Album Cover"
@@ -193,7 +194,7 @@ const artworks = [
     id: 15,
     title: "Moon Is Cake",
     description: "Album artwork for 'Moon Is Cake' - whimsical cosmic imagery",
-    image: moonIsCake.src,
+    image: moonIsCake,
     category: "Album Art",
     year: "2024",
     dimensions: "Album Cover"
@@ -202,7 +203,7 @@ const artworks = [
     id: 16,
     title: "Back Where I Started",
     description: "Album artwork for 'Back Where I Started' - journey of return and reflection",
-    image: backWhereIStarted.src,
+    image: backWhereIStarted,
     category: "Album Art",
     year: "2024",
     dimensions: "Album Cover"
@@ -216,100 +217,15 @@ const categories = ["All", "Album Art", "Illustrations", "T-Shirt Designs", "Cus
   <Header />
   
   <main class="art-page">
-    <!-- Hero Section -->
-    <section class="py-12 relative overflow-hidden cosmic-universe-background">
-      <!-- Cosmic Background -->
-      <div class="cosmic-bg"></div>
-      
-      <!-- Stars Layer -->
-      <div class="stars-container">
-        <div class="stars stars-1"></div>
-        <div class="stars stars-2"></div>
-        <div class="stars stars-3"></div>
-      </div>
-      
-      <!-- Nebulae and Cosmic Clouds -->
-      <div class="cosmic-nebulae">
-        <div class="nebula nebula-1"></div>
-        <div class="nebula nebula-2"></div>
-        <div class="nebula nebula-3"></div>
-      </div>
-      
-      <!-- Floating Space Geometry -->
-      <div class="cosmic-geometry">
-        <div class="cosmic-cube cosmic-cube-1"></div>
-        <div class="cosmic-pyramid cosmic-pyramid-1"></div>
-        <div class="cosmic-sphere cosmic-sphere-1"></div>
-        <div class="cosmic-cube cosmic-cube-2"></div>
-        <div class="cosmic-pyramid cosmic-pyramid-2"></div>
-        <div class="cosmic-sphere cosmic-sphere-2"></div>
-        <div class="cosmic-asteroid"></div>
-        <div class="cosmic-satellite"></div>
-        
-        <!-- Additional geometric elements for more visual impact -->
-        <div class="cosmic-cube" style="top: 25%; left: 15%; transform: rotate(60deg) scale(0.8); animation-delay: 2s;"></div>
-        <div class="cosmic-pyramid" style="top: 75%; right: 25%; transform: scale(0.6); animation-delay: 1.5s;"></div>
-        <div class="cosmic-sphere" style="top: 45%; left: 75%; transform: scale(0.7); animation-delay: 2.5s;"></div>
-        <div class="cosmic-cube" style="bottom: 30%; right: 10%; transform: rotate(30deg) scale(0.5); animation-delay: 1s;"></div>
-      </div>
-      
-      <!-- Cosmic Dust Particles -->
-      <div class="cosmic-dust">
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-      </div>
-      
-      <!-- Shooting Stars -->
-      <div class="shooting-stars">
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
-      </div>
-      
-      <!-- Mandela Art Circles -->
-      <div class="mandela-orb mandela-orb-1" style="position: absolute; top: 20%; left: 20%; width: 100px; height: 100px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
-      <div class="mandela-orb mandela-orb-2" style="position: absolute; top: 60%; right: 20%; width: 150px; height: 150px; background: linear-gradient(135deg, #e500ff, #5e00ff, #00ffb1); border-radius: 50%; box-shadow: 0 0 20px rgba(229, 0, 255, 0.5); z-index: 5;"></div>
-      <div class="mandela-orb mandela-orb-3" style="position: absolute; bottom: 20%; left: 60%; width: 80px; height: 80px; background: linear-gradient(135deg, #5e00ff, #00ffb1, #e500ff); border-radius: 50%; box-shadow: 0 0 20px rgba(94, 0, 255, 0.5); z-index: 5;"></div>
-      <div class="mandela-orb mandela-orb-4" style="position: absolute; top: 40%; left: 50%; width: 120px; height: 120px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
-      
-      <div class="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/10 via-cyberpunk-pink/15 to-cyberpunk-purple/20"></div>
-      <div class="container relative z-10">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="cosmic-title text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-wider leading-tight">
-            <div class="flex flex-col items-center">
-              <div class="flex justify-center">
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0s;">A</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.1s;">R</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.2s;">T</span>
-              </div>
-              <div class="flex justify-center mt-2">
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.4s;">G</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.5s;">A</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.6s;">L</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.7s;">L</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.8s;">E</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.9s;">R</span>
-                <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 1.0s;">Y</span>
-              </div>
-            </div>
-          </h1>
-        </div>
-      </div>
-    </section>
+    <Hero title={["ART", "GALLERY"]} minHeight={300} />
 
     <!-- Filters -->
-    <section class="py-8">
+    <section class="py-2 md:py-4">
       <div class="container">
         <div class="flex flex-wrap gap-4 justify-center">
           {categories.map((category) => (
-            <button 
-              class="px-6 py-2 rounded-full border border-input bg-background text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            <button
+              class="category-filter px-6 py-2 rounded-full border border-input bg-background text-foreground text-sm font-medium transition-colors hover:!bg-primary hover:!text-black hover:!border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[active=true]:bg-primary data-[active=true]:!text-black data-[active=true]:border-transparent"
               data-category={category}
             >
               {category}
@@ -320,17 +236,19 @@ const categories = ["All", "Album Art", "Illustrations", "T-Shirt Designs", "Cus
     </section>
 
     <!-- Gallery Grid -->
-    <section class="py-20">
+    <section class="py-8 md:py-12">
       <div class="container">
         <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
           {artworks.map((artwork) => (
             <div class="group break-inside-avoid overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 artwork-item" data-category={artwork.category}>
               <div class="aspect-[4/3] overflow-hidden">
                 <img 
-                  src={artwork.image} 
+                  src={typeof artwork.image === 'string' ? artwork.image : artwork.image.src} 
                   alt={artwork.title}
                   class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 cursor-pointer"
                   data-artwork={artwork.id}
+                  data-title={artwork.title}
+                  data-description={artwork.description}
                 />
               </div>
               <div class="p-6">
@@ -372,11 +290,11 @@ const categories = ["All", "Album Art", "Illustrations", "T-Shirt Designs", "Cus
     </div>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-muted/30">
+    <section class="py-12 md:py-16 bg-muted/30">
       <div class="container text-center">
         <h2 class="text-4xl font-bold mb-4">Interested in Commissioning?</h2>
         <p class="text-xl mb-8 text-muted-foreground">Let's create something unique together</p>
-        <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-8 py-3 text-lg font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+        <a href="/contact" class="btn btn-secondary btn-lg">
           Get in Touch
           <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
@@ -388,82 +306,90 @@ const categories = ["All", "Album Art", "Illustrations", "T-Shirt Designs", "Cus
 
   <Footer />
 
+  <style>
+    /* Ensure active filter remains consistent with Blog */
+    .category-filter[data-active="true"] {
+      background-color: hsl(var(--primary)) !important;
+      color: #000 !important;
+      border-color: transparent !important;
+    }
+  </style>
+
 
 
   <script>
 
     
     // Filter functionality
-    const filterButtons = document.querySelectorAll('[data-category]');
-    const artworkItems = document.querySelectorAll('.artwork-item[data-category]'); // Only select artwork items, not filter buttons
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.category-filter');
+    const artworkItems = document.querySelectorAll<HTMLElement>('.artwork-item[data-category]');
+
+    function setActiveButton(active: HTMLButtonElement): void {
+      filterButtons.forEach(btn => {
+        btn.removeAttribute('data-active');
+      });
+      active.setAttribute('data-active', 'true');
+    }
+
+    function applyFilter(category: string): void {
+      artworkItems.forEach((item) => {
+        const isMatch = category === 'All' || item.getAttribute('data-category') === category;
+        item.classList.toggle('hidden', !isMatch);
+      });
+      // Persist selection in URL hash (same behavior as Blog)
+      history.replaceState(null, '', `#${encodeURIComponent(category)}`);
+    }
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
-        playClickSound(); // Play futuristic click sound
-        
         const category = button.getAttribute('data-category');
-        
-        // Update active button
-        filterButtons.forEach(btn => btn.classList.remove('bg-primary', 'text-primary-foreground'));
-        button.classList.add('bg-primary', 'text-primary-foreground');
-        
-        // Filter artworks
-        artworkItems.forEach(item => {
-          if (category === 'All' || item.getAttribute('data-category') === category) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+        if (!category) return;
+        setActiveButton(button);
+        applyFilter(category);
       });
-      
-
     });
+
+    // Initialize from URL hash if present (same as Blog)
+    const initial = decodeURIComponent((location.hash?.replace('#','') || 'All'));
+    const initialButton = Array.from(filterButtons).find((btn) => btn.getAttribute('data-category') === initial) 
+      || Array.from(filterButtons).find((btn) => btn.getAttribute('data-category') === 'All');
+    if (initialButton) {
+      setActiveButton(initialButton);
+      applyFilter(initial);
+    }
 
     // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
-    const lightboxTitle = document.getElementById('lightbox-title');
-    const lightboxDescription = document.getElementById('lightbox-description');
+    const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement | null;
+    const lightboxTitle = document.getElementById('lightbox-title') as HTMLElement | null;
+    const lightboxDescription = document.getElementById('lightbox-description') as HTMLElement | null;
     const closeLightbox = document.getElementById('close-lightbox');
 
     // Real artwork data for lightbox
-    const artworkData = {
-      1: { title: "Nogrongoro", description: "Illustration inspired by the vast landscapes and wildlife of Africa" },
-      2: { title: "I Got Lost", description: "Illustration exploring the feeling of being lost and finding new paths" },
-      3: { title: "Post Eclipse", description: "Illustration capturing the aftermath of celestial events" },
-      4: { title: "Decadence", description: "Illustration exploring themes of luxury, excess, and beauty" },
-      5: { title: "Elephant's Way", description: "Illustration celebrating the wisdom and majesty of elephants" },
-      6: { title: "Landlocked Blues", description: "Illustration capturing the feeling of being trapped by geography" },
-      7: { title: "Hootin' For You", description: "Collaborative t-shirt design with Raw Paw local print shop, featuring night-themed creatures that make nighttime delightful and surreal" },
-      8: { title: "Terlingua T-Shirt", description: "Designed for the 2023 Chili Cook-off in collaboration with friend Caitlin, celebrating the rugged beauty of Terlingua" },
-      9: { title: "Custom Calendar 2024", description: "Personalized calendar design for 2024 with unique artwork" },
-      10: { title: "Custom Calendar 2023", description: "Personalized calendar design for 2023 with unique artwork" },
-      11: { title: "Hurt", description: "Album artwork for 'Hurt' - exploring emotional depth through visual storytelling" },
-      12: { title: "Eastern Gold", description: "Album artwork for 'Eastern Gold' - capturing the essence of golden moments" },
-      13: { title: "Unearthly Delights", description: "Album artwork for 'Unearthly Delights' - otherworldly visual exploration" },
-      14: { title: "Everything Was Beautiful", description: "Album artwork for 'Everything Was Beautiful' - finding beauty in chaos" },
-      15: { title: "Moon Is Cake", description: "Album artwork for 'Moon Is Cake' - whimsical cosmic imagery" },
-      16: { title: "Back Where I Started", description: "Album artwork for 'Back Where I Started' - journey of return and reflection" }
-    };
+    // Build lightbox data directly from the artworks array to avoid mismatches
+    const artworkData: Record<string, { title: string; description: string }> = {};
+    Array.from(document.querySelectorAll('[data-artwork]')).forEach((imgEl) => {
+      const id = imgEl.getAttribute('data-artwork');
+      const title = imgEl.getAttribute('data-title') || '';
+      const description = imgEl.getAttribute('data-description') || '';
+      if (id) artworkData[id] = { title, description };
+    });
 
     // Add click handlers to artwork images
-    document.querySelectorAll('[data-artwork]').forEach(img => {
+    document.querySelectorAll<HTMLImageElement>('[data-artwork]').forEach((img) => {
       img.addEventListener('click', () => {
-        if (!lightbox || !lightboxImage || !lightboxTitle || !lightboxDescription) return;
-        
         const artworkId = img.getAttribute('data-artwork');
-        const artwork = artworkData[artworkId];
-        
-        if (artwork) {
-          lightboxImage.src = img.src;
-          lightboxImage.alt = artwork.title;
-          lightboxTitle.textContent = artwork.title;
-          lightboxDescription.textContent = artwork.description;
-          
-          lightbox.classList.remove('hidden');
-          lightbox.classList.add('flex');
-        }
+        if (!artworkId || !lightbox || !lightboxImage || !lightboxTitle || !lightboxDescription) return;
+
+        const artwork = artworkData[artworkId] || { title: img.getAttribute('data-title') || '', description: img.getAttribute('data-description') || '' };
+        if (!artwork) return;
+
+        lightboxImage.src = img.src;
+        lightboxImage.alt = artwork.title;
+        lightboxTitle.textContent = artwork.title;
+        lightboxDescription.textContent = artwork.description;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
       });
     });
 

@@ -1,6 +1,6 @@
-import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_CuC082BX.mjs';
+import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_C7Z8jh5L.mjs';
 import 'kleur/colors';
-import { $ as $$BaseLayout, a as $$Header, b as $$Footer } from '../../chunks/Footer_Dr_gzUQl.mjs';
+import { $ as $$BaseLayout, a as $$Header, b as $$Footer } from '../../chunks/Footer_BMShtRPO.mjs';
 import { jsx } from 'react/jsx-runtime';
 import 'react';
 import { Slot } from '@radix-ui/react-slot';

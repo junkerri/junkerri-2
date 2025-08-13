@@ -26,10 +26,12 @@ export default defineConfig({
       STRIPE_PUBLIC_KEY: envField.string({
         context: "client",
         access: "public",
+        default: "",
       }),
       STRIPE_SECRET_KEY: envField.string({
         context: "server",
         access: "secret",
+        default: "",
       }),
       SITE: envField.string({
         context: "server",

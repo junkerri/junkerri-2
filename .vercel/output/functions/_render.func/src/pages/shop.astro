@@ -4,6 +4,7 @@ export const prerender = false;
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
 import { STRIPE_PUBLIC_KEY } from 'astro:env/client';
 
 // Define product type
@@ -89,88 +90,15 @@ try {
   <Header />
   
   <main class="shop-page">
-    <!-- Hero Section -->
-    <section class="py-12 relative overflow-hidden cosmic-universe-background">
-      <!-- Cosmic Background -->
-      <div class="cosmic-bg"></div>
-      
-      <!-- Stars Layer -->
-      <div class="stars-container">
-        <div class="stars stars-1"></div>
-        <div class="stars stars-2"></div>
-        <div class="stars stars-3"></div>
-      </div>
-      
-      <!-- Nebulae and Cosmic Clouds -->
-      <div class="cosmic-nebulae">
-        <div class="nebula nebula-1"></div>
-        <div class="nebula nebula-2"></div>
-        <div class="nebula nebula-3"></div>
-      </div>
-      
-      <!-- Floating Space Geometry -->
-      <div class="cosmic-geometry">
-        <div class="cosmic-cube cosmic-cube-1"></div>
-        <div class="cosmic-pyramid cosmic-pyramid-1"></div>
-        <div class="cosmic-sphere cosmic-sphere-1"></div>
-        <div class="cosmic-cube cosmic-cube-2"></div>
-        <div class="cosmic-pyramid cosmic-pyramid-2"></div>
-        <div class="cosmic-sphere cosmic-sphere-2"></div>
-        <div class="cosmic-asteroid"></div>
-        <div class="cosmic-satellite"></div>
-        
-        <!-- Additional geometric elements for more visual impact -->
-        <div class="cosmic-cube" style="top: 25%; left: 15%; transform: rotate(60deg) scale(0.8); animation-delay: 2s;"></div>
-        <div class="cosmic-pyramid" style="top: 75%; right: 25%; transform: scale(0.6); animation-delay: 1.5s;"></div>
-        <div class="cosmic-sphere" style="top: 45%; left: 75%; transform: scale(0.7); animation-delay: 2.5s;"></div>
-        <div class="cosmic-cube" style="bottom: 30%; right: 10%; transform: rotate(30deg) scale(0.5); animation-delay: 1s;"></div>
-      </div>
-      
-      <!-- Cosmic Dust Particles -->
-      <div class="cosmic-dust">
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-        <div class="dust-particle"></div>
-      </div>
-      
-      <!-- Shooting Stars -->
-      <div class="shooting-stars">
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
-      </div>
-      
-      <!-- Mandela Art Circles -->
-      <div class="mandela-orb mandela-orb-1" style="position: absolute; top: 20%; left: 20%; width: 100px; height: 100px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
-      <div class="mandela-orb mandela-orb-2" style="position: absolute; top: 60%; right: 20%; width: 150px; height: 150px; background: linear-gradient(135deg, #e500ff, #5e00ff, #00ffb1); border-radius: 50%; box-shadow: 0 0 20px rgba(229, 0, 255, 0.5); z-index: 5;"></div>
-      <div class="mandela-orb mandela-orb-3" style="position: absolute; bottom: 20%; left: 60%; width: 80px; height: 80px; background: linear-gradient(135deg, #5e00ff, #00ffb1, #e500ff); border-radius: 50%; box-shadow: 0 0 20px rgba(94, 0, 255, 0.5); z-index: 5;"></div>
-      <div class="mandela-orb mandela-orb-4" style="position: absolute; top: 40%; left: 50%; width: 120px; height: 120px; background: linear-gradient(135deg, #00ffb1, #e500ff, #5e00ff); border-radius: 50%; box-shadow: 0 0 20px rgba(0, 255, 177, 0.5); z-index: 5;"></div>
-      
-      <div class="absolute inset-0 bg-gradient-to-br from-cyberpunk-cyan/10 via-cyberpunk-pink/15 to-cyberpunk-purple/20"></div>
-      <div class="container relative z-10">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="cosmic-title text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-wider leading-tight">
-            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0s;">S</span>
-            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.1s;">H</span>
-            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.2s;">O</span>
-            <span class="inline-block animate-cosmic-letter-float" style="animation-delay: 0.3s;">P</span>
-          </h1>
-        </div>
-      </div>
-    </section>
+    <Hero title="SHOP" minHeight={300} />
 
     <!-- Filters -->
-    <section class="py-8">
+    <section class="py-2 md:py-4">
       <div class="container">
         <div class="flex flex-wrap gap-4 justify-center">
           {categories.map((category) => (
-            <button 
-              class="px-6 py-2 rounded-full border border-input bg-background text-sm font-medium transition-colors hover:bg-accent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            <button
+              class="category-filter px-6 py-2 rounded-full border border-input bg-background text-foreground text-sm font-medium transition-colors hover:!bg-primary hover:!text-black hover:!border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[active=true]:bg-primary data-[active=true]:!text-black data-[active=true]:border-transparent"
               data-category={category}
             >
               {category}
@@ -181,7 +109,7 @@ try {
     </section>
 
     <!-- Product Grid -->
-    <section class="py-20">
+    <section class="py-8 md:py-12">
       <div class="container">
         <!-- Shipping Notice -->
         <div class="mb-6 p-3 bg-muted/30 border-l-4 border-primary/50 rounded-r text-sm">
@@ -250,10 +178,9 @@ try {
                 {product.inStock ? (
                   <div>
                     <button 
-                      class="w-full inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium transition-colors hover:bg-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      class="btn btn-primary btn-md w-full"
                       data-product-id={product.id}
                       data-price-id={product.stripePriceId}
-                      style="color: black !important; font-weight: 600;"
                     >
                       Add to Cart
                       <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -265,7 +192,7 @@ try {
                   </div>
                 ) : (
                   <button 
-                    class="w-full inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-muted-foreground cursor-not-allowed"
+                    class="btn btn-outline btn-md w-full cursor-not-allowed"
                     disabled
                   >
                     Out of Stock
@@ -342,7 +269,7 @@ try {
       <div class="container text-center">
         <h2 class="text-4xl font-bold mb-4">Custom Commissions</h2>
         <p class="text-xl mb-8 text-muted-foreground">Interested in a custom piece or bulk order?</p>
-        <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-8 py-3 text-lg font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+        <a href="/contact" class="btn btn-secondary btn-lg">
           Get in Touch
           <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
@@ -397,12 +324,19 @@ try {
     .product-item button[data-product-id]:hover svg {
       stroke: white !important;
     }
+
+    /* Category filter active state (match Blog/Art) */
+    .category-filter[data-active="true"] {
+      background-color: hsl(var(--primary)) !important;
+      color: #000 !important;
+      border-color: transparent !important;
+    }
   </style>
 
   <script>
     // Cart functionality
     interface CartItem {
-      id: string; // Product ID for display
+      id: string; // Composite key: productId or productId__SIZE
       priceId: string; // Stripe price ID for checkout
       name: string;
       price: number;
@@ -444,9 +378,14 @@ try {
     // Initialize cart from localStorage
     cart = loadCart();
     console.log('🛒 Cart loaded from storage:', cart);
+    // Render cart immediately so visiting /shop shows saved items without needing to add an item first
+    updateCart();
+    updateCartBadge();
 
     // Product data for cart - will be populated dynamically from Stripe data
     let productData: Record<string, { name: string; price: number; image: string; priceId: string }> = {};
+    // Track currently selected size per product
+    let selectedSizeByProduct: Record<string, string | null> = {};
 
     // Function to update product data when products are loaded
     function updateProductData() {
@@ -527,16 +466,20 @@ try {
         return;
       }
       
-      // Check if product is already in cart
-      const existingItem = cart.find(item => item.id === productId);
+      // Compose a cart key by product + selected size so different sizes are separate lines
+      const selectedSize = selectedSizeByProduct[productId] || null;
+      const cartKey = selectedSize ? `${productId}__${selectedSize}` : productId;
+
+      // Check if product (with size) is already in cart
+      const existingItem = cart.find(item => item.id === cartKey);
       if (existingItem) {
         existingItem.quantity += 1;
         showNotification(`Updated quantity for ${product.name}`, 'success');
       } else {
         cart.push({
-          id: productId,
+          id: cartKey,
           priceId: product.priceId,
-          name: product.name,
+          name: selectedSize ? `${product.name} (${selectedSize})` : product.name,
           price: product.price,
           image: product.image,
           quantity: 1
@@ -588,6 +531,8 @@ try {
       
       // Update cart count badge if it exists
       updateCartBadge();
+      // Notify header to refresh badge
+      window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { count: cart.reduce((s, i) => s + i.quantity, 0) } }));
     }
 
     // Update shipping information based on order total
@@ -717,7 +662,7 @@ try {
           
           // Prepare items for Stripe checkout
           const checkoutItems = cart.map(item => ({
-            price: item.priceId, // Use Stripe price ID
+            price: item.priceId,
             quantity: item.quantity
           }));
 
@@ -813,28 +758,40 @@ try {
     }
 
     // Filter functionality
-    const filterButtons = document.querySelectorAll('[data-category]');
-    const productItems = document.querySelectorAll('.product-item');
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.category-filter');
+    const productItems = document.querySelectorAll<HTMLElement>('.product-item');
+
+    function setActiveButton(active: HTMLButtonElement) {
+      filterButtons.forEach(btn => btn.removeAttribute('data-active'));
+      active.setAttribute('data-active', 'true');
+    }
+
+    function applyFilter(category: string) {
+      productItems.forEach(item => {
+        const isMatch = category === 'All' || item.getAttribute('data-category') === category;
+        item.classList.toggle('hidden', !isMatch);
+      });
+      // Persist selection in URL hash (match Blog/Art)
+      history.replaceState(null, '', `#${encodeURIComponent(category)}`);
+    }
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         const category = button.getAttribute('data-category');
         if (!category) return;
-        
-        // Update active button
-        filterButtons.forEach(btn => btn.classList.remove('bg-primary', 'text-primary-foreground'));
-        button.classList.add('bg-primary', 'text-primary-foreground');
-        
-        // Filter products
-        productItems.forEach(item => {
-          if (category === 'All' || item.getAttribute('data-category') === category) {
-            (item as HTMLElement).style.display = 'block';
-          } else {
-            (item as HTMLElement).style.display = 'none';
-          }
-        });
+        setActiveButton(button);
+        applyFilter(category);
       });
     });
+
+    // Initialize from URL hash if present (match Blog/Art)
+    const initial = decodeURIComponent((location.hash?.replace('#','') || 'All'));
+    const initialButton = Array.from(filterButtons).find(btn => btn.getAttribute('data-category') === initial)
+      || Array.from(filterButtons).find(btn => btn.getAttribute('data-category') === 'All');
+    if (initialButton) {
+      setActiveButton(initialButton);
+      applyFilter(initial);
+    }
 
     // Initialize product data for cart after page loads
     setTimeout(() => {
@@ -848,6 +805,12 @@ try {
       // Set up size toggle functionality
       setupSizeToggles();
     }, 100);
+
+    // Auto-open cart if query param indicates so (e.g., /shop?cart=open)
+    const urlParamsCart = new URLSearchParams(window.location.search).get('cart');
+    if (urlParamsCart === 'open') {
+      setTimeout(() => openCart(), 250);
+    }
 
     // Check for Stripe redirect messages
     function checkStripeRedirect() {
@@ -922,10 +885,11 @@ try {
           target.classList.remove('border-input', 'bg-background', 'text-foreground');
           target.classList.add('bg-primary', 'text-white', 'border-primary');
           
-          // Update price display
-          const priceElement = document.querySelector(`[data-product-id="${productId}"] .text-primary`);
+          // Update price display within the same product card
+          const productContainer = target.closest('.product-item');
+          const priceElement = productContainer?.querySelector('.text-primary');
           if (priceElement) {
-            priceElement.textContent = `$${price}`;
+            (priceElement as HTMLElement).textContent = `$${price}`;
             console.log(`💰 Updated price for ${productId} to $${price}`);
           } else {
             console.log(`❌ Could not find price element for ${productId}`);
@@ -935,6 +899,9 @@ try {
           if (productData[productId]) {
             productData[productId].price = parseFloat(price);
           }
+
+          // Track selected size for this product so cart items are unique per size
+          selectedSizeByProduct[productId] = size;
         });
       });
     }

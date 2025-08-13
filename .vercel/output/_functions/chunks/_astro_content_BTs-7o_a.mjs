@@ -4,7 +4,7 @@ import pLimit from 'p-limit';
 import { z } from 'zod';
 import { r as removeBase, i as isRemotePath, p as prependForwardSlash } from './path_JRU2J8bK.mjs';
 import { V as VALID_INPUT_FORMATS } from './consts_BmVDRGlB.mjs';
-import { A as AstroError, U as UnknownContentCollectionError, c as createComponent, R as RenderUndefinedEntryError, u as unescapeHTML, a as renderTemplate, g as renderUniqueStylesheet, h as renderScriptElement, i as createHeadAndContent, r as renderComponent } from './astro/server_CuC082BX.mjs';
+import { A as AstroError, U as UnknownContentCollectionError, c as createComponent, R as RenderUndefinedEntryError, u as unescapeHTML, a as renderTemplate, g as renderUniqueStylesheet, h as renderScriptElement, i as createHeadAndContent, r as renderComponent } from './astro/server_C7Z8jh5L.mjs';
 import 'kleur/colors';
 import * as devalue from 'devalue';
 
@@ -66,7 +66,7 @@ class ImmutableDataStore {
    */
   static async fromModule() {
     try {
-      const data = await import('./_astro_data-layer-content_DrYeq5mQ.mjs');
+      const data = await import('./_astro_data-layer-content_B84VJ9Q9.mjs');
       if (data.default instanceof Map) {
         return ImmutableDataStore.fromMap(data.default);
       }
@@ -141,7 +141,7 @@ function createGetCollection({
     } else if (collection in dataCollectionToEntryMap) {
       type = "data";
     } else if (store.hasCollection(collection)) {
-      const { default: imageAssetMap } = await import('./content-assets_OHG_9-pm.mjs');
+      const { default: imageAssetMap } = await import('./content-assets_8iM3aC55.mjs');
       const result = [];
       for (const rawEntry of store.values(collection)) {
         const data = updateImageReferencesInData(rawEntry.data, rawEntry.filePath, imageAssetMap);
@@ -223,9 +223,9 @@ function emulateLegacyEntry({ legacyId, ...entry }) {
 }
 const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
 async function updateImageReferencesInBody(html, fileName) {
-  const { default: imageAssetMap } = await import('./content-assets_OHG_9-pm.mjs');
+  const { default: imageAssetMap } = await import('./content-assets_8iM3aC55.mjs');
   const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import('./_astro_assets_DHcbWtSx.mjs').then(n => n._);
+  const { getImage } = await import('./_astro_assets_BnG_e6nR.mjs').then(n => n._);
   for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
     try {
       const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));
@@ -287,7 +287,7 @@ async function renderEntry(entry) {
   }
   if (entry.deferredRender) {
     try {
-      const { default: contentModules } = await import('./content-modules_CnIJQaGv.mjs');
+      const { default: contentModules } = await import('./content-modules_Dz-S_Wwv.mjs');
       const renderEntryImport = contentModules.get(entry.filePath);
       return render({
         collection: "",

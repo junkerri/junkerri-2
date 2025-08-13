@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { c as createInvalidVariablesError, g as getEnv$1, s as setOnSetGetEnv } from './runtime_BTBNygwb.mjs';
+import { c as createInvalidVariablesError, g as getEnv$1, s as setOnSetGetEnv } from './runtime_D4tEtt3M.mjs';
 
 const schema = {"STRIPE_PUBLIC_KEY":{"context":"client","access":"public","type":"string"},"STRIPE_SECRET_KEY":{"context":"server","access":"secret","type":"string"},"SITE":{"context":"server","access":"public","default":"https://junkerri.com","type":"string"}};
 
@@ -333,6 +333,7 @@ async function createCheckoutSession(items, currentPageUrl, orderTotal) {
     });
     const session = await stripe2.checkout.sessions.create({
       payment_method_types: ["card"],
+      // items may contain either {price: priceId} or {price_data: {...}}
       line_items: items,
       mode: "payment",
       success_url: `${baseUrl}?success=true`,

@@ -1,10 +1,10 @@
-import { e as createAstro, c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, f as renderSlot } from '../../chunks/astro/server_CuC082BX.mjs';
+import { e as createAstro, c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, f as renderSlot } from '../../chunks/astro/server_C7Z8jh5L.mjs';
 import 'kleur/colors';
-import { r as renderEntry, g as getCollection } from '../../chunks/_astro_content_tRXTBmwk.mjs';
+import { g as getCollection, r as renderEntry } from '../../chunks/_astro_content_BTs-7o_a.mjs';
 import '../../chunks/index_MaT6fT73.mjs';
-import { $ as $$Image } from '../../chunks/_astro_assets_DHcbWtSx.mjs';
-import { $ as $$BaseLayout, a as $$Header, b as $$Footer } from '../../chunks/Footer_Dr_gzUQl.mjs';
-import { $ as $$FormattedDate } from '../../chunks/FormattedDate_UtyXR1eF.mjs';
+import { $ as $$Image } from '../../chunks/_astro_assets_BnG_e6nR.mjs';
+import { $ as $$BaseLayout, a as $$Header, b as $$Footer } from '../../chunks/Footer_BMShtRPO.mjs';
+import { $ as $$FormattedDate } from '../../chunks/FormattedDate_DwgGgErR.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$Astro$1 = createAstro("https://junkerri.com");
@@ -20,16 +20,26 @@ const $$Astro = createAstro("https://junkerri.com");
 async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
-    params: { slug: post.id },
-    props: post
+    params: { slug: post.id.split("/") },
+    props: { post }
   }));
 }
 const $$ = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$;
-  const post = Astro2.props;
+  const props = Astro2.props;
+  const slugParam = Astro2.params.slug;
+  const slugId = Array.isArray(slugParam) ? slugParam.join("/") : slugParam;
+  let post = props.post;
+  if (!post) {
+    const posts = await getCollection("blog");
+    post = posts.find((p) => p.id === slugId);
+  }
+  if (!post) {
+    throw new Error(`Post not found for slug: ${slugId}`);
+  }
   const { Content } = await renderEntry(post);
-  return renderTemplate`${renderComponent($$result, "BlogPost", $$BlogPost, { ...post.data }, { "default": async ($$result2) => renderTemplate` ${renderComponent($$result2, "Content", Content, {})} ` })}`;
+  return renderTemplate`${renderComponent($$result, "BlogPost", $$BlogPost, { "title": post.data.title, "description": post.data.description, "category": post.data.category, "pubDate": post.data.pubDate, "updatedDate": post.data.updatedDate, "heroImage": post.data.heroImage }, { "default": async ($$result2) => renderTemplate` ${renderComponent($$result2, "Content", Content, {})} ` })}`;
 }, "/Users/aasthakarki/Code/junkerri-astro/src/pages/blog/[...slug].astro", void 0);
 
 const $$file = "/Users/aasthakarki/Code/junkerri-astro/src/pages/blog/[...slug].astro";
