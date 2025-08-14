@@ -12,13 +12,13 @@ This project now features the **"Cyberpunk--"** color palette from [Color Hex](h
 
 ### Color Palette
 
-| Color              | Hex       | RGB           | Usage                       |
-| ------------------ | --------- | ------------- | --------------------------- |
-| Bright Cyan        | `#00ffb1` | (0,255,177)   | Primary actions, highlights |
-| Neon Pink          | `#e500ff` | (229,0,255)   | Secondary elements, accents |
-| Deep Purple        | `#5e00ff` | (94,0,255)    | Muted elements, backgrounds |
-| Dark Purple        | `#2f006f` | (47,0,111)    | Text, headings              |
-| Pure Black         | `#000000` | (0,0,0)       | Dark mode backgrounds       |
+| Color       | Hex       | RGB         | Usage                       |
+| ----------- | --------- | ----------- | --------------------------- |
+| Bright Cyan | `#00ffb1` | (0,255,177) | Primary actions, highlights |
+| Neon Pink   | `#e500ff` | (229,0,255) | Secondary elements, accents |
+| Deep Purple | `#5e00ff` | (94,0,255)  | Muted elements, backgrounds |
+| Dark Purple | `#2f006f` | (47,0,111)  | Text, headings              |
+| Pure Black  | `#000000` | (0,0,0)     | Dark mode backgrounds       |
 
 ### Available Utility Classes
 
@@ -73,7 +73,9 @@ This project now features the **"Cyberpunk--"** color palette from [Color Hex](h
 </div>
 
 <!-- Button with cyberpunk styling -->
-<button class="btn bg-cyberpunk-cyan hover:bg-cyberpunk-pink glow-cyberpunk-cyan">
+<button
+  class="btn bg-cyberpunk-cyan hover:bg-cyberpunk-pink glow-cyberpunk-cyan"
+>
   Click me
 </button>
 ```
@@ -86,6 +88,39 @@ Features:
 - ✅ Sitemap support
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
+- ✅ Google Tag Manager integration
+
+## 🔧 Google Tag Manager Setup
+
+This project includes Google Tag Manager (GTM) integration for analytics and marketing tracking.
+
+### Quick Setup
+
+1. **Get your GTM Container ID** from [Google Tag Manager](https://tagmanager.google.com/)
+2. **Set environment variable** in your `.env` file:
+   ```bash
+   GTM_CONTAINER_ID=GTM-XXXXXXX
+   ```
+3. **Deploy** - GTM will automatically load on all pages
+
+### Environment Variables
+
+Copy `env.example` to `.env` and update:
+
+```bash
+cp env.example .env
+```
+
+Required:
+
+- `GTM_CONTAINER_ID` - Your GTM container ID (format: GTM-XXXXXXX)
+
+### How It Works
+
+- GTM script loads in the `<head>` section via `BaseHead.astro`
+- Automatically includes both JavaScript and noscript fallback
+- Only renders when `GTM_CONTAINER_ID` is provided
+- Follows latest GTM documentation and best practices
 
 ## 🚀 Project Structure
 

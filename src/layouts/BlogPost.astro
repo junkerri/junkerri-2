@@ -14,9 +14,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <BaseLayout title={title} description={description}>
 	<Header />
 	<main class="blog-post-page min-h-screen">
-		<article>
+		<article class="max-w-4xl mx-auto">
 			{heroImage && (
-				<div class="hero-image w-full max-w-6xl mx-auto px-4 py-8">
+				<div class="hero-image w-full px-4 py-8">
 					<Image 
 						width={1020} 
 						height={510} 
@@ -26,24 +26,264 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 					/>
 				</div>
 			)}
-			<div class="prose max-w-4xl mx-auto px-4 py-8">
-				<div class="title text-center mb-8">
-					<div class="date text-sm text-muted-foreground mb-4">
-						<FormattedDate date={pubDate} />
+			
+			<div class="prose prose-lg max-w-none px-4 py-8">
+				<!-- Article Header -->
+				<header class="text-center mb-12 pb-8 border-b border-border">
+					<div class="meta text-sm text-muted-foreground mb-6 space-y-2">
+						<div class="date">
+							<FormattedDate date={pubDate} />
+						</div>
 						{
 							updatedDate && (
-								<div class="last-updated-on text-sm text-muted-foreground">
+								<div class="last-updated text-sm text-muted-foreground">
 									Last updated on <FormattedDate date={updatedDate} />
 								</div>
 							)
 						}
 					</div>
-					<h1 class="text-4xl font-bold mb-4">{title}</h1>
-					<hr class="border-border" />
+					
+					<h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight text-foreground">
+						{title}
+					</h1>
+					
+					{description && (
+						<p class="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+							{description}
+						</p>
+					)}
+				</header>
+
+				<!-- Article Content -->
+				<div class="article-content">
+					<slot />
 				</div>
-				<slot />
+
+				<!-- Article Footer -->
+				<footer class="mt-16 pt-8 border-t border-border text-center text-muted-foreground">
+					<p class="text-sm">
+						Thanks for reading! Share this post if you found it helpful.
+					</p>
+				</footer>
 			</div>
 		</article>
 	</main>
 	<Footer />
+
+	<style>
+		/* Enhanced prose styles for better readability */
+		.prose {
+			color: hsl(var(--foreground));
+			max-width: 65ch;
+			margin: 0 auto;
+		}
+
+		.prose h1,
+		.prose h2,
+		.prose h3,
+		.prose h4,
+		.prose h5,
+		.prose h6 {
+			color: hsl(var(--foreground));
+			font-weight: 700;
+			line-height: 1.2;
+			margin-top: 2.5rem;
+			margin-bottom: 1rem;
+		}
+
+		.prose h1 {
+			font-size: 2.25rem;
+			border-bottom: 2px solid hsl(var(--primary));
+			padding-bottom: 0.5rem;
+		}
+
+		.prose h2 {
+			font-size: 1.875rem;
+			border-bottom: 1px solid hsl(var(--border));
+			padding-bottom: 0.25rem;
+		}
+
+		.prose h3 {
+			font-size: 1.5rem;
+			color: hsl(var(--primary));
+		}
+
+		.prose h4 {
+			font-size: 1.25rem;
+			color: hsl(var(--secondary));
+		}
+
+		.prose p {
+			margin-bottom: 1.5rem;
+			line-height: 1.75;
+			color: hsl(var(--foreground));
+		}
+
+		.prose ul,
+		.prose ol {
+			margin-bottom: 1.5rem;
+			padding-left: 1.5rem;
+		}
+
+		.prose li {
+			margin-bottom: 0.5rem;
+			line-height: 1.6;
+		}
+
+		.prose ul li {
+			list-style-type: disc;
+		}
+
+		.prose ol li {
+			list-style-type: decimal;
+		}
+
+		.prose blockquote {
+			border-left: 4px solid hsl(var(--primary));
+			padding-left: 1.5rem;
+			margin: 2rem 0;
+			font-style: italic;
+			color: hsl(var(--muted-foreground));
+			background: hsl(var(--muted) / 0.1);
+			padding: 1.5rem;
+			border-radius: 0.5rem;
+		}
+
+		.prose code {
+			background: hsl(var(--muted) / 0.3);
+			padding: 0.25rem 0.5rem;
+			border-radius: 0.25rem;
+			font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+			font-size: 0.875em;
+			color: hsl(var(--primary));
+		}
+
+		.prose pre {
+			background: hsl(var(--muted) / 0.2);
+			padding: 1.5rem;
+			border-radius: 0.5rem;
+			overflow-x: auto;
+			border: 1px solid hsl(var(--border));
+			margin: 2rem 0;
+		}
+
+		.prose pre code {
+			background: none;
+			padding: 0;
+			color: hsl(var(--foreground));
+		}
+
+		.prose a {
+			color: hsl(var(--primary));
+			text-decoration: underline;
+			text-decoration-color: hsl(var(--primary) / 0.3);
+			text-underline-offset: 2px;
+			transition: all 0.2s ease;
+		}
+
+		.prose a:hover {
+			color: hsl(var(--primary));
+			text-decoration-color: hsl(var(--primary));
+		}
+
+		.prose strong {
+			font-weight: 700;
+			color: hsl(var(--foreground));
+		}
+
+		.prose em {
+			font-style: italic;
+			color: hsl(var(--muted-foreground));
+		}
+
+		.prose hr {
+			border: none;
+			border-top: 2px solid hsl(var(--border));
+			margin: 3rem 0;
+		}
+
+		.prose img {
+			border-radius: 0.5rem;
+			margin: 2rem 0;
+			box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		}
+
+		.prose table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 2rem 0;
+			border: 1px solid hsl(var(--border));
+			border-radius: 0.5rem;
+			overflow: hidden;
+		}
+
+		.prose th,
+		.prose td {
+			padding: 0.75rem 1rem;
+			text-align: left;
+			border-bottom: 1px solid hsl(var(--border));
+		}
+
+		.prose th {
+			background: hsl(var(--muted) / 0.3);
+			font-weight: 600;
+			color: hsl(var(--foreground));
+		}
+
+		.prose tr:hover {
+			background: hsl(var(--muted) / 0.1);
+		}
+
+		/* Dark mode adjustments */
+		.dark .prose {
+			color: hsl(var(--foreground));
+		}
+
+		.dark .prose h1,
+		.dark .prose h2,
+		.dark .prose h3,
+		.dark .prose h4,
+		.dark .prose h5,
+		.dark .prose h6 {
+			color: hsl(var(--foreground));
+		}
+
+		.dark .prose p {
+			color: hsl(var(--foreground));
+		}
+
+		.dark .prose blockquote {
+			background: hsl(var(--muted) / 0.2);
+			color: hsl(var(--muted-foreground));
+		}
+
+		.dark .prose code {
+			background: hsl(var(--muted) / 0.4);
+			color: hsl(var(--primary));
+		}
+
+		.dark .prose pre {
+			background: hsl(var(--muted) / 0.3);
+			border-color: hsl(var(--border));
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.prose {
+				padding: 0 1rem;
+			}
+
+			.prose h1 {
+				font-size: 2rem;
+			}
+
+			.prose h2 {
+				font-size: 1.5rem;
+			}
+
+			.prose h3 {
+				font-size: 1.25rem;
+			}
+		}
+	</style>
 </BaseLayout>

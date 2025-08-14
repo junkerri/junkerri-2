@@ -33,6 +33,11 @@ export default defineConfig({
         access: "secret",
         default: "",
       }),
+      GTM_CONTAINER_ID: envField.string({
+        context: "client",
+        access: "public",
+        default: "",
+      }),
       SITE: envField.string({
         context: "server",
         access: "public",

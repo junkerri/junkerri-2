@@ -5,6 +5,7 @@ import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-images/blog-placeholder-1.jpg';
 import { SITE_TITLE } from '../consts';
+import GoogleTagManager from './GoogleTagManager.astro';
 
 interface Props {
 	title: string;
@@ -16,6 +17,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = FallbackImage } = Astro.props;
 ---
+
+<!-- Google Tag Manager -->
+<GoogleTagManager />
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
