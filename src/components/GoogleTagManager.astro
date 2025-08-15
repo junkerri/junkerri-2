@@ -1,12 +1,20 @@
 ---
 // Google Tag Manager Component
-// Follows latest GTM documentation: https://developers.google.com/tag-manager/quickstart
 // Only requires GTM_CONTAINER_ID environment variable
 
-const { GTM_CONTAINER_ID } = import.meta.env;
+const gtmId = import.meta.env.GTM_CONTAINER_ID;
 
 // Only render if GTM container ID is provided
-const shouldRender = GTM_CONTAINER_ID && GTM_CONTAINER_ID !== "";
+const shouldRender = gtmId && gtmId !== "";
+
+// Generate the GTM script with proper escaping
+const gtmScript = shouldRender ? `
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','${gtmId}');
+` : '';
 ---
 
 {shouldRender && (
@@ -14,7 +22,7 @@ const shouldRender = GTM_CONTAINER_ID && GTM_CONTAINER_ID !== "";
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe
-        src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
+        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
         height="0"
         width="0"
         style="display:none;visibility:hidden"
@@ -23,13 +31,7 @@ const shouldRender = GTM_CONTAINER_ID && GTM_CONTAINER_ID !== "";
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','{GTM_CONTAINER_ID}');
-    </script>
+    <script set:html={gtmScript} />
     <!-- End Google Tag Manager -->
   </>
 )}

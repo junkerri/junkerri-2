@@ -19,7 +19,19 @@ export default defineConfig({
       enabled: false,
     },
   }),
-  integrations: [mdx(), sitemap(), react()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => {
+        // Exclude API routes and admin pages from sitemap
+        return !page.includes("/api/") && !page.includes("/admin/");
+      },
+      changefreq: "weekly",
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
+    react(),
+  ],
 
   env: {
     schema: {

@@ -1,43 +1,79 @@
 ---
 import '../styles/global.css';
+import SEO from '../components/SEO.astro';
+import GoogleTagManager from '../components/GoogleTagManager.astro';
 
 export interface Props {
   title: string;
   description?: string;
   image?: string;
   canonical?: string;
+  type?: 'website' | 'article' | 'music.song' | 'music.album';
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  section?: string;
+  tags?: string[];
+  noindex?: boolean;
+  nofollow?: boolean;
 }
 
-const { title, description = "Junkerri - Artist, Musician, Developer", image, canonical } = Astro.props;
-const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site);
+const { 
+  title, 
+  description = "Junkerri - Artist, Musician, Developer", 
+  image, 
+  canonical,
+  type,
+  publishedTime,
+  modifiedTime,
+  author,
+  section,
+  tags = [],
+  noindex = false,
+  nofollow = false
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png?v=2" />
     <link rel="shortcut icon" href="/favicon.png?v=2" />
     <link rel="apple-touch-icon" href="/favicon.png?v=2" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <link rel="canonical" href={canonicalURL} />
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    {image && <meta property="og:image" content={new URL(image, Astro.url)} />}
+    <!-- Google Tag Manager -->
+    <GoogleTagManager />
     
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    {image && <meta property="twitter:image" content={new URL(image, Astro.url)} />}
+    <!-- SEO Component -->
+    <SEO 
+      title={title}
+      description={description}
+      image={image}
+      canonical={canonical}
+      type={type}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      author={author}
+      section={section}
+      tags={tags}
+      noindex={noindex}
+      nofollow={nofollow}
+    />
+    
+    <!-- Font preloads -->
+    <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+    
+    <!-- RSS Feed -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Junkerri Blog"
+      href={new URL('rss.xml', Astro.site)}
+    />
     
     <!-- View Transitions -->
     <meta name="view-transition" content="same-origin" />

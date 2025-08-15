@@ -1,0 +1,26 @@
+{
+  "name": "Junkerri - Artist, Musician, Developer",
+  "short_name": "Junkerri",
+  "description": "Artist, Musician, and Developer creating digital experiences and music",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00ffb1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["art", "music", "technology", "entertainment"],
+  "lang": "en-US"
+}

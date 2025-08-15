@@ -14,7 +14,12 @@ const recentPosts = (await getCollection('blog'))
   .slice(0, 3);
 ---
 
-<BaseLayout title="Junkerri - Artist, Musician, Developer">
+<BaseLayout 
+  title="Junkerri - Artist, Musician, Developer"
+  description="Artist, Musician, and Developer creating digital experiences, music, and innovative web solutions. Explore my portfolio of art, music, and web projects."
+  image="/assets/photos/beatkerri-square.jpg"
+  tags={['artist', 'musician', 'developer', 'portfolio', 'digital art', 'web development']}
+>
   <Header />
   
   <main class="min-h-screen">

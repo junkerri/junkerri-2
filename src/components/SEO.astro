@@ -1,0 +1,206 @@
+---
+import type { ImageMetadata } from 'astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: ImageMetadata | string;
+  canonical?: string;
+  type?: 'website' | 'article' | 'music.song' | 'music.album';
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  section?: string;
+  tags?: string[];
+  noindex?: boolean;
+  nofollow?: boolean;
+}
+
+const {
+  title,
+  description,
+  image,
+  canonical,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  author = 'Aastha Karki',
+  section,
+  tags = [],
+  noindex = false,
+  nofollow = false
+} = Astro.props;
+
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site);
+const imageURL = image ? (typeof image === 'string' ? new URL(image, Astro.url) : new URL(image.src, Astro.url)) : null;
+
+// Generate structured data
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': type === 'article' ? 'Article' : type === 'music.song' ? 'MusicRecording' : type === 'music.album' ? 'MusicAlbum' : 'WebSite',
+  name: title,
+  description: description,
+  url: canonicalURL.toString(),
+  ...(imageURL && { image: imageURL.toString() }),
+  ...(type === 'website' && {
+    '@type': 'WebSite',
+    publisher: {
+      '@type': 'Person',
+      name: author,
+      url: 'https://junkerri.com'
+    }
+  }),
+  ...(type === 'article' && {
+    '@type': 'Article',
+    author: {
+      '@type': 'Person',
+      name: author,
+      url: 'https://junkerri.com'
+    },
+    publisher: {
+      '@type': 'Person',
+      name: author,
+      url: 'https://junkerri.com'
+    },
+    ...(publishedTime && { datePublished: publishedTime }),
+    ...(modifiedTime && { dateModified: modifiedTime }),
+    ...(section && { articleSection: section }),
+    ...(tags.length > 0 && { keywords: tags.join(', ') })
+  }),
+  ...(type === 'music.song' && {
+    '@type': 'MusicRecording',
+    byArtist: {
+      '@type': 'Person',
+      name: author
+    }
+  }),
+  ...(type === 'music.album' && {
+    '@type': 'MusicAlbum',
+    byArtist: {
+      '@type': 'Person',
+      name: author
+    }
+  })
+};
+
+// Generate breadcrumb structured data
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://junkerri.com'
+    }
+  ]
+};
+
+// Add current page to breadcrumbs if not home
+if (Astro.url.pathname !== '/') {
+  const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+  pathSegments.forEach((segment, index) => {
+    const position = index + 2;
+    const name = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+    const item = `https://junkerri.com/${pathSegments.slice(0, index + 1).join('/')}`;
+    
+    breadcrumbData.itemListElement.push({
+      '@type': 'ListItem',
+      position,
+      name,
+      item
+    });
+  });
+}
+---
+
+<!-- Security Headers -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-Frame-Options" content="DENY" />
+<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+
+<!-- SEO Meta Tags -->
+<meta name="robots" content={`${noindex ? 'noindex' : 'index'}, ${nofollow ? 'nofollow' : 'follow'}`} />
+<meta name="author" content={author} />
+<meta name="keywords" content={tags.join(', ')} />
+<meta name="language" content="en-US" />
+<meta name="revisit-after" content="7 days" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:locale" content="en_US" />
+{imageURL && (
+  <>
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+  </>
+)}
+{type === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{type === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+{type === 'article' && author && <meta property="article:author" content={author} />}
+{type === 'article' && section && <meta property="article:section" content={section} />}
+{tags.map(tag => <meta property="article:tag" content={tag} />)}
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:creator" content="@junkerri" />
+{imageURL && <meta property="twitter:image" content={imageURL} />}
+
+<!-- Additional Meta Tags -->
+<meta name="theme-color" content="#00ffb1" />
+<meta name="msapplication-TileColor" content="#00ffb1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Junkerri" />
+
+<!-- Web App Manifest -->
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Preconnect to external domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbData)} />
+
+<!-- Additional Organization Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Aastha Karki',
+  alternateName: 'Junkerri',
+  url: 'https://junkerri.com',
+  sameAs: [
+    'https://twitter.com/junkerri',
+    'https://instagram.com/junkerri',
+    'https://github.com/junkerri'
+  ],
+  jobTitle: 'Artist, Musician, Developer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Junkerri'
+  },
+  knowsAbout: ['Music', 'Art', 'Web Development', 'Digital Design']
+})} />

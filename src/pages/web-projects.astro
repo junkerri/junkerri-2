@@ -47,7 +47,12 @@ const categories = ["All", "Creative Web App", "Business Web App", "Personal Por
 const featuredProject = projects.find(p => p.featured) || projects[0];
 ---
 
-<BaseLayout title="Web Projects - Junkerri" description="Interactive web projects and creative coding experiments">
+<BaseLayout 
+  title="Web Projects - Junkerri"
+  description="Explore Junkerri's interactive web projects and creative coding experiments. Discover innovative digital experiences and web development work."
+  image="/assets/photos/personal-website-portfolio.jpg"
+  tags={['web projects', 'web development', 'creative coding', 'junkerri', 'developer', 'interactive']}
+>
   <Header />
   
   <main class="web-projects-page min-h-screen">

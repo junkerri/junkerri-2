@@ -11,7 +11,17 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout 
+  title={title} 
+  description={description}
+  image={heroImage?.src}
+  type="article"
+  publishedTime={pubDate.toISOString()}
+  modifiedTime={updatedDate?.toISOString()}
+  author="Aastha Karki"
+  section="Blog"
+  tags={['blog', 'article', 'junkerri']}
+>
 	<Header />
 	<main class="blog-post-page min-h-screen">
 		<article class="max-w-4xl mx-auto">
