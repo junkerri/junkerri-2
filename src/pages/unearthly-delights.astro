@@ -403,13 +403,20 @@ import unearthlyDelights from '../assets/album art/unearthly-delights.jpg';
         const email = formData.get('email');
         
         try {
-          // Send email using Formspree or similar service
-          const response = await fetch('https://formspree.io/f/xpzgwqzw', {
+          // Send email using Formspree
+          const formspreeFormId = import.meta.env.FORMSPREE_NEWSLETTER_FORM_ID;
+          const contactEmail = import.meta.env.CONTACT_EMAIL;
+          
+          if (!formspreeFormId) {
+            throw new Error('Formspree form not configured');
+          }
+          
+          const response = await fetch(`https://formspree.io/f/${formspreeFormId}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               email: email,
-              _replyto: 'junkerriart@gmail.com',
+              _replyto: contactEmail || 'contact@junkerri.com',
               _subject: `Unearthly Delights album notification signup: ${email}`,
               message: `New album notification signup from ${email} for Unearthly Delights`
             })
@@ -423,7 +430,7 @@ import unearthlyDelights from '../assets/album art/unearthly-delights.jpg';
           }
         } catch (error) {
           console.error('Form submission error:', error);
-          alert('Sorry, there was an error signing you up. Please try again or email me directly at junkerriart@gmail.com');
+          alert(`Sorry, there was an error signing you up. Please try again or email me directly at ${import.meta.env.CONTACT_EMAIL || 'contact@junkerri.com'}`);
         }
       });
     }
