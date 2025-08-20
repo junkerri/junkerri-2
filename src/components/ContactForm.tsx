@@ -66,59 +66,73 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <Label htmlFor="firstName">First Name</Label>
+        <div className="space-y-3">
+          <Label htmlFor="firstName" className="text-base font-medium">
+            First Name
+          </Label>
           <Input
             id="firstName"
             {...register("firstName")}
-            className={errors.firstName ? "border-destructive" : ""}
+            className={`transition-colors duration-200 hover:border-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 ${
+              errors.firstName ? "border-destructive" : ""
+            }`}
           />
           {errors.firstName && (
-            <p className="text-sm text-destructive mt-1">
+            <p className="text-sm text-destructive mt-2">
               {errors.firstName.message}
             </p>
           )}
         </div>
-        <div>
-          <Label htmlFor="lastName">Last Name</Label>
+        <div className="space-y-3">
+          <Label htmlFor="lastName" className="text-base font-medium">
+            Last Name
+          </Label>
           <Input
             id="lastName"
             {...register("lastName")}
-            className={errors.lastName ? "border-destructive" : ""}
+            className={`transition-colors duration-200 hover:border-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 ${
+              errors.lastName ? "border-destructive" : ""
+            }`}
           />
           {errors.lastName && (
-            <p className="text-sm text-destructive mt-1">
+            <p className="text-sm text-destructive mt-2">
               {errors.lastName.message}
             </p>
           )}
         </div>
       </div>
 
-      <div>
-        <Label htmlFor="email">Email</Label>
+      <div className="space-y-3">
+        <Label htmlFor="email" className="text-base font-medium">
+          Email
+        </Label>
         <Input
           id="email"
           type="email"
           {...register("email")}
-          className={errors.email ? "border-destructive" : ""}
+          className={`transition-colors duration-200 hover:border-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 ${
+            errors.email ? "border-destructive" : ""
+          }`}
         />
         {errors.email && (
-          <p className="text-sm text-destructive mt-1">
+          <p className="text-sm text-destructive mt-2">
             {errors.email.message}
           </p>
         )}
       </div>
 
-      <div>
-        <Label htmlFor="subject">Subject</Label>
+      <div className="space-y-3">
+        <Label htmlFor="subject" className="text-base font-medium">
+          Subject
+        </Label>
         <select
           id="subject"
           {...register("subject")}
-          className={`w-full px-3 py-2 border rounded-md bg-background text-foreground ${
+          className={`w-full px-3 py-2 border rounded-md bg-background text-foreground transition-colors duration-200 hover:border-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 focus-visible:outline-none ${
             errors.subject ? "border-destructive" : "border-input"
-          } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+          }`}
         >
           <option value="">Select a subject</option>
           <option value="collaboration">Collaboration</option>
@@ -128,23 +142,27 @@ export default function ContactForm() {
           <option value="general">General Inquiry</option>
         </select>
         {errors.subject && (
-          <p className="text-sm text-destructive mt-1">
+          <p className="text-sm text-destructive mt-2">
             {errors.subject.message}
           </p>
         )}
       </div>
 
-      <div>
-        <Label htmlFor="message">Message</Label>
+      <div className="space-y-3">
+        <Label htmlFor="message" className="text-base font-medium">
+          Message
+        </Label>
         <Textarea
           id="message"
           rows={6}
           placeholder="Tell me about your project or inquiry..."
           {...register("message")}
-          className={errors.message ? "border-destructive" : ""}
+          className={`transition-colors duration-200 hover:border-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 ${
+            errors.message ? "border-destructive" : ""
+          }`}
         />
         {errors.message && (
-          <p className="text-sm text-destructive mt-1">
+          <p className="text-sm text-destructive mt-2">
             {errors.message.message}
           </p>
         )}
@@ -165,7 +183,7 @@ export default function ContactForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full"
+        className="w-full text-primary transition-colors duration-200 hover:bg-green-600 hover:border-green-600 hover:text-white"
         variant="outline"
       >
         {isSubmitting ? "Sending..." : "Send Message"}

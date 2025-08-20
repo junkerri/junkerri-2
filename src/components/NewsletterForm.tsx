@@ -67,13 +67,15 @@ export default function NewsletterForm() {
             type="email"
             placeholder="Enter your email address"
             {...register("email")}
-            className={`flex-1 ${errors.email ? "border-destructive" : ""}`}
+            className={`flex-1 transition-colors duration-200 hover:border-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 ${
+              errors.email ? "border-destructive" : ""
+            }`}
           />
           <Button
             type="submit"
             disabled={isSubmitting}
             variant="outline"
-            className="px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto"
+            className="px-6 py-3 border-2 border-primary text-primary transition-colors duration-200 hover:bg-green-600 hover:border-green-600 hover:text-white w-full sm:w-auto"
           >
             {isSubmitting ? "Subscribing..." : "Subscribe"}
           </Button>
