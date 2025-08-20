@@ -41,7 +41,7 @@ export const POST: APIRoute = async ({ request }) => {
           email: validatedData.email,
           subject: validatedData.subject,
           message: validatedData.message,
-          _replyto: validatedData.email,
+          _replyto: contactEmail,
           _subject: `New Contact Form: ${validatedData.subject}`,
         }),
       }
