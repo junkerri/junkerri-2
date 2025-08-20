@@ -5,8 +5,8 @@ import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import latestCollab from '../assets/photos/latest-collab.jpg';
 import everythingWasBeautiful from '../assets/illustrations/everything-was-beautiful.jpg';
-import beatkerriSquare from '../assets/photos/beatkerri-square.jpg';
 import artistPhoto from '../assets/photos/artist-photo.jpg';
+import beatkerriSquare from '../assets/photos/beatkerri-square.jpg';
 import { getCollection } from 'astro:content';
 
 const recentPosts = (await getCollection('blog'))
@@ -17,7 +17,7 @@ const recentPosts = (await getCollection('blog'))
 <BaseLayout 
   title="Junkerri - Artist, Musician, Developer"
   description="Artist, Musician, and Developer creating digital experiences, music, and innovative web solutions. Explore my portfolio of art, music, and web projects."
-  image="/assets/photos/beatkerri-square.jpg"
+  image="/assets/photos/artist-photo.jpg"
   tags={['artist', 'musician', 'developer', 'portfolio', 'digital art', 'web development']}
 >
   <Header />
