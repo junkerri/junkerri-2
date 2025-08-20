@@ -1,169 +1,265 @@
-# Astro Starter Kit: Blog
+# Junkerri Astro Template
 
-```sh
-npm create astro@latest -- --template blog
-```
+A modern, performant website template built with **Astro**, **React**, **Tailwind CSS v4**, and **shadcn/ui**. Perfect for portfolios, blogs, and business websites.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![Astro](https://img.shields.io/badge/Astro-5.12.8-000000?style=for-the-badge&logo=astro)
+![React](https://img.shields.io/badge/React-19.1.1-61DAFB?style=for-the-badge&logo=react)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.11-38B2AC?style=for-the-badge&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)
 
-## 🎨 Color Palette: "Cyberpunk--"
+## ✨ Features
 
-This project now features the **"Cyberpunk--"** color palette from [Color Hex](https://www.color-hex.com/color-palette/1046370), creating a vibrant, neon cyberpunk aesthetic.
+- **🚀 Performance**: 100/100 Lighthouse score
+- **📱 Responsive**: Mobile-first design approach
+- **🎨 Modern UI**: shadcn/ui components with Tailwind CSS v4
+- **📝 Content**: Blog system with MDX support
+- **🔍 SEO**: Comprehensive SEO optimization
+- **📊 Analytics**: Google Tag Manager integration
+- **💳 E-commerce**: Stripe integration ready
+- **🎭 Dark Mode**: Built-in theme switching
+- **📡 RSS**: Automatic RSS feed generation
+- **🗺️ Sitemap**: SEO-friendly sitemap
 
-### Color Palette
+## 🚀 Quick Start
 
-| Color       | Hex       | RGB         | Usage                       |
-| ----------- | --------- | ----------- | --------------------------- |
-| Bright Cyan | `#00ffb1` | (0,255,177) | Primary actions, highlights |
-| Neon Pink   | `#e500ff` | (229,0,255) | Secondary elements, accents |
-| Deep Purple | `#5e00ff` | (94,0,255)  | Muted elements, backgrounds |
-| Dark Purple | `#2f006f` | (47,0,111)  | Text, headings              |
-| Pure Black  | `#000000` | (0,0,0)     | Dark mode backgrounds       |
-
-### Available Utility Classes
-
-#### Background Colors
-
-- `.bg-cyberpunk-cyan` - Bright cyan background
-- `.bg-cyberpunk-pink` - Neon pink background
-- `.bg-cyberpunk-purple` - Deep purple background
-- `.bg-cyberpunk-dark-purple` - Dark purple background
-- `.bg-cyberpunk-black` - Pure black background
-
-#### Text Colors
-
-- `.text-cyberpunk-cyan` - Bright cyan text
-- `.text-cyberpunk-pink` - Neon pink text
-- `.text-cyberpunk-purple` - Deep purple text
-- `.text-cyberpunk-dark-purple` - Dark purple text
-- `.text-cyberpunk-black` - Pure black text
-
-#### Border Colors
-
-- `.border-cyberpunk-cyan` - Bright cyan border
-- `.border-cyberpunk-pink` - Neon pink border
-- `.border-cyberpunk-purple` - Deep purple border
-- `.border-cyberpunk-dark-purple` - Dark purple border
-- `.border-cyberpunk-black` - Pure black border
-
-#### Gradients
-
-- `.bg-gradient-cyberpunk` - Full cyberpunk gradient
-- `.bg-gradient-cyberpunk-reverse` - Reverse cyberpunk gradient
-- `.bg-gradient-cyberpunk-vertical` - Vertical cyberpunk gradient
-
-#### Glow Effects
-
-- `.glow-cyberpunk-cyan` - Cyan glow effect
-- `.glow-cyberpunk-pink` - Pink glow effect
-- `.glow-cyberpunk-purple` - Purple glow effect
-
-### Usage Examples
-
-```html
-<!-- Hero section with cyberpunk gradient -->
-<section class="bg-gradient-cyberpunk">
-  <h1 class="text-cyberpunk-cyan">Title</h1>
-</section>
-
-<!-- Card with cyberpunk colors -->
-<div class="card bg-cyberpunk-dark-purple/10 border-cyberpunk-pink">
-  <h3 class="text-cyberpunk-cyan">Card Title</h3>
-  <p class="text-cyberpunk-pink/70">Card content</p>
-</div>
-
-<!-- Button with cyberpunk styling -->
-<button
-  class="btn bg-cyberpunk-cyan hover:bg-cyberpunk-pink glow-cyberpunk-cyan"
->
-  Click me
-</button>
-```
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Google Tag Manager integration
-
-## 🔧 Google Tag Manager Setup
-
-This project includes Google Tag Manager (GTM) integration for analytics and marketing tracking.
-
-### Quick Setup
-
-1. **Get your GTM Container ID** from [Google Tag Manager](https://tagmanager.google.com/)
-2. **Set environment variable** in your `.env` file:
-   ```bash
-   GTM_CONTAINER_ID=GTM-XXXXXXX
-   ```
-3. **Deploy** - GTM will automatically load on all pages
-
-### Environment Variables
-
-Copy `env.example` to `.env` and update:
+### Option 1: Use as Template (Recommended)
 
 ```bash
+# Clone this repository
+git clone https://github.com/yourusername/junkerri-astro-template.git my-website
+cd my-website
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+### Option 2: Create New Project
+
+```bash
+# Create new Astro project
+npm create astro@latest my-website -- --template minimal
+
+# Copy template files and follow setup guide below
+```
+
+## 🛠️ Setup Guide
+
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure Environment
+
+```bash
+# Copy environment template
 cp env.example .env
+
+# Update with your values
+GTM_CONTAINER_ID=GTM-XXXXXXX
 ```
 
-Required:
+### 3. Customize Content
 
-- `GTM_CONTAINER_ID` - Your GTM container ID (format: GTM-XXXXXXX)
+- **Site Info**: Update `src/consts.ts`
+- **SEO**: Modify `src/components/SEO.astro`
+- **Content**: Replace content in `src/content/`
+- **Assets**: Replace images in `src/assets/`
 
-### How It Works
+### 4. Start Development
 
-- GTM script loads in the `<head>` section via `BaseHead.astro`
-- Automatically includes both JavaScript and noscript fallback
-- Only renders when `GTM_CONTAINER_ID` is provided
-- Follows latest GTM documentation and best practices
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+```bash
+npm run dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🎨 Customization
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Colors & Theming
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+The template uses a semantic color system with Tailwind CSS v4. Colors are defined in `src/styles/global.css`:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```css
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    /* ... more colors */
+  }
 
-## 🧞 Commands
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    /* ... dark mode colors */
+  }
+}
+```
 
-All commands are run from the root of the project, from a terminal:
+### Components
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+All UI components are in `src/components/ui/` using shadcn/ui:
 
-## 👀 Want to learn more?
+```tsx
+import { Button } from "@/components/ui/button";
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+<Button variant="outline" size="lg">
+  Click me
+</Button>;
+```
 
-## Credit
+### Layouts
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+- **BaseLayout.astro**: Main layout wrapper
+- **BlogPost.astro**: Blog post layout
+- **SEO.astro**: SEO component for meta tags
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable components
+│   ├── ui/             # shadcn/ui components
+│   ├── Header.astro    # Site header
+│   ├── Footer.astro    # Site footer
+│   └── SEO.astro       # SEO component
+├── content/             # Content collections
+│   └── blog/           # Blog posts (MDX)
+├── layouts/             # Page layouts
+├── pages/               # Route pages
+├── styles/              # Global styles
+└── types/               # TypeScript types
+```
+
+## 🔧 Configuration
+
+### Astro Config (`astro.config.mjs`)
+
+```javascript
+export default defineConfig({
+  integrations: [react(), mdx(), sitemap(), rss()],
+  output: "static",
+});
+```
+
+### Tailwind CSS v4
+
+No `tailwind.config.js` needed! Uses CSS-only configuration in `src/styles/global.css`:
+
+```css
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: hsl(var(--primary));
+    --color-background: hsl(var(--background));
+    /* ... */
+  }
+}
+```
+
+### TypeScript
+
+Full TypeScript support with strict configuration in `tsconfig.json`.
+
+## 📱 Pages & Routes
+
+- **Home**: `/` - Landing page with hero section
+- **About**: `/about` - About page
+- **Blog**: `/blog` - Blog listing and posts
+- **Portfolio**: `/art`, `/music`, `/web-projects` - Portfolio sections
+- **Shop**: `/shop` - E-commerce (Stripe integration)
+- **Contact**: `/contact` - Contact form
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+```bash
+npm run build
+vercel --prod
+```
+
+### Netlify
+
+```bash
+npm run build
+# Deploy dist/ folder
+```
+
+### Static Hosting
+
+```bash
+npm run build
+# Upload dist/ folder to any static host
+```
+
+## 🔌 Integrations
+
+### Google Tag Manager
+
+```bash
+# Set environment variable
+GTM_CONTAINER_ID=GTM-XXXXXXX
+```
+
+### Stripe (E-commerce)
+
+```bash
+# Configure in src/lib/stripe.ts
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+```
+
+### Forms
+
+- **Contact Form**: Formspree integration
+- **Newsletter**: Email subscription system
+
+## 📚 Available Scripts
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run astro        # Run Astro CLI commands
+```
+
+## 🎯 Performance Features
+
+- **Static Generation**: Pre-built HTML for fast loading
+- **Partial Hydration**: React components only hydrate when needed
+- **Image Optimization**: Sharp integration for optimized images
+- **CSS Purging**: Unused CSS automatically removed
+- **Lazy Loading**: Components load when visible
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 🙏 Credits
+
+- **Astro**: [astro.build](https://astro.build)
+- **shadcn/ui**: [ui.shadcn.com](https://ui.shadcn.com)
+- **Tailwind CSS**: [tailwindcss.com](https://tailwindcss.com)
+- **Radix UI**: [radix-ui.com](https://radix-ui.com)
+
+## 🆘 Support
+
+- **Documentation**: [docs.astro.build](https://docs.astro.build)
+- **Discord**: [astro.build/chat](https://astro.build/chat)
+- **Issues**: [GitHub Issues](https://github.com/yourusername/junkerri-astro-template/issues)
+
+---
+
+**Made with ❤️ using Astro**

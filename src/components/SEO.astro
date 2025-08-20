@@ -1,5 +1,6 @@
 ---
 import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 export interface Props {
@@ -25,7 +26,7 @@ const {
   type = 'website',
   publishedTime,
   modifiedTime,
-  author = 'Aastha Karki',
+  author = 'Aastha Kumari Karki',
   section,
   tags = [],
   noindex = false,
@@ -33,7 +34,30 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site);
-const imageURL = image ? (typeof image === 'string' ? new URL(image, Astro.url) : new URL(image.src, Astro.url)) : null;
+
+// Handle image URLs properly for OpenGraph
+let imageURL: URL | null = null;
+if (image) {
+  if (typeof image === 'string') {
+    // If it's a string path, construct URL relative to site
+    imageURL = new URL(image, Astro.site);
+  } else if (image && typeof image === 'object' && 'src' in image) {
+    // If it's an imported image, use getImage to get the optimized URL
+    const optimizedImage = await getImage({ src: image, format: 'jpg', width: 1200, height: 630 });
+    imageURL = new URL(optimizedImage.src, Astro.site);
+  }
+}
+
+// Debug logging for OpenGraph image
+if (image) {
+  console.log('🔍 SEO Debug - Image prop:', {
+    type: typeof image,
+    value: image,
+    hasSrc: typeof image === 'object' && 'src' in image,
+    originalSrc: typeof image === 'object' && 'src' in image ? image.src : null,
+    constructedURL: imageURL?.toString()
+  });
+}
 // Generate structured data
 const structuredData = {
   '@context': 'https://schema.org',
@@ -188,7 +212,7 @@ if (Astro.url.pathname !== '/') {
 <script type="application/ld+json" set:html={JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Aastha Karki',
+  name: 'Aastha Kumari Karki',
   alternateName: 'Junkerri',
   url: 'https://junkerri.com',
   sameAs: [

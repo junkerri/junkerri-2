@@ -1,0 +1,48 @@
+{
+  "site": {
+    "name": "Your Site Name",
+    "title": "Your Site Title",
+    "description": "Your site description",
+    "url": "https://yoursite.com",
+    "ogImage": "/og-image.jpg"
+  },
+  "navigation": {
+    "items": [
+      { "href": "/", "label": "Home" },
+      { "href": "/about", "label": "About" },
+      { "href": "/portfolio", "label": "Portfolio" },
+      { "href": "/blog", "label": "Blog" },
+      { "href": "/contact", "label": "Contact" }
+    ]
+  },
+  "social": {
+    "twitter": "https://twitter.com/yourusername",
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "instagram": "https://instagram.com/yourusername"
+  },
+  "features": {
+    "blog": true,
+    "portfolio": true,
+    "ecommerce": false,
+    "analytics": true,
+    "newsletter": true
+  },
+  "colors": {
+    "primary": "hsl(222.2 47.4% 11.2%)",
+    "secondary": "hsl(210 40% 96%)",
+    "accent": "hsl(210 40% 96%)",
+    "background": "hsl(0 0% 100%)",
+    "foreground": "hsl(222.2 84% 4.9%)"
+  },
+  "content": {
+    "blog": {
+      "enabled": true,
+      "postsPerPage": 6,
+      "rss": true
+    },
+    "portfolio": {
+      "categories": ["art", "music", "web-projects"]
+    }
+  }
+}

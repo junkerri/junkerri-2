@@ -7,6 +7,7 @@ import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import beatkerriHero from '../../assets/blog-images/beatkerri-hero.jpg';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -30,7 +31,7 @@ const categoryLabels: Record<Category, string> = {
 <BaseLayout 
   title="Blog - Junkerri"
   description="Read Junkerri's blog featuring thoughts, stories, and creative explorations across various forms of expression. Essays, poems, and creative writing."
-  image="/assets/blog-images/beatkerri-hero.jpg"
+  image={beatkerriHero}
   type="website"
   tags={['blog', 'writing', 'essays', 'poems', 'creative writing', 'junkerri', 'thoughts']}
 >

@@ -102,7 +102,9 @@ export default function MobileNav() {
                 AA
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold truncate">Aastha Karki</p>
+                <p className="text-sm font-semibold truncate">
+                  Aastha Kumari Karki
+                </p>
                 <p className="text-xs text-muted-foreground truncate">
                   Developer
                 </p>

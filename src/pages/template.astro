@@ -1,0 +1,328 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SEO from "../components/SEO.astro";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+
+const templateFeatures = [
+  {
+    title: "Modern Tech Stack",
+    description: "Built with Astro 5, React 19, Tailwind CSS v4, and shadcn/ui",
+    icon: "⚡"
+  },
+  {
+    title: "Performance First",
+    description: "100/100 Lighthouse score with static generation and partial hydration",
+    icon: "🚀"
+  },
+  {
+    title: "SEO Optimized",
+    description: "Built-in SEO, sitemap, RSS feeds, and OpenGraph support",
+    icon: "🔍"
+  },
+  {
+    title: "Responsive Design",
+    description: "Mobile-first approach with modern UI components",
+    icon: "📱"
+  },
+  {
+    title: "Content Management",
+    description: "Blog system with MDX support and content collections",
+    icon: "📝"
+  },
+  {
+    title: "E-commerce Ready",
+    description: "Stripe integration for selling products and services",
+    icon: "💳"
+  },
+  {
+    title: "Analytics Integration",
+    description: "Google Tag Manager setup for tracking and marketing",
+    icon: "📊"
+  },
+  {
+    title: "Dark Mode",
+    description: "Built-in theme switching with semantic color system",
+    icon: "🎭"
+  }
+];
+
+const pricingTiers = [
+  {
+    name: "Basic License",
+    price: 49,
+    description: "Perfect for personal projects and portfolios",
+    features: [
+      "Single website use",
+      "Source code access",
+      "Basic support",
+      "Updates for 1 year",
+      "Commercial use allowed"
+    ],
+    popular: false
+  },
+  {
+    name: "Developer License",
+    price: 99,
+    description: "Ideal for developers building multiple projects",
+    features: [
+      "Up to 5 websites",
+      "Source code access",
+      "Priority support",
+      "Updates for 2 years",
+      "Commercial use allowed",
+      "Resale rights (with restrictions)"
+    ],
+    popular: true
+  },
+  {
+    name: "Agency License",
+    price: 199,
+    description: "For agencies and teams building client websites",
+    features: [
+      "Unlimited websites",
+      "Source code access",
+      "Priority support",
+      "Lifetime updates",
+      "Commercial use allowed",
+      "Client project usage",
+      "White-label rights"
+    ],
+    popular: false
+  }
+];
+---
+
+<BaseLayout>
+  <SEO 
+    title="Junkerri Astro Template - Premium Website Template"
+    description="Get a modern, performant website template built with Astro, React, and Tailwind CSS. Perfect for portfolios, blogs, and business websites."
+    image="/template-preview.jpg"
+  />
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-20">
+    <div class="container mx-auto px-4 text-center">
+      <Badge variant="secondary" class="mb-4">Premium Template</Badge>
+      <h1 class="text-4xl md:text-6xl font-bold text-foreground mb-6">
+        Build Your Dream Website
+      </h1>
+      <p class="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+        A modern, performant website template built with the latest web technologies. 
+        Get started in minutes with a professional foundation that scales.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button size="lg" className="text-lg px-8 py-6">
+          Get Template - $49
+        </Button>
+        <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+          View Demo
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-20 bg-background">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Everything You Need to Succeed
+        </h2>
+        <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Built with modern best practices and designed for performance, 
+          this template gives you a solid foundation for any web project.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {templateFeatures.map((feature) => (
+          <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+            <CardHeader className="pb-4">
+              <div className="text-4xl mb-4">{feature.icon}</div>
+              <CardTitle className="text-lg">{feature.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>{feature.description}</CardDescription>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-20 bg-secondary/10">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Choose Your License
+        </h2>
+        <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Select the perfect license for your project needs. 
+          All licenses include source code and commercial usage rights.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {pricingTiers.map((tier) => (
+          <Card className={`relative ${tier.popular ? 'ring-2 ring-primary shadow-xl scale-105' : ''}`}>
+            {tier.popular && (
+              <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground">
+                Most Popular
+              </Badge>
+            )}
+            <CardHeader className="text-center pb-6">
+              <CardTitle className="text-2xl">{tier.name}</CardTitle>
+              <CardDescription>{tier.description}</CardDescription>
+              <div className="mt-4">
+                <span className="text-4xl font-bold text-foreground">${tier.price}</span>
+                <span className="text-muted-foreground"> one-time</span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3 mb-6">
+                {tier.features.map((feature) => (
+                  <li className="flex items-center">
+                    <svg className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <Button className="w-full" variant={tier.popular ? "default" : "outline"}>
+                Get {tier.name}
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="py-20 bg-background">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          What You'll Get
+        </h2>
+        <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Complete source code, documentation, and everything needed to build amazing websites.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-foreground mb-6">Complete Source Code</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <strong>Full Astro Project</strong>
+                <p class="text-muted-foreground">Complete source code with all components and configurations</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <strong>shadcn/ui Components</strong>
+                <p class="text-muted-foreground">Professional UI components built with Radix UI and Tailwind CSS</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <strong>Content Management</strong>
+                <p class="text-muted-foreground">Blog system with MDX support and content collections</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <strong>E-commerce Ready</strong>
+                <p class="text-muted-foreground">Stripe integration for selling products and services</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-secondary/20 rounded-lg p-8">
+          <h3 class="text-2xl font-bold text-foreground mb-6">Documentation & Support</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <strong>Setup Guide</strong>
+                <p class="text-muted-foreground">Step-by-step customization instructions</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <strong>Code Examples</strong>
+                <p class="text-muted-foreground">Real-world usage examples and best practices</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <strong>Community Support</strong>
+                <p class="text-muted-foreground">Access to our community and support channels</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <strong>Regular Updates</strong>
+                <p class="text-muted-foreground">Keep your template up-to-date with the latest features</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-primary text-primary-foreground">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Build Something Amazing?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+        Join hundreds of developers who are building faster, better websites with our template.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
+          Get Template Now - $49
+        </Button>
+        <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+          View Live Demo
+        </Button>
+      </div>
+      <p class="text-sm opacity-75 mt-4">
+        Instant download • Source code included • Commercial license • 30-day money-back guarantee
+      </p>
+    </div>
+  </section>
+</BaseLayout>

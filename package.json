@@ -1,7 +1,20 @@
 {
-  "name": "tailwind",
+  "name": "junkerri-astro-template",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "A modern, performant Astro website template with React components, Tailwind CSS v4, and shadcn/ui",
+  "keywords": [
+    "astro",
+    "template",
+    "react",
+    "tailwind",
+    "shadcn",
+    "portfolio",
+    "blog",
+    "ecommerce"
+  ],
+  "author": "Aastha Kumari Karki",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
