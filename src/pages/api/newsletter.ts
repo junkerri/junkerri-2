@@ -88,7 +88,7 @@ export const POST: APIRoute = async ({ request }) => {
       JSON.stringify({
         success: false,
         message: `Failed to subscribe. Please try again or email directly at ${
-          import.meta.env.CONTACT_EMAIL || "contact@junkerri.com"
+          import.meta.env.CONTACT_EMAIL || "junkerriart@gmail.com"
         }`,
       }),
       {

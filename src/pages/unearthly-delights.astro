@@ -416,7 +416,7 @@ import unearthlyDelights from '../assets/album art/unearthly-delights.jpg';
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               email: email,
-              _replyto: contactEmail || 'contact@junkerri.com',
+              _replyto: contactEmail || 'junkerriart@gmail.com',
               _subject: `Unearthly Delights album notification signup: ${email}`,
               message: `New album notification signup from ${email} for Unearthly Delights`
             })
@@ -430,7 +430,7 @@ import unearthlyDelights from '../assets/album art/unearthly-delights.jpg';
           }
         } catch (error) {
           console.error('Form submission error:', error);
-          alert(`Sorry, there was an error signing you up. Please try again or email me directly at ${import.meta.env.CONTACT_EMAIL || 'contact@junkerri.com'}`);
+          alert(`Sorry, there was an error signing you up. Please try again or email me directly at ${import.meta.env.CONTACT_EMAIL || 'junkerriart@gmail.com'}`);
         }
       });
     }
