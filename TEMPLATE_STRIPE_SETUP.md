@@ -313,3 +313,5 @@ Test different:
 ---
 
 **Need help with Stripe setup?** Check the [Stripe documentation](https://stripe.com/docs) or contact their support team.
+
+

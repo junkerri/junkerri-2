@@ -1,31 +1,47 @@
 ---
-title: "The Thread That Never Broke"
-description: "On how music remained the constant thread through moves and change."
+title: "What Stayed With Me"
+description: "On moving, restarting, and the one thing that kept finding me wherever I landed."
 pubDate: "2025-08-11"
 heroImage: "../../assets/blog-images/blog-placeholder-3.jpg"
 category: "essay"
 ---
 
-# The Thread That Never Broke
+# What Stayed With Me
 
-I came to the U.S. in 2009 with one steady thing in my pocket: **music**.
+When I came to the U.S. in 2009, I didn’t arrive with much certainty.
 
-Not a degree. Not a visa that promised stability. Just this one skill, this one passion that's never really withered, no matter how much the rest of my life has shifted.
+No clear map. No guarantee of stability. Just one thing I knew how to do—one thing I trusted enough to carry with me: **music**.
 
-## Constant Movement, Constant Music
+Not as a career plan. Not even as a promise. Just something that had already proven it could survive change.
 
-Since then, I've moved around more times than I can count. For college. For work. For love. For some blurry version of "the future." Every city a new attempt. Every place a restart.
+## Always Moving
 
-But the thing is: everywhere I've been, music has helped me make friends. It's strange how that works. Not everyone in my life plays an instrument or writes songs, but almost everyone I've met—at least the ones who've stuck—came into my life because of music. I jammed with someone who introduced me to someone who introduced me to them. And somehow, that thread held.
+Since then, I’ve moved more times than I can neatly explain. For school. For work. For love. For that vague, shimmering idea of _the future_ that keeps rearranging itself the closer you get.
 
-## The Power of Shared Sound
+Every new place felt like a reset. A fresh attempt at becoming someone slightly more settled.
 
-There's something about making sound together that shortcuts small talk. You don't need to explain where you're from or what you do or why you're here. You just play. You listen. You laugh when something clicks or falls apart. That shared rhythm builds a kind of trust. A shortcut to connection.
+And somehow, in every city, music found its way back to me.
 
-## The One Constant
+I didn’t plan it. I didn’t always seek it out. But music kept doing this quiet work—introducing me to people. Pulling me into rooms. Turning strangers into collaborators, and collaborators into friends.
 
-Sometimes I think: everything else has changed—my jobs, my zip codes, my sense of home—but my need to create music hasn't. It keeps pulling me forward. It keeps opening doors. It keeps me tethered to something that feels like me, no matter where I am.
+Most of the people who’ve stayed in my life arrived sideways like that. A jam session. A shared show. A friend of a friend who played guitar, or drums, or nothing at all but listened closely enough.
 
-It's the one constant in all this movement.
+## Speaking Without Explaining
 
-**The thread that never broke.**
+There’s something about making sound together that skips the formalities.
+
+You don’t have to explain where you’re from, what you do, or why you ended up here of all places. You just play. You listen. You notice when something clicks—and when it absolutely doesn’t.
+
+That shared rhythm creates trust without asking for credentials. It makes room for awkwardness. It lets people be human together before they’re impressive.
+
+## The One Thing That Didn’t Leave
+
+Everything else has changed—jobs, zip codes, definitions of home. Even my idea of who I am has stretched and softened over time.
+
+But the need to make music hasn’t faded. If anything, it’s gotten quieter and stronger. Less about proving something. More about staying connected—to myself, to others, to the moment I’m in.
+
+Music keeps opening doors I didn’t know to knock on. It keeps me grounded when everything else feels provisional.
+
+It’s not the only thing that matters.
+
+But it’s the thing that stayed.
