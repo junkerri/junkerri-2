@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
-import latestCollab from '../assets/photos/latest-collab.jpg';
+import latestCollab from '../assets/photos/fdac-art.jpg';
 import everythingWasBeautiful from '../assets/illustrations/everything-was-beautiful.jpg';
 import artistPhoto from '../assets/photos/artist-photo.jpg';
 import beatkerriSquare from '../assets/photos/beatkerri-square.jpg';
@@ -105,7 +105,7 @@ const recentPosts = (await getCollection('blog'))
           </h1>
 
           <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in px-4" style="animation-delay: 1s;">
-            <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg glow-cyberpunk-cyan hover:scale-105 transition-all duration-300 bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black font-semibold w-full sm:w-auto">
+            <a href="https://www.youtube.com/watch?v=6G1a2u2Uw7o" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg glow-cyberpunk-cyan hover:scale-105 transition-all duration-300 bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black font-semibold w-full sm:w-auto">
               Latest Collaboration
             </a>
             <a href="/art" class="btn btn-outline btn-lg border-2 border-cyberpunk-pink text-cyberpunk-pink hover:bg-cyberpunk-pink hover:text-black transition-all duration-300 font-semibold w-full sm:w-auto">
@@ -139,18 +139,18 @@ const recentPosts = (await getCollection('blog'))
             <div class="aspect-square bg-gradient-to-br from-cyberpunk-cyan/20 to-cyberpunk-pink/20 rounded-t-lg overflow-hidden">
               <Image 
                 src={latestCollab}
-                alt="Back Where I Started - Junkerri X Nikki Kane lyrical video" 
+                alt="First Dance After Coma - Junkerri X Andrew Rief video" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 width={400}
                 height={400}
               />
             </div>
             <div class="card-content">
-              <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">Back Where I Started</h3>
+              <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">First Dance After Coma</h3>
               <p class="text-cyberpunk-pink/70 mb-4">
-                New collaboration with Nikki Kane - "Back Where I Started" official lyrical video.
+                Latest collaboration with Andrew Rief - "First Dance After Coma" official video.
               </p>
-              <a href="https://www.youtube.com/watch?v=hSdXwch1v3w" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
+              <a href="https://www.youtube.com/watch?v=6G1a2u2Uw7o" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
                 Watch Now
               </a>
             </div>

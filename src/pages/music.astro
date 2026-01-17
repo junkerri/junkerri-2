@@ -6,7 +6,8 @@ import Hero from '../components/Hero.astro';
 import { Image } from 'astro:assets';
 import moonIsCake from '../assets/album art/moon-is-cake.jpg';
 import unearthlyDelights from '../assets/album art/unearthly-delights.jpg';
-import latestCollab from '../assets/photos/latest-collab.jpg';
+import fdacArt from '../assets/photos/fdac-art.jpg';
+import backWhereIStarted from '../assets/album art/back-where-i-started.jpg';
 import hurt from '../assets/album art/hurt.jpg';
 import easternGold from '../assets/album art/eastern-gold.jpg';
 
@@ -14,6 +15,17 @@ import easternGold from '../assets/album art/eastern-gold.jpg';
 const releases = [
   {
     id: 1,
+    title: "First Dance After Coma",
+    description: "Latest single in collaboration with Andrew Rief",
+    type: "Single",
+    year: "2026",
+    spotifyUrl: "https://open.spotify.com/embed/album/4KB1gdI56CuTcObCUMa01f",
+    bandcampUrl: "https://junkerri.bandcamp.com/track/first-dance-after-coma",
+    youtubeUrl: "https://www.youtube.com/embed/6G1a2u2Uw7o",
+    coverImage: fdacArt
+  },
+  {
+    id: 2,
     title: "Moon Is Cake",
     description: "Latest single exploring dreamy soundscapes and experimental electronic textures",
     type: "Single",
@@ -24,7 +36,7 @@ const releases = [
     coverImage: moonIsCake
   },
   {
-    id: 2,
+    id: 3,
     title: "Unearthly Delights 1",
     description: "Ambient EP featuring 'Ambience in an Emergency' and 'Take Me Down' - experimental soundscapes and creative exploration",
     type: "EP",
@@ -35,7 +47,7 @@ const releases = [
     coverImage: unearthlyDelights
   },
   {
-    id: 3,
+    id: 4,
     title: "Back Where I Started",
     description: "Collaboration with Nikki Kane - experimental sounds and creative exploration",
     type: "Single",
@@ -43,10 +55,10 @@ const releases = [
     spotifyUrl: "https://open.spotify.com/embed/artist/2zfAKmJAiBCQNstrMLHHRY",
     bandcampUrl: "https://bandcamp.com/junkerri",
     youtubeUrl: "https://www.youtube.com/watch?v=hSdXwch1v3w",
-    coverImage: latestCollab
+    coverImage: backWhereIStarted
   },
   {
-    id: 4,
+    id: 5,
     title: "Hurt",
     description: "Cover of Nine Inch Nails' 'Hurt' - reimagined with ambient electronic textures",
     type: "Single",
@@ -57,7 +69,7 @@ const releases = [
     coverImage: hurt
   },
   {
-    id: 5,
+    id: 6,
     title: "Eastern Gold",
     description: "Ambient electronic composition with glitch aesthetics",
     type: "Single",
@@ -184,7 +196,7 @@ const platforms = [
                   width="100%" 
                   height="315" 
                   src={releases[0].youtubeUrl} 
-                  title="Moon Is Cake - Junkerri" 
+                  title="First Dance After Coma - Junkerri X Andrew Rief" 
                   frameborder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                   allowfullscreen>
