@@ -14,7 +14,7 @@ const posts = (await getCollection('blog')).sort(
 );
 
 // Get unique categories
-const categories = ['all', 'essay', 'short-story', 'poem', 'article', 'review', 'thoughts'] as const;
+const categories = ['all', 'essay', 'short-story', 'poem', 'article', 'review', 'thoughts', 'music'] as const;
 type Category = typeof categories[number];
 
 const categoryLabels: Record<Category, string> = {
@@ -24,7 +24,8 @@ const categoryLabels: Record<Category, string> = {
   'poem': 'Poems',
   'article': 'Articles',
   'review': 'Reviews',
-  'thoughts': 'Thoughts'
+  'thoughts': 'Thoughts',
+  'music': 'Music'
 };
 ---
 
