@@ -16,7 +16,7 @@ export default defineConfig({
   adapter: vercel({
     // Vercel configuration
     webAnalytics: {
-      enabled: false,
+      enabled: true,
     },
   }),
   integrations: [
