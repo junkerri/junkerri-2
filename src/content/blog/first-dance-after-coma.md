@@ -2,7 +2,7 @@
 title: "First Dance After Coma"
 description: "On returning, numbness, collaboration, and learning how to move again in a burning world."
 pubDate: "2026-01-17"
-heroImage: "../../assets/photos/fdac-art.jpg"
+heroImage: "../../assets/photos/fdac-poster.jpg"
 category: "music"
 ---
 
@@ -40,7 +40,7 @@ I’ll share more once the video is released.
 
 Until then, "First Dance After Coma" is out now on all streaming platforms.
 
-**Listen here:** [Bandcamp](https://junkerri.bandcamp.com/track/first-dance-after-coma) • [Spotify](https://open.spotify.com/album/4KB1gdI56CuTcObCUMa01f) • [YouTube](https://www.youtube.com/watch?v=6G1a2u2Uw7o)
+**Listen here:** [Bandcamp](https://junkerri.bandcamp.com/track/first-dance-after-coma) • [Spotify](https://open.spotify.com/album/4KB1gdI56CuTcObCUMa01f) • [YouTube](https://www.youtube.com/watch?v=GjpB3chwZ60)
 
 Listen when you're ready.  
 Move when you can.  

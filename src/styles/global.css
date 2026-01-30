@@ -1963,6 +1963,64 @@ h4 {
   color: hsl(var(--primary));
 }
 
+/* Footer sparkle */
+.footer-sparkle {
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 0 hsl(var(--primary) / 0.15);
+  animation: footer-sparkle-glow 3.6s ease-in-out infinite;
+}
+
+.footer-sparkle::before,
+.footer-sparkle::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    hsl(var(--primary) / 0.9) 0%,
+    hsl(var(--primary) / 0) 70%
+  );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.footer-sparkle::before {
+  top: -4px;
+  right: -10px;
+  animation: footer-sparkle-twinkle 2.8s ease-in-out infinite;
+}
+
+.footer-sparkle::after {
+  bottom: -3px;
+  left: 12px;
+  animation: footer-sparkle-twinkle 3.4s ease-in-out infinite 0.6s;
+}
+
+@keyframes footer-sparkle-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 0 hsl(var(--primary) / 0.15);
+  }
+  50% {
+    text-shadow: 0 0 14px hsl(var(--primary) / 0.45);
+  }
+}
+
+@keyframes footer-sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translate(0, 0) scale(0.6);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translate(2px, -2px) scale(1);
+  }
+}
+
 /* Footer dark mode */
 .dark footer {
   background: linear-gradient(
