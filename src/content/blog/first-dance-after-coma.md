@@ -34,11 +34,19 @@ The mix was handled by Chris Cabaniss, who brought clarity and depth. It was mas
 
 ## The Video
 
-A music video accompanies the song and was made in collaboration with **Creative Makura**, a talented team based in Nepal. We gave them very little direction and chose to trust their interpretation fully. We’re excited to see what they’ve created and how they chose to hold the song visually.
+The music video was created in collaboration with the **Creative Makura** team, and we could not be happier with how it turned out.
 
-I’ll share more once the video is released.
+They approached the song through themes of surveillance, big brother, acceptance, and surrender. Their interpretation gave the track a visual language that feels unsettling and honest, mirroring the tension between control and awakening that runs through the song.
 
-Until then, "First Dance After Coma" is out now on all streaming platforms.
+The choreography, created and performed by **Apeksha** and **Prasanni**, took the song to an entirely different level. Movement became its own form of witnessing. Watching the body respond, resist, and ultimately surrender felt intentional and was beautifully captured.
+
+We gave the Creative Makura team very little direction and chose to trust them fully. That trust was rewarded. The video feels expansive, intentional, and deeply aligned with the emotional core of the track.
+
+We’re incredibly grateful to the entire cast and crew for their care, dedication, and vision.
+
+**Watch here:** [YouTube](https://www.youtube.com/watch?v=GjpB3chwZ60)
+
+"First Dance After Coma" is out now on all streaming platforms.
 
 **Listen here:** [Bandcamp](https://junkerri.bandcamp.com/track/first-dance-after-coma) • [Spotify](https://open.spotify.com/album/4KB1gdI56CuTcObCUMa01f) • [YouTube](https://www.youtube.com/watch?v=GjpB3chwZ60)
 
