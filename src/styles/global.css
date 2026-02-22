@@ -3897,3 +3897,85 @@ h4 {
     left: 40% !important;
   }
 }
+
+/* Feed My Soul - Abstract Folk image treatment preview */
+.abstract-folk-preview {
+  isolation: isolate;
+  background: radial-gradient(circle at 25% 20%, rgba(255, 221, 168, 0.35), transparent 55%),
+    linear-gradient(135deg, rgba(39, 37, 74, 0.3), rgba(125, 40, 94, 0.25));
+}
+
+.abstract-folk-image {
+  filter: saturate(1.12) contrast(1.08) hue-rotate(-8deg);
+}
+
+.group:hover .abstract-folk-image {
+  transform: scale(1.06);
+}
+
+.abstract-folk-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 75%, rgba(255, 148, 115, 0.25), transparent 40%),
+    radial-gradient(circle at 78% 20%, rgba(255, 208, 110, 0.2), transparent 48%),
+    linear-gradient(155deg, rgba(22, 20, 50, 0.16), rgba(95, 35, 72, 0.28));
+  mix-blend-mode: screen;
+}
+
+.abstract-folk-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 4px);
+  mix-blend-mode: soft-light;
+  opacity: 0.45;
+}
+
+.abstract-folk-shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+}
+
+.abstract-folk-shape {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(255, 239, 209, 0.65);
+  box-shadow: 0 0 24px rgba(255, 149, 125, 0.2);
+}
+
+.abstract-folk-shape-one {
+  top: 12%;
+  right: 8%;
+  width: 38%;
+  height: 26%;
+  border-radius: 40% 55% 50% 30%;
+  background: linear-gradient(145deg, rgba(255, 220, 140, 0.18), rgba(255, 97, 122, 0.1));
+}
+
+.abstract-folk-shape-two {
+  left: 9%;
+  bottom: 10%;
+  width: 28%;
+  height: 34%;
+  border-radius: 14px;
+  transform: rotate(-9deg);
+  background: linear-gradient(135deg, rgba(255, 120, 95, 0.22), rgba(255, 208, 130, 0.1));
+}
+
+.abstract-folk-shape-three {
+  left: 42%;
+  top: 37%;
+  width: 22%;
+  height: 22%;
+  border-radius: 50%;
+  border-width: 2px;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.5), rgba(255, 165, 102, 0.18));
+}

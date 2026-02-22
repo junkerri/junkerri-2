@@ -3,7 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
-import latestCollab from '../assets/photos/fdac-poster.jpg';
+import feedMySoulArt from '../assets/photos/FMS-Square-art.jpg';
+import firstDanceAfterComaArt from '../assets/photos/fdac-poster.jpg';
 import everythingWasBeautiful from '../assets/illustrations/everything-was-beautiful.jpg';
 import artistPhoto from '../assets/photos/artist-photo.jpg';
 import beatkerriSquare from '../assets/photos/beatkerri-square.jpg';
@@ -106,13 +107,13 @@ const recentPosts = (await getCollection('blog'))
 
           <div class="flex flex-col items-center justify-center animate-fade-in px-4 mt-8 space-y-4" style="animation-delay: 1s;">
             <p class="text-xl sm:text-2xl font-semibold tracking-wider text-white text-center" style="font-family: 'Arvo', serif; letter-spacing: 0.1em; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">
-              New single <span class="text-2xl sm:text-3xl md:text-4xl font-bold inline-block text-white animate-pulse" style="text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #00ffb1, 0 0 40px #00ffb1, 0 0 50px #00ffb1, 0 0 60px #00ffb1; filter: drop-shadow(0 0 12px rgba(0, 255, 177, 0.8));">'First Dance After Coma'</span> is out now!
+              New single <span class="text-2xl sm:text-3xl md:text-4xl font-bold inline-block text-white animate-pulse" style="text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #00ffb1, 0 0 40px #00ffb1, 0 0 50px #00ffb1, 0 0 60px #00ffb1; filter: drop-shadow(0 0 12px rgba(0, 255, 177, 0.8));">'Feed My Soul'</span> is out now!
             </p>
             <div class="flex flex-col sm:flex-row gap-3 items-center justify-center">
-              <a href="https://www.youtube.com/watch?v=GjpB3chwZ60" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium tracking-wide text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/30 hover:border-white/50 transition-all duration-500 rounded-full hover:scale-[1.02] shadow-lg hover:shadow-xl">
-                Watch
+              <a href="https://www.youtube.com/watch?v=Nx67G-Yn3O8" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium tracking-wide text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/30 hover:border-white/50 transition-all duration-500 rounded-full hover:scale-[1.02] shadow-lg hover:shadow-xl">
+                Watch Visualizer
               </a>
-              <a href="https://open.spotify.com/album/4KB1gdI56CuTcObCUMa01f" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium tracking-wide text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/30 hover:border-white/50 transition-all duration-500 rounded-full hover:scale-[1.02] shadow-lg hover:shadow-xl">
+              <a href="https://open.spotify.com/album/3JHdQumbJZnNGF2sFrOrSK" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium tracking-wide text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/30 hover:border-white/50 transition-all duration-500 rounded-full hover:scale-[1.02] shadow-lg hover:shadow-xl">
                 Listen
               </a>
             </div>
@@ -138,13 +139,45 @@ const recentPosts = (await getCollection('blog'))
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- Music Card -->
+          <div class="card group hover:glow-cyberpunk-cyan transition-all duration-300">
+            <div class="aspect-square bg-gradient-to-br from-cyberpunk-cyan/20 to-cyberpunk-pink/20 rounded-t-lg overflow-hidden relative abstract-folk-preview">
+              <Image 
+                src={feedMySoulArt}
+                alt="Feed My Soul cover art" 
+                class="w-full h-full object-cover transition-transform duration-300 abstract-folk-image"
+                width={400}
+                height={400}
+              />
+              <div class="abstract-folk-wash" aria-hidden="true"></div>
+              <div class="abstract-folk-grain" aria-hidden="true"></div>
+              <div class="abstract-folk-shapes" aria-hidden="true">
+                <span class="abstract-folk-shape abstract-folk-shape-one"></span>
+                <span class="abstract-folk-shape abstract-folk-shape-two"></span>
+                <span class="abstract-folk-shape abstract-folk-shape-three"></span>
+              </div>
+              <span class="absolute left-3 top-3 z-20 rounded-full border border-white/60 bg-black/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/90 backdrop-blur-sm">
+                Abstract Folk Preview
+              </span>
+            </div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">Feed My Soul</h3>
+              <p class="text-cyberpunk-pink/70 mb-4">
+                New single "Feed My Soul" released on February 20, 2026.
+              </p>
+              <a href="https://www.youtube.com/watch?v=Nx67G-Yn3O8" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
+                Watch Visualizer
+              </a>
+            </div>
+          </div>
+
+          <!-- Latest Collaboration Card -->
           <div class="card group hover:glow-cyberpunk-cyan transition-all duration-300">
             <div class="aspect-square bg-gradient-to-br from-cyberpunk-cyan/20 to-cyberpunk-pink/20 rounded-t-lg overflow-hidden">
               <Image 
-                src={latestCollab}
-                alt="First Dance After Coma - Junkerri X Andrew Rief video" 
+                src={firstDanceAfterComaArt}
+                alt="First Dance After Coma - Junkerri x Andrew Rief" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 width={400}
                 height={400}
@@ -153,10 +186,10 @@ const recentPosts = (await getCollection('blog'))
             <div class="card-content">
               <h3 class="text-xl font-semibold mb-2 text-cyberpunk-cyan">First Dance After Coma</h3>
               <p class="text-cyberpunk-pink/70 mb-4">
-                Latest collaboration with Andrew Rief "First Dance After Coma" official music video.
+                Latest collaboration with Andrew Rief.
               </p>
               <a href="https://www.youtube.com/watch?v=GjpB3chwZ60" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm bg-cyberpunk-cyan hover:bg-cyberpunk-pink text-black">
-                Watch Now
+                Watch
               </a>
             </div>
           </div>

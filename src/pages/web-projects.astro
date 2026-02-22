@@ -7,6 +7,7 @@ import { Image } from 'astro:assets';
 import pulseCoop from '../assets/photos/pulse-coop.jpg';
 import beatkerri from '../assets/photos/beatkerri.jpg';
 import personalWebsitePortfolio from '../assets/photos/personal-website-portfolio.jpg';
+import fmsVisualizerProject from '../assets/photos/fms-visualizer-project.jpg';
 
 // Web projects data
 const projects = [
@@ -40,6 +41,17 @@ const projects = [
     liveUrl: "https://junkerri-2.vercel.app/",
     githubUrl: "https://github.com/junkerri/junkerri-2",
     category: "Personal Portfolio"
+  },
+  {
+    id: 4,
+    title: "Feed My Soul Visualizer",
+    description: "A custom audio-reactive visualizer pipeline built for 'Feed My Soul'. It uses Python and Librosa feature extraction with timeline-based events, layered compositing, and FFmpeg export to produce cinematic visuals synced to the song.",
+    tech: ["Python", "Librosa", "OpenCV", "FFmpeg", "YAML"],
+    image: fmsVisualizerProject,
+    liveUrl: "https://www.youtube.com/watch?v=Nx67G-Yn3O8",
+    detailsUrl: "/blog/building-feed-my-soul-visualizer",
+    detailsLabel: "Read Build Post",
+    category: "Creative Web App"
   }
 ];
 
@@ -115,14 +127,24 @@ const featuredProject = projects.find(p => p.featured) || projects[0];
                   >
                     Live Demo
                   </a>
-                  <a 
-                    href={project.githubUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="btn btn-outline btn-sm"
-                  >
-                    GitHub
-                  </a>
+                  {project.githubUrl && (
+                    <a 
+                      href={project.githubUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      class="btn btn-outline btn-sm"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                  {project.detailsUrl && (
+                    <a 
+                      href={project.detailsUrl} 
+                      class="btn btn-outline btn-sm"
+                    >
+                      {project.detailsLabel || 'Details'}
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -167,14 +189,24 @@ const featuredProject = projects.find(p => p.featured) || projects[0];
                 >
                   Visit Site
                 </a>
-                <a 
-                  href={featuredProject.githubUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="btn btn-outline btn-lg"
-                >
-                  View Code
-                </a>
+                {featuredProject.githubUrl && (
+                  <a 
+                    href={featuredProject.githubUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="btn btn-outline btn-lg"
+                  >
+                    View Code
+                  </a>
+                )}
+                {featuredProject.detailsUrl && (
+                  <a 
+                    href={featuredProject.detailsUrl} 
+                    class="btn btn-outline btn-lg"
+                  >
+                    {featuredProject.detailsLabel || 'Details'}
+                  </a>
+                )}
               </div>
             </div>
             
